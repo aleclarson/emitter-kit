@@ -7,7 +7,7 @@ This library aims to be a fresh alternative to `NSNotificationCenter` for Swift 
 #### Sample code
 
 ```Swift
-let evtError: Event<NSError>("evtError")
+let evtError: Event<NSError>()
 
 class MyClass {
 
@@ -37,7 +37,7 @@ class MyClass {
 `Event` and `EventListener` are generic. This is great for type-safety and it reduces the need for type-casting since the response type is static.
 
 ```Swift
-let myEvent = Event<(Int, Int, Int)>("myEvent")
+let myEvent = Event<(Int, Int, Int)>()
 let myListener = myEvent.on {
   println($0 + $1 + $2)
 }
@@ -53,7 +53,7 @@ myEvent.emit(myView) // With a target
 If you want to communicate an event without any data, `VoidEvent` and `VoidEventListener` are here for you.
 
 ```Swift
-let myEvent = VoidEvent("myEvent")
+let myEvent = VoidEvent()
 let myListener = myEvent.on {
   println("No arguments necessary!")
 }
