@@ -1,7 +1,8 @@
 # Typed Events for Swift
 
-> **Typed Events for Swift** aims to be an improved `NSNotificationCenter` written for Swift.
+This library aims to be a fresh alternative to `NSNotificationCenter` for Swift lovers.
 
+--
 
 ### Sample code
 
