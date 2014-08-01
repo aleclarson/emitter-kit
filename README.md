@@ -1,6 +1,7 @@
 # Typed Events for Swift
 
-**Typed Events for Swift** aims to be an improved `NSNotificationCenter` written for Swift.
+> **Typed Events for Swift** aims to be an improved `NSNotificationCenter` written for Swift.
+
 
 ### Sample code
 
