@@ -1,9 +1,11 @@
 
+import Foundation
+
 class AnyEvent {
-  
+
   let id: String
   
-  required init (_ id: String) {
+  init (id: String = NSUUID().UUIDString) {
     if takenEventIDs[id] {
       println("Event ID \"\(id)\" is already taken.")
       fatalError("Error. See your console for details.")
@@ -17,8 +19,12 @@ class AnyEvent {
 
 class VoidEvent : AnyEvent {
 
-  init (_ id: String) {
-    super.init(id)
+  init () {
+    super.init()
+  }
+
+  init (id: String) {
+    super.init(id: id)
   }
   
   func emit () {
@@ -52,8 +58,12 @@ class VoidEvent : AnyEvent {
 
 class Event <EventData: Any> : AnyEvent {
 
-  init (_ id: String) {
-    super.init(id)
+  init () {
+    super.init()
+  }
+
+  init (id: String) {
+    super.init(id: id)
   }
   
   func emit (data: EventData) {
