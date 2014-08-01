@@ -1,10 +1,10 @@
-# Typed Events for Swift
+### Typed Events for Swift
 
 This library aims to be a fresh alternative to `NSNotificationCenter` for Swift lovers.
 
 --
 
-### Sample code
+#### Sample code
 
 ```Swift
 // Global scope
@@ -33,7 +33,7 @@ evtError.emit(error)
 
 --
 
-### Features
+#### Features
 
 - Generic `Event<>`s and `EventListener<>`s for type safety
 - Broadcast an `Event` to a specific object with `evtMyEvent.emit(object)`
