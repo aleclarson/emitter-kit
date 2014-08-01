@@ -39,6 +39,7 @@ evtError.emit(error)
 - `VoidEvent` and `VoidEventListener` act as substitutes for `Event<Void` and `EventListener<Void>` (which do not work as expected)
 - Stop and start an `EventListener` if you prefer to not deallocate it
 - Refer to any `Event<>` with `AnyEvent` and to any `EventListener<>` with `AnyEventListener`
+- Get an `AnyEvent`'s current listeners with `evtMyEvent.listeners(object)`
 
 --
 
