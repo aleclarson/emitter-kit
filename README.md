@@ -7,7 +7,7 @@ This library aims to be a fresh alternative to `NSNotificationCenter` for Swift 
 #### Sample code
 
 ```Swift
-let evtError: Event<NSError>()
+let evtError = Event<NSError>()
 
 class MyClass {
 
