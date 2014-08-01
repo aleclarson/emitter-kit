@@ -15,17 +15,14 @@ class MyClass {
 
   init () {
 
-    // React to an event many times (must retain the returned EventListener)
     events += evtError.on { error in
       println(error.localizedDescription)
     }
     
-    // React to an event one time only (no need to retain the returned EventListener)
     evtError.once { error in
       println(error.localizedDescription)
     }
     
-    // Broadcast an event with an NSError attached
     evtError.emit(error)
   
   }
@@ -35,13 +32,13 @@ class MyClass {
 
 --
 
-#### Features
+#### How to use
 
 `Event` and `EventListener` are generic. This is great for type-safety and it reduces the need for type-casting since the response type is static.
 
 ```Swift
 let myEvent = Event<(Int, Int, Int)>("myEvent")
-let myListener = event.on {
+let myListener = myEvent.on {
   println($0 + $1 + $2)
 }
 ```
@@ -57,7 +54,7 @@ If you want to communicate an event without any data, `VoidEvent` and `VoidEvent
 
 ```Swift
 let myEvent = VoidEvent("myEvent")
-let myListener = event.on {
+let myListener = myEvent.on {
   println("No arguments necessary!")
 }
 ```
