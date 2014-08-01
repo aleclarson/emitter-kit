@@ -12,6 +12,8 @@ This library fixes three major annoyances I've had with `NSNotificationCenter`:
 
 - Don't have to call `NSNotificationCenter.removeObserver()` before your class is deallocated
 
+- Observing just once is really easy
+
 - More concise syntax
 
 --
