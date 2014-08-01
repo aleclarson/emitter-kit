@@ -45,6 +45,12 @@ evtError.emit(error)
 
 --
 
+#### Related links
+
+[Thread on Apple's Swift forum](https://devforums.apple.com/thread/238909)
+
+--
+
 **More documentation will be added at a later date!**
 
 Crafted by Alec Larson ([@aleclarsoniv](https://twitter.com/aleclarsoniv))
