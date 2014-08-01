@@ -89,6 +89,8 @@ Get an `Array` of an `AnyEvent`'s active listeners with `myEvent.listeners(myVie
 
 [Thread on Apple's Swift forum](https://devforums.apple.com/thread/238909)
 
+[Thread on Swift subreddit](http://www.reddit.com/r/swift/comments/2cbh3b/generic_events_for_swift/)
+
 --
 
 Crafted by Alec Larson ([@aleclarsoniv](https://twitter.com/aleclarsoniv))
