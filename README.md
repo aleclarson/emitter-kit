@@ -1,4 +1,4 @@
-### Typed Events for Swift
+### Generic Events for Swift
 
 This library aims to be a fresh alternative to `NSNotificationCenter` for Swift lovers.
 
