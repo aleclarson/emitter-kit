@@ -1,6 +1,6 @@
 ### Generic Events for Swift
 
-This library aims to be a fresh alternative to `NSNotificationCenter` for Swift lovers.
+This library aims to be a fresh alternative to `NSNotificationCenter` for Swift lovers. It adds `Event`, `EventListener`, `AnyEvent`, `AnyEventListener`, `VoidEvent`, and `VoidEventListener`.
 
 --
 
