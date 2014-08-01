@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		113A92A9198B5EAB004C5F1E /* Simple Typed Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Typed Events.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		113A92A9198B5EAB004C5F1E /* Swift Typed Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Typed Events.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113A92CB198B5F22004C5F1E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = src/Event.swift; sourceTree = "<group>"; };
 		113A92CC198B5F22004C5F1E /* EventListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListener.swift; path = src/EventListener.swift; sourceTree = "<group>"; };
 		113A92CF198B5F22004C5F1E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		113A92AA198B5EAB004C5F1E /* results */ = {
 			isa = PBXGroup;
 			children = (
-				113A92A9198B5EAB004C5F1E /* Simple Typed Events.app */,
+				113A92A9198B5EAB004C5F1E /* Swift Typed Events.app */,
 			);
 			name = results;
 			sourceTree = "<group>";
@@ -84,9 +84,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		113A92A8198B5EAB004C5F1E /* Simple Typed Events */ = {
+		113A92A8198B5EAB004C5F1E /* Swift Typed Events */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 113A92C5198B5EAB004C5F1E /* Build configuration list for PBXNativeTarget "Simple Typed Events" */;
+			buildConfigurationList = 113A92C5198B5EAB004C5F1E /* Build configuration list for PBXNativeTarget "Swift Typed Events" */;
 			buildPhases = (
 				113A92A5198B5EAB004C5F1E /* Sources */,
 				113A92A6198B5EAB004C5F1E /* Frameworks */,
@@ -96,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = "Simple Typed Events";
+			name = "Swift Typed Events";
 			productName = "Simple Typed Events";
-			productReference = 113A92A9198B5EAB004C5F1E /* Simple Typed Events.app */;
+			productReference = 113A92A9198B5EAB004C5F1E /* Swift Typed Events.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 113A92A4198B5EAB004C5F1E /* Build configuration list for PBXProject "Simple Typed Events" */;
+			buildConfigurationList = 113A92A4198B5EAB004C5F1E /* Build configuration list for PBXProject "Swift Typed Events" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -128,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				113A92A8198B5EAB004C5F1E /* Simple Typed Events */,
+				113A92A8198B5EAB004C5F1E /* Swift Typed Events */,
 			);
 		};
 /* End PBXProject section */
@@ -244,7 +244,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/setup/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -257,7 +257,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/setup/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -266,7 +266,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		113A92A4198B5EAB004C5F1E /* Build configuration list for PBXProject "Simple Typed Events" */ = {
+		113A92A4198B5EAB004C5F1E /* Build configuration list for PBXProject "Swift Typed Events" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				113A92C3198B5EAB004C5F1E /* Debug */,
@@ -275,7 +275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		113A92C5198B5EAB004C5F1E /* Build configuration list for PBXNativeTarget "Simple Typed Events" */ = {
+		113A92C5198B5EAB004C5F1E /* Build configuration list for PBXNativeTarget "Swift Typed Events" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				113A92C6198B5EAB004C5F1E /* Debug */,

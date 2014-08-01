@@ -3,6 +3,8 @@ var evtVoid = VoidEvent("evtVoid")
 
 var evtInt = Event<Int>("evtInt")
 
+var evtStringOptional = Event<String?>("evtStringOptional")
+
 class EventTests {
   
   var events = [AnyEventListener]()
@@ -50,6 +52,16 @@ class EventTests {
     }
     
     evtInt.emit([self, evtInt], 420)
+    
+    // Test with an optional data type
+    
+    evtStringOptional.once {
+      println("7: evtStringOptional { data: \($0) }")
+    }
+    
+    evtStringOptional.emit(nil)
+    
+    evtStringOptional.emit("Hello world")
   }
   
 }

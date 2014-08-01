@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-               BuildableName = "Simple Typed Events.app"
-               BlueprintName = "Simple Typed Events"
-               ReferencedContainer = "container:Simple Typed Events.xcodeproj">
+               BuildableName = "Swift Typed Events.app"
+               BlueprintName = "Swift Typed Events"
+               ReferencedContainer = "container:Swift Typed Events.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "113A92BA198B5EAB004C5F1E"
-               BuildableName = "Simple Typed EventsTests.xctest"
-               BlueprintName = "Simple Typed EventsTests"
-               ReferencedContainer = "container:Simple Typed Events.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Simple Typed Events.app"
-            BlueprintName = "Simple Typed Events"
-            ReferencedContainer = "container:Simple Typed Events.xcodeproj">
+            BuildableName = "Swift Typed Events.app"
+            BlueprintName = "Swift Typed Events"
+            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Simple Typed Events.app"
-            BlueprintName = "Simple Typed Events"
-            ReferencedContainer = "container:Simple Typed Events.xcodeproj">
+            BuildableName = "Swift Typed Events.app"
+            BlueprintName = "Swift Typed Events"
+            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Simple Typed Events.app"
-            BlueprintName = "Simple Typed Events"
-            ReferencedContainer = "container:Simple Typed Events.xcodeproj">
+            BuildableName = "Swift Typed Events.app"
+            BlueprintName = "Swift Typed Events"
+            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
