@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Swift Typed Events.xcodeproj">
+      location = "self:Generic Events for Swift.xcodeproj">
    </FileRef>
 </Workspace>

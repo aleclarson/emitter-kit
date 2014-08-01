@@ -55,7 +55,7 @@ class EventTests {
     
     // Test with an optional data type
     
-    evtStringOptional.once {
+    events += evtStringOptional.on {
       println("7: evtStringOptional { data: \($0) }")
     }
     

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-               BuildableName = "Swift Typed Events.app"
-               BlueprintName = "Swift Typed Events"
-               ReferencedContainer = "container:Swift Typed Events.xcodeproj">
+               BuildableName = "Generic Events for Swift.app"
+               BlueprintName = "Generic Events for Swift"
+               ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Swift Typed Events.app"
-            BlueprintName = "Swift Typed Events"
-            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
+            BuildableName = "Generic Events for Swift.app"
+            BlueprintName = "Generic Events for Swift"
+            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Swift Typed Events.app"
-            BlueprintName = "Swift Typed Events"
-            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
+            BuildableName = "Generic Events for Swift.app"
+            BlueprintName = "Generic Events for Swift"
+            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Swift Typed Events.app"
-            BlueprintName = "Swift Typed Events"
-            ReferencedContainer = "container:Swift Typed Events.xcodeproj">
+            BuildableName = "Generic Events for Swift.app"
+            BlueprintName = "Generic Events for Swift"
+            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
