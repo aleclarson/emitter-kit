@@ -6,7 +6,7 @@ This library aims to be a fresh alternative to `NSNotificationCenter` for Swift 
 
 #### In a nutshell
 
-This library fixes three major annoyances I've had with `NSNotificationCenter`:
+This library fixes 4 major annoyances I've had with `NSNotificationCenter`:
 
 - Don't have to cast the event data to its appropriate type
 
