@@ -8,17 +8,17 @@ This library is an alternative to [`NSNotificationCenter`](http://nshipster.com/
 
 &nbsp;&nbsp;&nbsp; **Events**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Event]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Event](#event)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [VoidEvent]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [VoidEvent](#voidevent)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [AnyEvent]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [AnyEvent](#anyevent)
 
 &nbsp;&nbsp;&nbsp; **Event Listeners**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [EventListener]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [EventListener](#eventlistener)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [EventListenerStorage]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [EventListenerStorage](#eventlistenerstorage)
 
 ---
 
