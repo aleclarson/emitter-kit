@@ -17,11 +17,11 @@
 
 /* Begin PBXFileReference section */
 		113A92A9198B5EAB004C5F1E /* Generic Events for Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Generic Events for Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		113A92CB198B5F22004C5F1E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = src/Event.swift; sourceTree = "<group>"; };
-		113A92CC198B5F22004C5F1E /* EventListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListener.swift; path = src/EventListener.swift; sourceTree = "<group>"; };
+		113A92CB198B5F22004C5F1E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		113A92CC198B5F22004C5F1E /* EventListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListener.swift; sourceTree = "<group>"; };
 		113A92CF198B5F22004C5F1E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		113A92D0198B5F22004C5F1E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		113A92D9198B6211004C5F1E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTests.swift; path = tests/EventTests.swift; sourceTree = "<group>"; };
+		113A92D9198B6211004C5F1E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
 		1159993C1998103600DBBF64 /* EventListenerStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListenerStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +44,7 @@
 				1159993C1998103600DBBF64 /* EventListenerStorage.swift */,
 			);
 			name = src;
+			path = ../src;
 			sourceTree = "<group>";
 		};
 		113A92A0198B5EAB004C5F1E = {
