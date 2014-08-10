@@ -1,13 +1,13 @@
 
 import Foundation
 
-private var eventListenerCache = [String:[Reference<AnyEventListener>]]()
+private var eventListenerCache = [String:[Reference<EventListener>]]()
 
-class AnyEventListener {
+class EventListener {
   
   let event: String
   
-  let handler: (data: Any?, target: AnyObject?) -> Void
+  let handler: Any? -> Void
   
   let once: Bool
   
@@ -35,46 +35,66 @@ class AnyEventListener {
     stop()
   }
 
-  init (_ target: AnyObject?, _ event: String, _ handler: (data: Any?, target: AnyObject?) -> Void, _ once: Bool = false) {
+  private init (_ target: AnyObject?, _ event: String, _ handler: Any? -> Void, _ once: Bool = false) {
     self.event = event + hashify(target)
     self.handler = handler
     self.once = once
     start()
   }
   
-  private let cachedRef = Reference<AnyEventListener>()
+  private let cachedRef = Reference<EventListener>()
 }
 
-class VoidEventListener : AnyEventListener {
-  
-  init (_ target: AnyObject?, _ event: String, _ handler: (target: AnyObject?) -> Void, _ once: Bool = false) {
-    super.init(target, event, { _, target in handler(target: target) }, once)
+extension Event {
+  func on (handler: EventData -> Void) -> EventListener {
+    return EventListener(nil, id, { handler($0 as EventData) })
   }
   
-  init (_ target: AnyObject?, _ event: String, _ handler: Void -> Void, _ once: Bool = false) {
-    super.init(target, event, { _, _ in handler() }, once)
+  func on (target: AnyObject, _ handler: EventData -> Void) -> EventListener {
+    return EventListener(target, id, { handler($0 as EventData) })
   }
   
+  func once (handler: EventData -> Void) -> EventListener {
+    return EventListener(nil, id, { handler($0 as EventData) }, true)
+  }
+  
+  func once (target: AnyObject, _ handler: EventData -> Void) -> EventListener {
+    return EventListener(target, id, { handler($0 as EventData) }, true)
+  }
 }
 
-class EventListener <EventData: Any> : AnyEventListener {
-  
-  init (_ target: AnyObject?, _ event: String, _ handler: (data: EventData, target: AnyObject?) -> Void, _ once: Bool = false) {
-    super.init(target, event, { data, target in handler(data: data as EventData, target: target) }, once)
+extension VoidEvent {
+  func on (handler: Void -> Void) -> EventListener {
+    return EventListener(nil, id, { _ in handler() })
   }
   
-  init (_ target: AnyObject?, _ event: String, _ handler: (data: EventData) -> Void, _ once: Bool = false) {
-    super.init(target, event, { data, _ in handler(data: data as EventData) }, once)
+  func on (target: AnyObject, _ handler: Void -> Void) -> EventListener {
+    return EventListener(target, id, { _ in handler() })
   }
   
+  func once (handler: Void -> Void) -> EventListener {
+    return EventListener(nil, id, { _ in handler() }, true)
+  }
+  
+  func once (target: AnyObject, _ handler: Void -> Void) -> EventListener {
+    return EventListener(target, id, { _ in handler() }, true)
+  }
 }
 
 extension AnyEvent {
-  func listeners <Listener : AnyEventListener> (target: AnyObject? = nil) -> [Listener] {
+  func listeners () -> [EventListener] {
+    return listeners(target: nil)
+  }
+  
+  func listeners (target: AnyObject) -> [EventListener] {
+    return listeners(target: target)
+  }
+
+  private func listeners (target: AnyObject? = nil) -> [EventListener] {
     let event = id + hashify(target)
-    var listeners = [Listener]()
+    var listeners = [EventListener]()
     for (i, ref) in enumerate(eventListenerCache[event] ?? []) {
-      if let listener = ref.object { listeners.append(listener as Listener) }
+      if let listener = ref.object { listeners.append(listener) }
       else { removeEventListener(event, i) }
     }
     return listeners
@@ -88,7 +108,7 @@ private func removeEventListener (event: String, index: Int) {
   }
 }
 
-private func removeEventListener (event: String, cachedRef: Reference<AnyEventListener>) {
+private func removeEventListener (event: String, cachedRef: Reference<EventListener>) {
   if var listeners = eventListenerCache[event] {
     removeObject(&listeners, cachedRef)
     eventListenerCache[event] = listeners.count > 0 ? listeners : nil

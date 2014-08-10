@@ -18,8 +18,8 @@ class AnyEvent {
   }
   
   private func emit (target: AnyObject?, _ data: Any?) {
-    for listener in listeners(target: target) {
-      listener.handler(data: data, target: target)
+    for listener in (target != nil ? listeners(target!) : listeners()) {
+      listener.handler(data)
       if listener.once { listener.stop() }
     }
   }
@@ -50,22 +50,6 @@ class VoidEvent : AnyEvent {
   func emit (targets: [AnyObject]) {
     super.emit(targets, nil)
   }
-  
-  func on (handler: Void -> Void) -> VoidEventListener {
-    return VoidEventListener(nil, id, handler)
-  }
-  
-  func on (target: AnyObject, _ handler: Void -> Void) -> VoidEventListener {
-    return VoidEventListener(target, id, handler)
-  }
-  
-  func once (handler: Void -> Void) -> VoidEventListener {
-    return VoidEventListener(nil, id, handler, true)
-  }
-  
-  func once (target: AnyObject, _ handler: Void -> Void) -> VoidEventListener {
-    return VoidEventListener(target, id, handler, true)
-  }
 }
 
 class Event <EventData: Any> : AnyEvent {
@@ -88,21 +72,5 @@ class Event <EventData: Any> : AnyEvent {
   
   func emit (targets: [AnyObject], _ data: EventData) {
     super.emit(targets, data)
-  }
-  
-  func on (handler: EventData -> Void) -> EventListener<EventData> {
-    return EventListener<EventData>(nil, id, handler)
-  }
-  
-  func on (target: AnyObject, _ handler: EventData -> Void) -> EventListener<EventData> {
-    return EventListener<EventData>(target, id, handler)
-  }
-  
-  func once (handler: EventData -> Void) -> EventListener<EventData> {
-    return EventListener<EventData>(nil, id, handler, true)
-  }
-  
-  func once (target: AnyObject, _ handler: EventData -> Void) -> EventListener<EventData> {
-    return EventListener<EventData>(target, id, handler, true)
   }
 }

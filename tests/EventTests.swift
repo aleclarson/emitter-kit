@@ -43,7 +43,7 @@ class EventTests {
       evtVoid.emit(self)
       evtVoid.emit(self)
   
-      assert(evtVoid.listeners(target: self).count == 1)
+      assert(evtVoid.listeners(self).count == 1)
     
     // Test with a required data type
     
