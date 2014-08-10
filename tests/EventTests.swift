@@ -7,61 +7,86 @@ var evtStringOptional = Event<String?>("evtStringOptional")
 
 class EventTests {
   
-  var events = [AnyEventListener]()
+  var events = EventListenerStorage()
 
   init () {
   
-    assert(evtVoid.id == "evtVoid")
+    // Test Event properties
+  
+      assert(evtVoid.id == "evtVoid")
     
     // Test without a target
     
-    evtVoid.once {
-      println("1: Should print only once")
-    }
-    
-    events += evtVoid.on {
-      println("2: Should print twice")
-    }
-    
-    evtVoid.emit()
-    evtVoid.emit()
-    
-    assert(evtVoid.listeners().count == 1)
+      evtVoid.once {
+        println("1: Should print only once")
+      }
+      
+      events <= evtVoid.on {
+        println("2: Should print twice")
+      }
+      
+      evtVoid.emit()
+      evtVoid.emit()
+      
+      assert(evtVoid.listeners().count == 1)
     
     // Test with a target
     
-    evtVoid.once(self) {
-      println("3: Should print only once")
-    }
+      evtVoid.once(self) {
+        println("3: Should print only once")
+      }
+        
+      events["myEvent"] = evtVoid.on(self) {
+        println("4: Should print twice")
+      }
     
-    events += evtVoid.on(self) {
-      println("4: Should print twice")
-    }
-    
-    evtVoid.emit(self)
-    evtVoid.emit(self)
+      evtVoid.emit(self)
+      evtVoid.emit(self)
   
-    assert(evtVoid.listeners(target: self).count == 1)
+      assert(evtVoid.listeners(target: self).count == 1)
     
-    evtInt.once(evtInt) {
-      println("5: evtInt { data: \($0) }")
-    }
+    // Test with a required data type
     
-    evtInt.once(self) {
-      println("6: evtInt { data: \($0) } <-- Should appear above #5")
-    }
-    
-    evtInt.emit([self, evtInt], 420)
+      evtInt.once(evtInt) {
+        println("5: evtInt { data: \($0) }")
+      }
+      
+      evtInt.once(self) {
+        println("6: evtInt { data: \($0) } <-- Should appear above #5")
+      }
+      
+      evtInt.emit([self, evtInt], 420)
     
     // Test with an optional data type
     
-    events += evtStringOptional.on {
-      println("7: evtStringOptional { data: \($0) }")
-    }
+      events <= evtStringOptional.on {
+        println("7: evtStringOptional { data: \($0) }")
+      }
+      
+      evtStringOptional.emit(nil)
+      
+      evtStringOptional.emit("Hello world")
     
-    evtStringOptional.emit(nil)
+    // Test EventListenerStorage subscripts
     
-    evtStringOptional.emit("Hello world")
+      let a = events[0]!
+      println("8: events[0] exists")
+    
+      let b = events["myEvent"]!
+      println("9: events[\"myEvent\"] exists")
+    
+    // Test EventListener properties
+    
+      assert(a.isListening)
+      assert(!a.once)
+      println("10: EventListener.event = \(a.event)")
+    
+      b.stop()
+      assert(!b.isListening)
+      println("11: EventListener.event = \(b.event)")
+    
+      b.start()
+      assert(b.isListening)
   }
   
 }
