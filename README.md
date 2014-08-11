@@ -101,19 +101,19 @@ You will normally want to declare an `Event` as a constant and in the global sco
 
 > Sends data to all `EventListener`s (if any exist) with one of the given targets
 
-`func on (EventData -> Void) -> EventListener<EventData>`
+`func on (EventData -> Void) -> EventListener`
 
 > Creates a new `EventListener` for this `Event`. **Must be retained!**
 
-`func on (AnyObject, EventData -> Void) -> EventListener<EventData>`
+`func on (AnyObject, EventData -> Void) -> EventListener`
 
 > Creates a new `EventListener` with a target. **Must be retained!**
 
-`func once (EventData -> Void) -> EventListener<EventData>`
+`func once (EventData -> Void) -> EventListener`
 
 > Creates a new `EventListener` that reacts to this `Event` only one time. Doesn't need to be retained.
 
-`func once (AnyObject, EventData -> Void) -> EventListener<EventData>`
+`func once (AnyObject, EventData -> Void) -> EventListener`
 
 > Creates a new `EventListener` with a target that reacts to this `Event` only one time. Doesn't need to be retained.
 
