@@ -223,11 +223,11 @@ You construct an `EventListener` when you call an `Event`'s `on()` or `once()` m
 
 `func start ()`
 
-> Attaches the `EventListener` to its `Event`. Does nothing if `isListening` is `false`.
+> Attaches the `EventListener` to its `Event`. Does nothing if `isListening` is `true`.
 
 `func stop ()`
 
-> Detaches the `EventListener` from its `Event`. Does nothing if `isListening` is `true`.
+> Detaches the `EventListener` from its `Event`. Does nothing if `isListening` is `false`.
 
 ---
 
