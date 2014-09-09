@@ -1,5 +1,5 @@
 
-func <= (storage: EventListenerStorage, listener: EventListener) {
+func += (storage: EventListenerStorage, listener: EventListener) {
   storage.array.append(listener)
 }
 
@@ -15,7 +15,7 @@ class EventListenerStorage {
   }
   
   subscript (index: Int) -> EventListener? {
-    get { return array.optionalAtIndex(index) }
+    get { return array.getOptional(index) }
     set {
       if self[index] != nil {
         if newValue != nil {
@@ -30,17 +30,5 @@ class EventListenerStorage {
   func clear () {
     array = []
     dict = [:]
-  }
-}
-
-
-
-//
-//  Helpers
-//
-
-private extension Array {
-  func optionalAtIndex (index: Int) -> T? {
-    return index >= 0 && index < count ? self[index] : nil
   }
 }
