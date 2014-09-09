@@ -12,6 +12,7 @@
 		113A92D4198B5F22004C5F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A92CF198B5F22004C5F1E /* AppDelegate.swift */; };
 		113A92D5198B5F22004C5F1E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 113A92D0198B5F22004C5F1E /* Info.plist */; };
 		113A92DA198B6211004C5F1E /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A92D9198B6211004C5F1E /* EventTests.swift */; };
+		1142E55019BE7AFE006E5032 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142E54F19BE7AFE006E5032 /* main.swift */; };
 		1159993D1998103600DBBF64 /* EventListenerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159993C1998103600DBBF64 /* EventListenerStorage.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,7 @@
 		113A92CF198B5F22004C5F1E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		113A92D0198B5F22004C5F1E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		113A92D9198B6211004C5F1E /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTests.swift; sourceTree = "<group>"; };
+		1142E54F19BE7AFE006E5032 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1159993C1998103600DBBF64 /* EventListenerStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListenerStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				113A92CF198B5F22004C5F1E /* AppDelegate.swift */,
+				1142E54F19BE7AFE006E5032 /* main.swift */,
 				113A92D0198B5F22004C5F1E /* Info.plist */,
 			);
 			path = setup;
@@ -152,6 +155,7 @@
 			files = (
 				113A92D4198B5F22004C5F1E /* AppDelegate.swift in Sources */,
 				113A92D2198B5F22004C5F1E /* EventListener.swift in Sources */,
+				1142E55019BE7AFE006E5032 /* main.swift in Sources */,
 				1159993D1998103600DBBF64 /* EventListenerStorage.swift in Sources */,
 				113A92DA198B6211004C5F1E /* EventTests.swift in Sources */,
 				113A92D1198B5F22004C5F1E /* Event.swift in Sources */,
