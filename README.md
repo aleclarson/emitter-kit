@@ -2,6 +2,8 @@
 
 -
 
+&nbsp;
+
 **EmitterKit** is a cleaner alternative to [**NSNotificationCenter**](http://nshipster.com/nsnotification-and-nsnotificationcenter/). It provides 6 classes, described below.
 
 -
