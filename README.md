@@ -6,17 +6,17 @@
 
 It provides 6 classes, described below.
 
-> **Emitter**
->
-> The abstract class for all event types.
+-
 
-You should never have to use this class directly.
+#### **Emitter**
 
-&nbsp;
+The abstract class for all event types. You should never have to use this class directly.
 
-> **Event**
->
-> A generic `Emitter` for any data type.
+-
+
+#### **Event**
+
+A generic `Emitter` for any data type.
 
 ```Swift
 let didLogin = Event<User>()
@@ -30,11 +30,11 @@ didLogin.emit(user)
 
 When an `Event` is deallocated, its `Listener`s are removed.
 
-&nbsp;
+-
 
-> **Signal**
->
-> An `Emitter` that does not pass data.
+### **Signal**
+
+An `Emitter` that does not pass data.
 
 ```Swift
 let didLogout = Signal()
@@ -46,11 +46,11 @@ didLogout.once {
 didLogout.emit()
 ```
 
-&nbsp;
+-
 
-> **Notification**
->
-> An `Emitter` for backwards compatibility with `NSNotificationCenter`.
+### **Notification**
+
+An `Emitter` for backwards compatibility with `NSNotificationCenter`.
 
 ```Swift
 let willShowKeyboard = Notification(UIKeyboardWillShowNotification)
@@ -62,21 +62,21 @@ willShowKeyboard.once { data in
 
 You're not allowed to `emit` a `Notification` yourself. This class is strictly for backwards compatibility with `NSNotificationCenter`. Note that `NSNotificationCenter.defaultCenter()` is always used here.
 
-&nbsp;
+-
 
-> **Listener**
->
-> Represents a closure that will be called when its `emitter` emits.
+### **Listener**
+
+Represents a closure that will be called when its `emitter` emits.
 
 Although you can call `Listener`'s initializers, you'll probably want to use the `on()` and `once()` methods on any `Emitter` instance.
 
-&nbsp;
+-
 
-> **ListenerStorage**
->
-> Retains `Listeners` that can be called more than once.
+### **ListenerStorage**
 
-Create an `ListenerStorage` if you ever call `myEvent.on()`. This will ensure your `Listener` does not get released until the `Event` or `ListenerStorage` is released.
+Retains `Listeners` that can be called more than once.
+
+Create a `ListenerStorage` if you ever call `myEmitter.on()`. This will ensure your `Listener` does not get released until the `Emitter` or `ListenerStorage` is released.
 
 ```Swift
 class MyClass {
@@ -99,6 +99,8 @@ Now you're not forced to call `NSNotificationCenter.removeObserver()` in your cl
 
 -
 
+#### Associated objects
+
 For my own Swift classes, I prefer to keep `Emitter`s as properties. But for classes that I can't do that (like `UIView` for example), it's really easy to associate the `UIView` with my `Emitter`.
 
 ```Swift
@@ -113,6 +115,12 @@ didTap.once(myView) { touch in
 didTap.emit(myView, touch)
 ```
 
----
+You can emit to many targets at the same time, if you need to.
+
+```Swift
+didTap.emit([myView, myOtherView, thatViewToo], touch)
+```
+
+-
 
 Crafted by Alec Larson [@aleclarsoniv](https://twitter.com/aleclarsoniv)
