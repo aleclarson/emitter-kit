@@ -1,6 +1,6 @@
 <img src="http://i.imgur.com/3e9ToKJ.jpg"/>
 
-**EmitterKit** is a cleaner alternative to [**NSNotificationCenter**](http://nshipster.com/nsnotification-and-nsnotificationcenter/).
+EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipster.com/nsnotification-and-nsnotificationcenter/).
 
 -
 
