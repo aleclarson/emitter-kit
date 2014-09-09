@@ -10,6 +10,8 @@ It provides 6 classes, described below.
 >
 > The abstract class for all event types.
 
+You should never have to use this class directly.
+
 &nbsp;
 
 > **Event**
