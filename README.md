@@ -4,7 +4,7 @@ EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipst
 
 - No longer be forced to typecast event data in your closures.
 - No longer be forced to `removeObserver` in your classes' `deinit` methods.
-- Backwards-compatible with `NSNotificationCenter`! You can listen to `UIKeyboardWillShowNotification` for example.
+- Backwards-compatible with `NSNotificationCenter` (like `UIKeyboardWillShowNotification`)!
 - Simpler syntax
 
 -
