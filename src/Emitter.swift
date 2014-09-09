@@ -1,23 +1,23 @@
 
 import Foundation
 
-class Event <EventData: Any> : AnyEvent {
+class Event <EventData: Any> : Emitter {
 
   // MARK: Instance Methods
 
-  func on (handler: EventData -> Void) -> EventListener {
+  func on (handler: EventData -> Void) -> Listener {
     return super.on(nil, castData(handler))
   }
   
-  func on (target: AnyObject, _ handler: EventData -> Void) -> EventListener {
+  func on (target: AnyObject, _ handler: EventData -> Void) -> Listener {
     return super.on(target, castData(handler))
   }
   
-  func once (handler: EventData -> Void) -> EventListener {
+  func once (handler: EventData -> Void) -> Listener {
     return super.once(nil, castData(handler))
   }
   
-  func once (target: AnyObject, _ handler: EventData -> Void) -> EventListener {
+  func once (target: AnyObject, _ handler: EventData -> Void) -> Listener {
     return super.once(target, castData(handler))
   }
   
@@ -46,23 +46,23 @@ class Event <EventData: Any> : AnyEvent {
   }
 }
 
-class VoidEvent : AnyEvent {
+class Signal : Emitter {
 
   // MARK: Instance Methods
   
-  func on (handler: VoidFunc) -> EventListener {
+  func on (handler: Void -> Void) -> Listener {
     return super.on(nil, ignoreData(handler))
   }
   
-  func on (target: AnyObject, _ handler: VoidFunc) -> EventListener {
+  func on (target: AnyObject, _ handler: Void -> Void) -> Listener {
     return super.on(target, ignoreData(handler))
   }
   
-  func once (handler: VoidFunc) -> EventListener {
+  func once (handler: Void -> Void) -> Listener {
     return super.once(nil, ignoreData(handler))
   }
   
-  func once (target: AnyObject, _ handler: VoidFunc) -> EventListener {
+  func once (target: AnyObject, _ handler: Void -> Void) -> Listener {
     return super.once(target, ignoreData(handler))
   }
   
@@ -86,28 +86,28 @@ class VoidEvent : AnyEvent {
   
   // MARK: Private
   
-  private func ignoreData (handler: VoidFunc)(_: Any!) {
+  private func ignoreData (handler: Void -> Void)(_: Any!) {
     handler()
   }
 }
 
-class Notification : AnyEvent {
+class Notification : Emitter {
 
   // MARK: Instance Methods
 
-  func on (handler: NSDictionary -> Void) -> EventListener {
+  func on (handler: NSDictionary -> Void) -> Listener {
     return super.on(nil, castData(handler))
   }
   
-  func on (target: AnyObject, _ handler: NSDictionary -> Void) -> EventListener {
+  func on (target: AnyObject, _ handler: NSDictionary -> Void) -> Listener {
     return super.on(target, castData(handler))
   }
   
-  func once (handler: NSDictionary -> Void) -> EventListener {
+  func once (handler: NSDictionary -> Void) -> Listener {
     return super.once(nil, castData(handler))
   }
   
-  func once (target: AnyObject, _ handler: NSDictionary -> Void) -> EventListener {
+  func once (target: AnyObject, _ handler: NSDictionary -> Void) -> Listener {
     return super.once(target, castData(handler))
   }
   
@@ -131,81 +131,73 @@ class Notification : AnyEvent {
   }
   
   private func castData (handler: NSDictionary -> Void)(data: Any!) {
-    handler(data as NSDictionary)
+    handler((data ?? [:]) as NSDictionary)
   }
 }
 
-class AnyEvent : Printable {
+class Emitter : Printable {
 
   // MARK: Read-write
 
+  /// If true, prints to the console when `emit` is called or a Listener deinits
   var debug = false
 
   // MARK: Read-only
 
+  /// Helps you identify an Emitter when debugging
   let name: String!
   
   private(set) var listenerCount = 0
   
   var description: String {
-    return "(AnyEvent { name: \(name), listenerCount: \(listenerCount) })"
+    return "(Emitter { name: \(name), listenerCount: \(listenerCount) })"
   }
   
   // MARK: Instance Methods
   
-  func listenersForTarget (_ target: AnyObject? = nil) -> [EventListener] {
-    let thash = hashify(target)
+  func listenersForTarget (_ target: AnyObject? = nil) -> [Listener] {
+    return Array((targets[hashify(target)] ?? [:]).values)
+  }
   
-    var listeners = [EventListener]()
-    
-    var references = targets[thash] ?? [:]
-    
-    for (lhash, ref) in references {
-      if let listener = ref.object {
-        listeners.append(listener)
-      } else {
+  func addListener (listener: Listener) {
+    let tid = hashify(listener.target)
+    var listeners = targets[tid] ?? [:]
+    listeners[hashify(listener)] = listener
+    targets[tid] = listeners
+    ++listenerCount
+  }
+  
+  func removeListener (listener: Listener) {
+    let tid = hashify(listener.target)
+    if var listeners = targets[tid] {
+      let lid = hashify(listener)
+      if listeners[lid] != nil {
+        listeners[hashify(listener)] = nil
+        targets[tid] = listeners.count > 0 ? listeners : nil
         --listenerCount
-        references[lhash] = nil
       }
     }
-    
-    targets[thash] = references.nilIfEmpty
-    
-    return listeners
   }
   
-  func addListener (listener: EventListener) {
-    ++listenerCount
-    let thash = hashify(listener.target)
-    var references = targets[thash] ?? [:]
-    references[hashify(listener)] = ReferenceMake(listener, isWeak: !listener.once)
-    targets[thash] = references
-  }
-  
-  func removeListener (listener: EventListener) {
-    --listenerCount
-    let thash = hashify(listener.target)
-    if var references = targets[thash] {
-      references[hashify(listener)] = nil
-      targets[thash] = references.nilIfEmpty
+  func removeAllListeners () {
+    for (_, listeners) in targets {
+      for (_, listener) in listeners {
+        listener.isListening = false
+      }
     }
-  }
-  
-  func clearListeners () {
-    targets = [:]
   }
   
   // MARK: Private
   
-  // hashify(EventListener.target) -> hashify(EventListener) -> Reference<EventListener>
-  private var targets = [String:[String:Reference<EventListener>]]()
+  // hashify(Listener.target) -> hashify(Listener) -> Listener
+  private var targets = [String:[String:Listener]]()
   
-  private func on (target: AnyObject!, _ handler: Any! -> Void) -> EventListener {
-    return EventListener(event: self, target: target, handler: handler)
+  private func on (target: AnyObject!, _ handler: Any! -> Void) -> Listener {
+    return Listener(emitter: self, target: target, handler: handler)
   }
   
-  private func once (target: AnyObject!, _ handler: Any! -> Void) -> EventListener {
-    return EventListener(event: self, target: target, handler: handler, once: true)
+  private func once (target: AnyObject!, _ handler: Any! -> Void) -> Listener {
+    return Listener(emitter: self, target: target, handler: handler, once: true)
   }
   
   private func emit (target: AnyObject!, _ data: Any?) {
@@ -219,10 +211,15 @@ class AnyEvent : Printable {
   
   private func printIfDebugging (listeners: Int, _ target: AnyObject?, _ data: Any?) {
     if !debug { return }
-    println("Event: {\n  name: \(name), listeners: \(listeners), target: \(target), data: \(data)  \n}")
+    println("Emitter.emit(): {\n  name: \(name), listeners: \(listeners), target: \(target), data: \(data)  \n}")
   }
   
   private init (_ name: String? = nil) {
     self.name = name
   }
+}
+
+/// Creates a unique ID based on the object's memory address.
+private func hashify (object: AnyObject?) -> String {
+  return object != nil ? String(object!.hash!) : ""
 }

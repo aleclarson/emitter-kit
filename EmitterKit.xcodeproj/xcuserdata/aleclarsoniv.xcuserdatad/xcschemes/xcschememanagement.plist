@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Generic Events for Swift.xcscheme</key>
+		<key>EmitterKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>113A92A8198B5EAB004C5F1E</key>
+		<key>115F4C9519BE9FCA00595510</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>113A92BA198B5EAB004C5F1E</key>
+		<key>115F4CA719BE9FCB00595510</key>
 		<dict>
 			<key>primary</key>
 			<true/>
