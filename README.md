@@ -4,13 +4,13 @@
 
 -
 
-#### **Emitter**
+### **Emitter**
 
 The abstract class for all event types. You should never have to use this class directly.
 
 -
 
-#### **Event**
+### **Event**
 
 A generic `Emitter` for any data type.
 
