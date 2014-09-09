@@ -91,7 +91,7 @@ class MyClass {
 }
 ```
 
-Now you're not forced to call `NSNotificationCenter.removeObserver()` in your class's `deinit`. Instead, when your class instance is deallocated, the `ListenerStorage` removes its listeners for you. Note that when an `Event` is deallocated, all of its listeners will be removed, also.
+Now you're not forced to call `NSNotificationCenter.removeObserver()` in your class's `deinit`. Instead, when your class instance is deallocated, the `ListenerStorage` removes its listeners for you.
 
 -
 
