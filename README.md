@@ -9,12 +9,6 @@ EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipst
 
 -
 
-### **Emitter**
-
-The abstract class for all event types. You should never have to use this class directly.
-
--
-
 ### **Event**
 
 A generic `Emitter` for any data type.
@@ -65,11 +59,23 @@ You're not allowed to `emit` a `Notification` yourself. This class is strictly f
 
 -
 
+### **Emitter**
+
+The abstract class for all event types. You should never have to use this class directly. Although, if you're working with web sockets (for example), it could be convenient for you to create a `SocketEvent` class that subclasses `Emitter`!
+
+If you want to remove all `Listener`s from an `Emitter`, use `myEmitter.removeAllListeners()`. You can remove an individual `Listener` with `myEmitter.removeListener(Listener)`, **but** I recommend using `myListener.isListening = false` in that case. If you don't, the `Listener`'s `isListening` property may not be accurate.
+
+To get all listening `Listener`s, use `myEmitter.listenersForTarget(AnyObject?)`. If you pass `nil` to this method, you will **not** get *all* listeners. Instead, you'll get all listeners with no target. Targets are explained [here](#targets).
+
+-
+
 ### **Listener**
 
 Represents a closure that will be called when its `emitter` emits.
 
 Although you can call `Listener`'s initializers, you'll probably want to use the `on()` and `once()` methods on any `Emitter` instance.
+
+Enable or disable a `Listener` with its `isListening` boolean property.
 
 -
 
@@ -88,9 +94,9 @@ class MyClass {
   
   init () {
     
-    events += view.didTap.on {
-      println("Tapped the view!")
-    }
+    events += view.didTap.on { println("Success!") }
+    
+    events["didLongPress"] = view.didLongPress.on { println("Success!") }
   
   }
 }
@@ -100,7 +106,7 @@ Now you're not forced to call `NSNotificationCenter.removeObserver()` in your cl
 
 -
 
-#### Associated objects
+#### Targets
 
 For my own Swift classes, I prefer to keep `Emitter`s as properties. But for classes that I can't do that (like `UIView` for example), it's really easy to associate the `UIView` with my `Emitter`.
 
