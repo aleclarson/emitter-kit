@@ -155,10 +155,22 @@ class Emitter : Printable {
   
   // MARK: Instance Methods
   
+  /// Returns an array of Listeners with the given target.
+  /// Passing `nil` returns all Listeners that have no target.
   func listenersForTarget (_ target: AnyObject? = nil) -> [Listener] {
     return Array((targets[hashify(target)] ?? [:]).values)
   }
   
+  /// Safely removes all Listeners from this Emitter
+  func removeAllListeners () {
+    for (_, listeners) in targets {
+      for (_, listener) in listeners {
+        listener.isListening = false
+      }
+    }
+  }
+  
+  /// DANGER: Use `listener.isListening = false` instead, to ensure `isListening` is the correct value.
   func addListener (listener: Listener) {
     let tid = hashify(listener.target)
     var listeners = targets[tid] ?? [:]
@@ -167,6 +179,7 @@ class Emitter : Printable {
     ++listenerCount
   }
   
+  /// DANGER: Use `listener.isListening = false` instead, to ensure `isListening` is the correct value.
   func removeListener (listener: Listener) {
     let tid = hashify(listener.target)
     if var listeners = targets[tid] {
@@ -175,14 +188,6 @@ class Emitter : Printable {
         listeners[hashify(listener)] = nil
         targets[tid] = listeners.count > 0 ? listeners : nil
         --listenerCount
-      }
-    }
-  }
-  
-  func removeAllListeners () {
-    for (_, listeners) in targets {
-      for (_, listener) in listeners {
-        listener.isListening = false
       }
     }
   }
