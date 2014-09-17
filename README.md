@@ -151,7 +151,7 @@ myView.once("backgroundColor") { (values: Change<UIColor>) in
 
 ### Other classes
 
-- **Change**: Holds an `oldValue` and a `newValue` for an observed property. It's generic!
+- **Change**: Holds an `oldValue` and a `newValue` for an observed property. And it's generic!
 - **Emitter**: An abstract class that supports `Event` and `Signal`. Not relevant to you really.
 - **EmitterListener**: The `Listener` subclass for `Event`s and `Signal`s.
 - **NotificationListener**: The `Listener` subclass for `Notification`s.
@@ -161,7 +161,7 @@ myView.once("backgroundColor") { (values: Change<UIColor>) in
 ### Major changes in v3.0
 
 - Added `NotificationListener`, `EmitterListener`, and `ChangeListener` (all subclasses of `Listener`).
-- Added `Change`, a generic struct of an `oldValue`, a `newValue`, and a `keyPath`.
+- Added `Change`, a generic class with an `oldValue`, a `newValue`, and a `keyPath`.
 - All `NSObject`s have an `on()` and `once()` method for KVO!
 - `Notification` does not subclass `Emitter` anymore.
 - `Notification` now has `emit` methods.
