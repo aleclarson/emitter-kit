@@ -14,20 +14,13 @@ public extension NSObject {
   }
 }
 
-public class Change <T:Any> : Printable {
-
-  public let keyPath: String
+public struct Change <T:Any> {
   
   public let oldValue: T!
   
   public let newValue: T!
   
-  public var description: String {
-    return "(old \(keyPath): \(oldValue), new \(keyPath): \(newValue))"
-  }
-  
-  init (_ keyPath: String, _ oldValue: T!, _ newValue: T!) {
-    self.keyPath = keyPath
+  init (_ oldValue: T!, _ newValue: T!) {
     self.oldValue = oldValue
     self.newValue = newValue
   }
@@ -42,6 +35,7 @@ public class ChangeListener <T:Any> : Listener {
   var observer: ChangeObserver!
   
   override func startListening () {
+    println("ChangeListener.startListening() keyPath: \(keyPath)")
     observer = ChangeObserver(trigger)
     object?.addObserver(observer, forKeyPath: keyPath, options: .Old | .New, context: nil)
   }
@@ -54,7 +48,7 @@ public class ChangeListener <T:Any> : Listener {
   func trigger (change: NSDictionary) {
     let oldValue = change[NSKeyValueChangeOldKey] as? T
     let newValue = change[NSKeyValueChangeNewKey] as? T
-    let values = Change<T>(keyPath, oldValue, newValue)
+    let values = Change<T>(oldValue, newValue)
     super.trigger(values)
   }
   
@@ -65,13 +59,12 @@ public class ChangeListener <T:Any> : Listener {
   }
 }
 
-// A sacrifice to the NSObject gods.
-// To keep away the shitload of properties from my precious ChangeListener class.
 class ChangeObserver : NSObject {
   
   let handler: NSDictionary -> Void
   
   override func observeValueForKeyPath (keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    println("ChangeObserver { keyPath: \(keyPath), change: \(change) }")
     handler(change ?? [:])
   }
   
