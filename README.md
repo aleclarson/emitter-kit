@@ -136,7 +136,7 @@ myView.once("backgroundColor") { (values: Change<UIColor>) in
 
 ### **Installing**
 
-Instead, drag `EmitterKit.xcodeproj` into your Xcode project as a submodule. Then, setup the target as shown in [this image](http://i.imgur.com/1r01y80.jpg).
+EmitterKit is not yet available on CocoaPods. Instead, drag `EmitterKit.xcodeproj` into your Xcode project as a submodule. Then, setup the target as shown in [this image](http://i.imgur.com/1r01y80.jpg).
 
 ---
 
