@@ -1,37 +1,22 @@
-<img src="http://i.imgur.com/PnCPxBz.jpg"/>
+<img src="http://i.imgur.com/pZqM562.jpg"/>
 
 EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipster.com/nsnotification-and-nsnotificationcenter/).
 
-- No longer be forced to typecast event data in your closures.
-- No longer be forced to `removeObserver` in your classes' `deinit` methods.
-- Backwards-compatible with `NSNotificationCenter` (like `UIKeyboardWillShowNotification`)!
+- No more typecasting data in your callbacks
+- No more `removeObserver()` in your class's `deinit` method
+- Backwards-compatible with `NSNotificationCenter` (like `UIKeyboardWillShowNotification`)
+- Key-value observation for `NSObject`s
 - Simpler syntax
-- Key-value observation!
-- And more probably...
 
 ---
 
-### **Installation**
+### **Emitter**
 
-Not yet available on CocoaPods.
-
-For now, you can do one of three things:
-
-1. Add `EmitterKit.xcodeproj` as a submodule in your Xcode project and add `EmitterKit.framework` as a target dependency in your Build Phases.
-
-2. Add the pre-built `EmitterKit.framework` to your Xcode project. Built with Xcode 6 GM.
-
-3. Add the source files (in the `src` folder) to your Xcode project.
-
----
-
-### **Event**
-
-An `Event` emits data. Its generic parameter specifies what type of data it emits! This is awesome.
-
-All listeners are removed when an `Event` is deallocated.
+An `Emitter` enables one-to-many communication for a specific event. It is an abstract class, so you can't initialize one yourself. Instead, use a `Signal` or `Event`.
 
 ```Swift
+// Event
+
 let didLogin = Event<User>()
 
 didLogin.once { user in
@@ -39,11 +24,19 @@ didLogin.once { user in
 }
 
 didLogin.emit(user)
+
+// Signal
+
+let didLogout = Signal()
+
+didLogout.once {
+  println("Logged out successfully... :(")
+}
+
+didLogout.emit()
 ```
 
-`Event` is a subclass of `Emitter`.
-
-I tend to use `Event`s as properties of my Swift classes, when it makes sense.
+Usually, I use `Emitter`s as properties in my own classes.
 
 ```Swift   
 class MyScrollView : UIScrollView, UIScrollViewDelegate {
@@ -60,7 +53,11 @@ class MyScrollView : UIScrollView, UIScrollViewDelegate {
 }
 ```
 
-Otherwise, I can use a **target** to associate an `Event` with a specific `AnyObject`. This is useful for classes I cannot add properties to, like `UIView` for example.
+---
+
+### **Associated Objects**
+
+I can associate an `AnyObject` with an event when calling `on()` or `once()`. This is useful for classes I cannot add properties to (e.g. `UIView`).
 
 ```Swift
 let myView = UIView()
@@ -71,24 +68,6 @@ didTouch.once(myView) {
 }
 
 didTouch.emit(myView, touch)
-```
-
----
-
-### **Signal**
-
-A `Signal` is essentially an `Event` that can't pass data. Convenient, huh?
-
-This is a subclass of `Emitter`, too.
-
-```Swift
-let didLogout = Signal()
-
-didLogout.once {
-  println("Logged out successfully... :(")
-}
-
-didLogout.emit()
 ```
 
 ---
@@ -111,15 +90,11 @@ Notification(UIKeyboardWillShowNotification).once { data in
 
 ### **Listener**
 
-A `Listener` represents a closure that will be executed for a certain reason. 
+A `Listener` represents a closure. It's an abstract class, so you can't initialize it yourself.
 
-It is an abstract class. You cannot call any of its initializers directly.
+Enable/disable a `Listener` with its `isListening` boolean property. This property is automatically set to `true` when the `Listener` is allocated.
 
-It starts listening immediately upon creation. You can toggle it on and off with its `isListening` boolean property.
-
-If its `once` boolean property equals `true`, it will stop listening after it executes once.
-
-**Important:** Remember to retain a `Listener` if its `once` equals `false`! Make a `[Listener]` property and put it there.
+**Important:** You must retain the `Listener` returned from any `on()` method. Make a `[Listener]` property and put it there. If you create a `Listener` with `once()`, you do not have to worry.
 
 ```Swift
 var listeners = [Listener]()
@@ -129,7 +104,7 @@ listeners += mySignal.on {
   println("beep")
 }
 
-// Single-use Listeners retain themselves ;)
+// Don't bother!
 mySignal.once {
   println("boop")
 }
@@ -137,15 +112,13 @@ mySignal.once {
 
 ---
 
-### **ChangeListener**
+### **Key-Value Observation**
 
-A `ChangeListener` observes a property of an `NSObject`. It's my version of KVO in Swift! :thumbsup:
+If you want to know when an `NSObject`'s property changes, just call its `on()` or `once()` method!
 
-The property is determined by a `String` and allows dot-notation syntax (e.g. `"bounds.size.width"`)! 
+You must provide a `String` representing the property you wish to observe. Dot-notation syntax is allowed! (e.g. `"layer.bounds"`)
 
-It executes when its observed property's value changes.
-
-Every `NSObject` has an `on()` and `once()` method that create a `ChangeListener`!
+Your callback is passed a `Change`. This is a generic class that has an `oldValue`, `newValue`, and `keyPath`.
 
 ```Swift
 let myView = UIView()
@@ -159,31 +132,11 @@ myView.once("backgroundColor") { (values: Change<UIColor>) in
 }
 ```
 
-`ChangeListener` is a subclass of `Listener`! Who would've guessed.
-
 ---
 
-### Other classes
+### **Installing**
 
-- **Change**: Holds an `oldValue` and a `newValue` for an observed property. And it's generic!
-- **Emitter**: An abstract class that supports `Event` and `Signal`. Not relevant to you really.
-- **EmitterListener**: The `Listener` subclass for `Event`s and `Signal`s.
-- **NotificationListener**: The `Listener` subclass for `Notification`s.
-
----
-
-### Major changes in v3.0
-
-- Added `NotificationListener`, `EmitterListener`, and `ChangeListener` (all subclasses of `Listener`).
-- Added `Change`, a generic class with an `oldValue`, a `newValue`, and a `keyPath`.
-- All `NSObject`s have an `on()` and `once()` method for KVO!
-- `Notification` does not subclass `Emitter` anymore.
-- `Notification` now has `emit` methods.
-- `Notification` no longer need to be retained.
-- Removed `removeAllListeners` from `Emitter`.
-- Removed `listenersForTarget` from `Emitter`.
-- `ListenerStorage` no longer exists. Use a `[Listener]` or whatever you want.
-- Removed many exposed internal functions.
+Instead, drag `EmitterKit.xcodeproj` into your Xcode project as a submodule. Then, setup the target as shown in [this image](http://i.imgur.com/1r01y80.jpg).
 
 ---
 
