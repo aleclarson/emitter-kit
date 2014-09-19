@@ -12,7 +12,7 @@ EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipst
 
 ### **Emitter**
 
-An `Emitter` enables one-to-many communication for a specific event. It is an abstract class, so you can't initialize one yourself. Instead, use a `Signal` or `Event`.
+An `Emitter` enables one-to-many communication for a specific event. It is an abstract class, so you can't initialize one yourself. Instead, use a `Signal` or `Event`. An `Event` allows the passing of any data type. A `Signal` does not allow for any data-passing.
 
 ```Swift
 // Event
