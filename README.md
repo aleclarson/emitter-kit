@@ -10,33 +10,61 @@ EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipst
 
 ---
 
+### **Table of Contents**
+
+[Emitter](#emitter)
+
+&nbsp;&nbsp;&nbsp;&nbsp;[Associated Objects](#associated-objects)
+
+[Notification](#notification)
+
+[Listener](#listener)
+
+[Key-Value Observation](#key-value-observation)
+
+[Installing](#installing)
+
+---
+
 ### **Emitter**
 
-An `Emitter` enables one-to-many communication for a specific event. It is an abstract class, so you can't initialize one yourself. Instead, use a `Signal` or `Event`. An `Event` allows the passing of any data type. A `Signal` does not allow for any data-passing.
+An `Emitter` enables one-to-many communication for a specific event. It is an abstract class, so you can't initialize one yourself.
+
+Every `Emitter` has `emit()`, `on()`, and `once()` methods.
+
+`emit` notifies any `Listener` that is listening to it.
+
+`on` creates a `Listener` that listens to it.
+
+`once` creates a `Listener` that listens to it, but stops after one time.
+
+`Emitter` has two bad-ass subclasses, `Signal` and `Event`.
+
+Use an `Event` to pass any type of data, tuples included! This saves you the hassle of typecasting your data in your callbacks all the time.
 
 ```Swift
-// Event
-
 let didLogin = Event<User>()
 
 didLogin.once { user in
-  println("Successfully logged in as \(user.name)!")
+  println("You are our 1,000,000th visitor!")
 }
 
 didLogin.emit(user)
+```
 
-// Signal
+A `Signal` keeps it simple. No data. Just a signal. This exists because `Event<Void>` doesn't work as expected.
 
+```Swift
 let didLogout = Signal()
 
 didLogout.once {
-  println("Logged out successfully... :(")
+  println("Sending information to NSA...")
 }
 
 didLogout.emit()
 ```
 
-Usually, I use `Emitter`s as properties in my own classes.
+Naturally, I use `Emitter`s as properties in my own classes. It's like Javascript for iOS!™
 
 ```Swift   
 class MyScrollView : UIScrollView, UIScrollViewDelegate {
@@ -74,17 +102,18 @@ didTouch.emit(myView, touch)
 
 ### **Notification**
 
-`Notification` wraps around `NSNotification` to provide backwards-compatibility with Apple's frameworks (e.g. `UIKeyboardWillShowNotification`) and third party frameworks. 
 
-Use it to create `NotificationListener`s that will remove themselves when deallocated. Now, you no longer have to call `removeObserver()` in your deinit phase!
-
-You **do not** need to retain a `Notification` for your listener to work correctly. This is one reason why `Notification` does not subclass `Emitter`.
+`Notification` has the same methods as `Emitter` does, but runs on top of `NSNotificationCenter`. This provides the benefits of EmitterKit even when working with Apple's frameworks, like `UIKeyboardWillShowNotification`.
 
 ```Swift
 Notification(UIKeyboardWillShowNotification).once { data in
   println("keyboard showing. data: \(data)")
 }
 ```
+
+Unlike `Emitter`, a `Notification` does **not** need to be retained to work as expected.
+
+`Notification` removes the need for `NSNotificationCenter.defaultCenter().removeObserver()` in your class's deinit method. How cool is that? I'd give it about a 5 out of 10.
 
 ---
 
@@ -94,33 +123,22 @@ A `Listener` represents a closure. It's an abstract class, so you can't initiali
 
 Enable/disable a `Listener` with its `isListening` boolean property. This property is automatically set to `true` when the `Listener` is allocated.
 
-**Important:** You must retain the `Listener` returned from any `on()` method. Make a `[Listener]` property and put it there. If you create a `Listener` with `once()`, you do not have to worry.
+Any `Listener` created with a `once()` method is retained for you! Pretty slick.
 
-```Swift
-var listeners = [Listener]()
-
-// Retain that sucka
-listeners += mySignal.on {
-  println("beep")
-}
-
-// Don't bother!
-mySignal.once {
-  println("boop")
-}
-```
+**NOTE:** Any `Listener` created with an `on()` method **must** be retained by you. Use a `Listener` or `[Listener]` property in your class! 
 
 ---
 
 ### **Key-Value Observation**
 
-If you want to know when an `NSObject`'s property changes, just call its `on()` or `once()` method!
+Every `NSObject` is extended with `on()` and `once()` methods. Use these when you want to know when a KVO-compatible property changes its value! This runs on top of the `NSKeyValueObserving` protocol.
 
-You must provide a `String` representing the property you wish to observe. Dot-notation syntax is allowed! (e.g. `"layer.bounds"`)
+When using these methods, you are required to supply a `String` which represents the property. Dot-notation syntax is allowed! (e.g. `"layer.bounds"`)
 
-Your callback is passed a `Change`. This is a generic class that has an `oldValue`, `newValue`, and `keyPath`.
+Your callback is passed a `Change`, a generic class that has an `oldValue`, `newValue`, and `keyPath`.
 
 ```Swift
+var listeners = [Listener]()
 let myView = UIView()
 
 listeners += myView.on("bounds") { (values: Change<NSValue>) in
