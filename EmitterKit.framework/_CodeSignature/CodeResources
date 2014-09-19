@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/ChangeListener.swift</key>
 		<data>
-		H9+ZL86cnwZ/Ew55P1ytIcGntTQ=
+		jhKwMUopgXOz8bTA5oDdMp3T5gA=
 		</data>
 		<key>Headers/Emitter.swift</key>
 		<data>
@@ -28,37 +28,17 @@
 		<data>
 		pmGker+xjrh44yk52Buw0Co7MC0=
 		</data>
-		<key>Headers/NSNotification.swift</key>
-		<data>
-		B20J8fUmqv9jIP2O2gDqxNSd1ks=
-		</data>
-		<key>Headers/NSNotificationListener.swift</key>
-		<data>
-		vgDoRlsaJ71bEiJp52modM8+1co=
-		</data>
-		<key>Headers/NSObjectListener.swift</key>
-		<data>
-		jTqpXwKecOuWsBgvoStr9DG6EcQ=
-		</data>
 		<key>Headers/Notification.swift</key>
 		<data>
-		YKt9T9cS0Ahg3xUocwCcZGWBRHw=
+		r6horun3QxwaHxkoK9TQd2YZjL0=
 		</data>
 		<key>Headers/NotificationListener.swift</key>
 		<data>
 		n55qJuF3YaEggXtUAfvm0vBYk1A=
 		</data>
-		<key>Headers/Signal.swift</key>
-		<data>
-		XzIGx2ttmqJ+nNZsIHD8TAeNM/s=
-		</data>
-		<key>Modules/EmitterKit.swiftmodule/arm.swiftmodule</key>
-		<data>
-		5ubiTLvo/4r1YzavAAGFkvi1Wck=
-		</data>
 		<key>Modules/EmitterKit.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		BGkE67Z3aSERtPN2gljVqAKpuHI=
+		O5+QnBG/BIcD3qcuprk9tTv98Ig=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -69,7 +49,7 @@
 	<dict>
 		<key>Headers/ChangeListener.swift</key>
 		<data>
-		H9+ZL86cnwZ/Ew55P1ytIcGntTQ=
+		jhKwMUopgXOz8bTA5oDdMp3T5gA=
 		</data>
 		<key>Headers/Emitter.swift</key>
 		<data>
@@ -91,37 +71,17 @@
 		<data>
 		pmGker+xjrh44yk52Buw0Co7MC0=
 		</data>
-		<key>Headers/NSNotification.swift</key>
-		<data>
-		B20J8fUmqv9jIP2O2gDqxNSd1ks=
-		</data>
-		<key>Headers/NSNotificationListener.swift</key>
-		<data>
-		vgDoRlsaJ71bEiJp52modM8+1co=
-		</data>
-		<key>Headers/NSObjectListener.swift</key>
-		<data>
-		jTqpXwKecOuWsBgvoStr9DG6EcQ=
-		</data>
 		<key>Headers/Notification.swift</key>
 		<data>
-		YKt9T9cS0Ahg3xUocwCcZGWBRHw=
+		r6horun3QxwaHxkoK9TQd2YZjL0=
 		</data>
 		<key>Headers/NotificationListener.swift</key>
 		<data>
 		n55qJuF3YaEggXtUAfvm0vBYk1A=
 		</data>
-		<key>Headers/Signal.swift</key>
-		<data>
-		XzIGx2ttmqJ+nNZsIHD8TAeNM/s=
-		</data>
-		<key>Modules/EmitterKit.swiftmodule/arm.swiftmodule</key>
-		<data>
-		5ubiTLvo/4r1YzavAAGFkvi1Wck=
-		</data>
 		<key>Modules/EmitterKit.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		BGkE67Z3aSERtPN2gljVqAKpuHI=
+		O5+QnBG/BIcD3qcuprk9tTv98Ig=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

@@ -1,25 +1,29 @@
 
-import Foundation
-
 public func += (var storage: [Listener], listener: Listener) {
   storage.append(listener)
 }
 
 public class Listener {
   
-  public private(set) weak var target: AnyObject!
-  
-  public let once: Bool
-  
-  public var isListening: Bool = true {
-    didSet {
-      if isListening == oldValue { return }
-      if isListening { startListening() }
+  public var isListening: Bool {
+    get { return listening }
+    set {
+      if listening == newValue { return }
+      listening = newValue
+      if listening { startListening() }
       else { stopListening() }
     }
   }
   
-  private let handler: Any! -> Void
+  weak var target: AnyObject!
+  
+  let handler: Any! -> Void
+  
+  let once: Bool
+  
+  let targetID: String
+  
+  var listening = false
   
   func startListening () {}
   
@@ -35,10 +39,11 @@ public class Listener {
     self.handler = handler
     self.once = once
     
-    startListening()
+    targetID = hashify(target)
+    isListening = true
   }
   
   deinit {
-    if isListening { stopListening() }
+    isListening = false
   }
 }

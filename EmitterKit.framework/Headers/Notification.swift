@@ -31,20 +31,20 @@ public class Notification {
 
   /// Posts an NSNotification with the given name.
   public func emit (data: NSDictionary) {
-    _emit(name, nil, data)
+    _emit(nil, data)
   }
 
   /// Posts an NSNotification with the given name, target, and data.
   public func emit (target: AnyObject, _ data: NSDictionary) {
-    _emit(name, target, data)
+    _emit(target, data)
   }
 
   /// Posts an NSNotification with the given name, targets, and data.
   public func emit (targets: [AnyObject], _ data: NSDictionary) {
-    for target in targets { _emit(name, target, data) }
+    for target in targets { _emit(target, data) }
   }
-}
 
-func _emit (name: String, target: AnyObject!, data: NSDictionary!) {
-  NSNotificationCenter.defaultCenter().postNotificationName(name, object: target, userInfo: data)
+  func _emit (target: AnyObject!, _ data: NSDictionary!) {
+    NSNotificationCenter.defaultCenter().postNotificationName(name, object: target, userInfo: data)
+  }
 }

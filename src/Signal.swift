@@ -1,20 +1,20 @@
 
 public class Signal : Emitter {
 
-  public func on (handler: Void -> Void) -> EmitterListener {
-    return EmitterListener(self, nil, ignoreData(handler), false)
+  public func on (handler: Void -> Void) -> Listener {
+    return EmitterListener(self, nil, castHandler(handler), false)
   }
   
-  public func on (target: AnyObject, _ handler: Void -> Void) -> EmitterListener {
-    return EmitterListener(self, target, ignoreData(handler), false)
+  public func on (target: AnyObject, _ handler: Void -> Void) -> Listener {
+    return EmitterListener(self, target, castHandler(handler), false)
   }
   
-  public func once (handler: Void -> Void) -> EmitterListener {
-    return EmitterListener(self, nil, ignoreData(handler), true)
+  public func once (handler: Void -> Void) -> Listener {
+    return EmitterListener(self, nil, castHandler(handler), true)
   }
   
-  public func once (target: AnyObject, _ handler: Void -> Void) -> EmitterListener {
-    return EmitterListener(self, target, ignoreData(handler), true)
+  public func once (target: AnyObject, _ handler: Void -> Void) -> Listener {
+    return EmitterListener(self, target, castHandler(handler), true)
   }
   
   public func emit () {
@@ -25,7 +25,7 @@ public class Signal : Emitter {
     super.emit(target, nil)
   }
   
-  public func emit(targets: [AnyObject]) {
+  public func emit (targets: [AnyObject]) {
     super.emit(targets, nil)
   }
   
@@ -33,7 +33,7 @@ public class Signal : Emitter {
     super.init()
   }
   
-  func ignoreData (handler: Void -> Void)(_: Any!) {
-    handler()
+  func castHandler (handler: Void -> Void) -> Any! -> Void {
+    return { _ in handler() }
   }
 }

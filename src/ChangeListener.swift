@@ -4,12 +4,12 @@ import Foundation
 public extension NSObject {
   
   /// Creates a Listener for key-value observing.
-  func on <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> ChangeListener<T> {
+  func on <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(self, keyPath, handler, false)
   }
   
   /// Creates a single-use Listener for key-value observing.
-  func once <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> ChangeListener<T> {
+  func once <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(self, keyPath, handler, true)
   }
 }
@@ -33,29 +33,40 @@ public class Change <T:Any> : Printable {
   }
 }
 
-public class ChangeListener <T:Any> : Listener {
+class ChangeListener <T:Any> : Listener {
 
-  public let keyPath: String
+  let keyPath: String
   
-  public private(set) weak var object: NSObject!
+  weak var object: NSObject!
   
-  var observer: ChangeObserver!
+  var relayer: ChangeRelayer!
   
   override func startListening () {
-    observer = ChangeObserver(trigger)
-    object?.addObserver(observer, forKeyPath: keyPath, options: .Old | .New, context: nil)
+    relayer = ChangeRelayer({
+      [unowned self] in
+      let oldValue = $0[NSKeyValueChangeOldKey] as? T
+      let newValue = $0[NSKeyValueChangeNewKey] as? T
+      let values = Change<T>(self.keyPath, oldValue, newValue)
+      self.trigger(values)
+    })
+    object?.addObserver(relayer, forKeyPath: keyPath, options: .Old | .New, context: nil)
+    
+    var targets = ChangeListenerCache[keyPath] ?? [:]
+    var listeners = targets[targetID] ?? [:]
+    listeners[hashify(self)] = once ? StrongPointer(self) : WeakPointer(self)
+    targets[targetID] = listeners
+    ChangeListenerCache[keyPath] = targets
   }
   
   override func stopListening() {
-    object?.removeObserver(observer, forKeyPath: keyPath)
-    observer = nil
-  }
-  
-  func trigger (change: NSDictionary) {
-    let oldValue = change[NSKeyValueChangeOldKey] as? T
-    let newValue = change[NSKeyValueChangeNewKey] as? T
-    let values = Change<T>(keyPath, oldValue, newValue)
-    super.trigger(values)
+    object?.removeObserver(relayer, forKeyPath: keyPath)
+    relayer = nil
+    
+    var targets = ChangeListenerCache[keyPath]!
+    var listeners = targets[targetID]!
+    listeners[hashify(self)] = nil
+    targets[targetID] = listeners.nilIfEmpty
+    ChangeListenerCache[keyPath] = targets.nilIfEmpty
   }
   
   init (_ object: NSObject, _ keyPath: String, _ handler: Change<T> -> Void, _ once: Bool) {
@@ -65,9 +76,15 @@ public class ChangeListener <T:Any> : Listener {
   }
 }
 
+// 1 - Listener.keyPath
+// 2 - hashify(Listener.target)
+// 3 - hashify(Listener)
+// 4 - Pointer<Listener>
+var ChangeListenerCache = [String:[String:[String:Pointer<Listener>]]]()
+
 // A sacrifice to the NSObject gods.
 // To keep away the shitload of properties from my precious ChangeListener class.
-class ChangeObserver : NSObject {
+class ChangeRelayer : NSObject {
   
   let handler: NSDictionary -> Void
   

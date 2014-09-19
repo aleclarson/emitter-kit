@@ -1,25 +1,30 @@
 
-import Foundation
-
 public class Emitter {
   
-  // hashify(Listener.target) -> hashify(Listener) -> Listener
-  var listeners = [String:[String:EmitterListener]]()
+  // 1 - hashify(Listener.target)
+  // 2 - hashify(Listener)
+  // 3 - Pointer<Listener>
+  var listeners = [String:[String:Pointer<Listener>]]()
   
   func emit (target: AnyObject!, _ data: Any!) {
-    for listener in Array((listeners[hashify(target)] ?? [:]).values) {
-      listener.trigger(data)
+    for listener in (listeners[hashify(target)] ?? [:]).values {
+      listener.object.trigger(data)
     }
   }
   
   func emit (targets: [AnyObject], _ data: Any!) {
-    for target in targets { emit(target, data) }
+    for target in targets {
+      emit(target, data)
+    }
   }
   
   init () {}
-}
-
-/// Creates a unique ID based on the object's memory address.
-func hashify (object: AnyObject?) -> String {
-  return object != nil ? String(object!.hash!) : ""
+  
+  deinit {
+    for (_, listeners) in self.listeners {
+      for (_, listener) in listeners {
+        listener.object.listening = false
+      }
+    }
+  }
 }
