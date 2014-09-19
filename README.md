@@ -85,18 +85,20 @@ class MyScrollView : UIScrollView, UIScrollViewDelegate {
 
 ### **Associated Objects**
 
-I can associate an `AnyObject` with an event when calling `on()` or `once()`. This is useful for classes I cannot add properties to (e.g. `UIView`).
+If I need to associate a `UIView` (for example) with an `Emitter` or `Listener`, I can simply pass an `AnyObject` to `emit()`, `on()`, or `once()` as the first parameter.
 
 ```Swift
 let myView = UIView()
 let didTouch = Event<UITouch>()
 
 didTouch.once(myView) {
-  println("We have a winner! \($0)")
+  println("Ding ding ding! \($0)")
 }
 
 didTouch.emit(myView, touch)
 ```
+
+This can become especially handy with `UIApplicationWillResignActiveNotification` (for example) because the `NSNotification.object` will be `UIApplication.sharedApplication()`. So you need to call it like `Notification(UIApplicationWillResignActiveNotification).on(UIApplication.sharedApplication()) { _ in println("Where you going?")`.
 
 ---
 
