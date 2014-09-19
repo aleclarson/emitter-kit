@@ -133,9 +133,11 @@ Any `Listener` created with a `once()` method is retained for you! Pretty slick.
 
 ### **Key-Value Observation**
 
-Every `NSObject` is extended with `on()` and `once()` methods. Use these when you want to know when a KVO-compatible property changes its value! This runs on top of the `NSKeyValueObserving` protocol.
+Every `NSObject` is extended with `on()` and `once()` methods. Use these when you want to know when a KVO-compatible property changes its value!
 
 When using these methods, you are required to supply a `String` which represents the property. Dot-notation syntax is allowed! (e.g. `"layer.bounds"`)
+
+This runs on top of the `NSKeyValueObserving` protocol. **But**, you no longer need to call `NSObject.removeObserver()` in your class's deinit method! Score!
 
 Your callback is passed a `Change`, a generic class that has an `oldValue`, `newValue`, and `keyPath`.
 
