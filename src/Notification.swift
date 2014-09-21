@@ -15,7 +15,7 @@ public class Notification {
   }
 
   /// Creates a Listener for an NSNotification with the given target.
-  public func on (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
+  public func on (target: AnyObject, _ handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, target, handler, false)
   }
 
@@ -25,7 +25,7 @@ public class Notification {
   }
 
   /// Creates a single-use Listener for an NSNotification with the given target.
-  public func once (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
+  public func once (target: AnyObject, _ handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, target, handler, true)
   }
 
