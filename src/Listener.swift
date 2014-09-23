@@ -1,5 +1,5 @@
 
-public func += (var storage: [Listener], listener: Listener) {
+public func += (inout storage: [Listener], listener: Listener) {
   storage.append(listener)
 }
 
