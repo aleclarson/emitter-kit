@@ -1,19 +1,19 @@
 
 import Foundation
 
-func WeakPointer <T: AnyObject> (object: T) -> Pointer<T> {
-  var ptr = Pointer<T>()
+func WeakDynamicPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
+  var ptr = DynamicPointer<T>()
   ptr.weakPointer = object
   return ptr
 }
 
-func StrongPointer <T: AnyObject> (object: T) -> Pointer<T> {
-  var ptr = Pointer<T>()
+func StrongDynamicPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
+  var ptr = DynamicPointer<T>()
   ptr.strongPointer = object
   return ptr
 }
 
-struct Pointer <T: AnyObject> {
+struct DynamicPointer <T: AnyObject> {
 
   var object: T! { return strongPointer ?? weakPointer ?? nil }
   
@@ -24,9 +24,12 @@ struct Pointer <T: AnyObject> {
   weak var weakPointer: T!
 }
 
-/// Creates a unique ID based on the object's memory address.
-func hashify (object: AnyObject?) -> String {
-  return object != nil ? String(object!.hash!) : ""
+func getHash (object: AnyObject) -> String {
+  return "\(ObjectIdentifier(object).uintValue())"
+}
+
+func getHash (object: AnyObject!) -> String {
+  return object == nil ? "" : getHash(object!)
 }
 
 extension Array {

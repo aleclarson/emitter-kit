@@ -39,7 +39,7 @@ public class Listener {
     self.handler = handler
     self.once = once
     
-    targetID = hashify(target)
+    targetID = getHash(target)
     isListening = true
   }
   

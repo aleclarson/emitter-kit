@@ -53,7 +53,7 @@ class ChangeListener <T:Any> : Listener {
     
     var targets = ChangeListenerCache[keyPath] ?? [:]
     var listeners = targets[targetID] ?? [:]
-    listeners[hashify(self)] = once ? StrongPointer(self) : WeakPointer(self)
+    listeners[getHash(self)] = once ? StrongDynamicPointer(self) : WeakDynamicPointer(self)
     targets[targetID] = listeners
     ChangeListenerCache[keyPath] = targets
   }
@@ -64,7 +64,7 @@ class ChangeListener <T:Any> : Listener {
     
     var targets = ChangeListenerCache[keyPath]!
     var listeners = targets[targetID]!
-    listeners[hashify(self)] = nil
+    listeners[getHash(self)] = nil
     targets[targetID] = listeners.nilIfEmpty
     ChangeListenerCache[keyPath] = targets.nilIfEmpty
   }
@@ -77,10 +77,10 @@ class ChangeListener <T:Any> : Listener {
 }
 
 // 1 - Listener.keyPath
-// 2 - hashify(Listener.target)
-// 3 - hashify(Listener)
-// 4 - Pointer<Listener>
-var ChangeListenerCache = [String:[String:[String:Pointer<Listener>]]]()
+// 2 - getHash(Listener.target)
+// 3 - getHash(Listener)
+// 4 - DynamicPointer<Listener>
+var ChangeListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()
 
 // A sacrifice to the NSObject gods.
 // To keep away the shitload of properties from my precious ChangeListener class.

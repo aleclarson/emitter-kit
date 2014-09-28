@@ -10,14 +10,14 @@ class NotificationListener : Listener {
   override func startListening() {
     observer = NSNotificationCenter.defaultCenter().addObserverForName(name, object: nil, queue: nil, usingBlock: {
       [unowned self] in
-      if self.targetID == hashify($0.object) {
+      if self.targetID == getHash($0.object) {
         self.trigger($0.userInfo)
       }
     })
     
     var targets = NotificationListenerCache[name] ?? [:]
     var listeners = targets[targetID] ?? [:]
-    listeners[hashify(self)] = once ? StrongPointer(self) : WeakPointer(self)
+    listeners[getHash(self)] = once ? StrongDynamicPointer(self) : WeakDynamicPointer(self)
     targets[targetID] = listeners
     NotificationListenerCache[name] = targets
   }
@@ -27,7 +27,7 @@ class NotificationListener : Listener {
     
     var targets = NotificationListenerCache[name]!
     var listeners = targets[targetID]!
-    listeners[hashify(self)] = nil
+    listeners[getHash(self)] = nil
     targets[targetID] = listeners.nilIfEmpty
     NotificationListenerCache[name] = targets.nilIfEmpty
   }
@@ -39,7 +39,7 @@ class NotificationListener : Listener {
 }
 
 // 1 - Listener.name
-// 2 - hashify(Listener.target)
-// 3 - hashify(Listener)
-// 4 - Pointer<Listener>
-var NotificationListenerCache = [String:[String:[String:Pointer<Listener>]]]()
+// 2 - getHash(Listener.target)
+// 3 - getHash(Listener)
+// 4 - DynamicPointer<Listener>
+var NotificationListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()

@@ -1,13 +1,13 @@
 
 public class Emitter {
   
-  // 1 - hashify(Listener.target)
-  // 2 - hashify(Listener)
-  // 3 - Pointer<Listener>
-  var listeners = [String:[String:Pointer<Listener>]]()
+  // 1 - getHash(Listener.target)
+  // 2 - getHash(Listener)
+  // 3 - DynamicPointer<Listener>
+  var listeners = [String:[String:DynamicPointer<Listener>]]()
   
   func emit (target: AnyObject!, _ data: Any!) {
-    for listener in (listeners[hashify(target)] ?? [:]).values {
+    for listener in (listeners[getHash(target)] ?? [:]).values {
       listener.object.trigger(data)
     }
   }
