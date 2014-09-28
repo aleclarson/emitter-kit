@@ -10,7 +10,7 @@ class NotificationListener : Listener {
   override func startListening() {
     observer = NSNotificationCenter.defaultCenter().addObserverForName(name, object: nil, queue: nil, usingBlock: {
       [unowned self] in
-      if self.targetID == hashify($0.object) || self.targetID.isEmpty {
+      if self.targetID == hashify($0.object) {
         self.trigger($0.userInfo)
       }
     })
