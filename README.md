@@ -98,7 +98,13 @@ didTouch.once(myView) {
 didTouch.emit(myView, touch)
 ```
 
-This can become especially handy with `UIApplicationWillResignActiveNotification` (for example) because the `NSNotification.object` will be `UIApplication.sharedApplication()`. So you need to call it like `Notification(UIApplicationWillResignActiveNotification).on(UIApplication.sharedApplication()) { _ in println("Where you going?")`.
+This can become especially handy with `UIApplicationWillResignActiveNotification` (for example) because the `NSNotification.object` will be `UIApplication.sharedApplication()`. So you need to call it like:
+
+```Swift
+Notification(UIApplicationWillResignActiveNotification).on(UIApplication.sharedApplication()) { 
+  _ in println("Where you going?")
+}
+```
 
 `String`s can also be used instead of `AnyObject`s. This can be useful for image urls, for example.
 
