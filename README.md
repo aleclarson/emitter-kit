@@ -160,7 +160,7 @@ Your callback is passed a `Change`, a generic class that has an `oldValue`, `new
 var listeners = [Listener]()
 let myView = UIView()
 
-listeners += myView.on("bounds") { (values: Change<NSValue>) in
+listeners += myView.on("layer.bounds") { (values: Change<NSValue>) in
   println(values)
 }
 
