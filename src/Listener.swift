@@ -35,11 +35,15 @@ public class Listener {
   }
   
   init (_ target: AnyObject!, _ handler: Any! -> Void, _ once: Bool) {
-    self.target = target
+
+    targetID = target as? String ?? getHash(target)
+
+    if !(target is String) { self.target = target }
+
     self.handler = handler
+
     self.once = once
-    
-    targetID = getHash(target)
+
     isListening = true
   }
   
