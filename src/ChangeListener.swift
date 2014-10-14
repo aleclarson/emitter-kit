@@ -47,7 +47,7 @@ public class Change <T:Any> : Printable {
     return "(Change = { address: \(getHash(self)), keyPath: \(keyPath), oldValue: \(oldValue), newValue: \(newValue) })"
   }
   
-  public init (keyPath: String, oldValue: T!, newValue: T!, isPrior: Bool) {
+  public init (_ keyPath: String, _ oldValue: T!, _ newValue: T!, _ isPrior: Bool) {
     self.keyPath = keyPath
     self.oldValue = oldValue
     self.newValue = newValue
@@ -64,10 +64,18 @@ class ChangeListener <T:Any> : Listener {
   unowned let object: NSObject
   
   var observer: ChangeObserver!
+
+  func trigger (data: NSDictionary) {
+    let oldValue = data[NSKeyValueChangeOldKey] as? T
+    let newValue = data[NSKeyValueChangeNewKey] as? T
+    let isPrior = data[NSKeyValueChangeNotificationIsPriorKey] != nil
+    trigger(Change<T>(keyPath, oldValue, newValue, isPrior))
+  }
   
   override func startListening () {
+    println("ChangeListener.startListening()")
     // A middleman to prevent pollution of ChangeListener property list.
-    observer = ChangeObserver(trigger)
+    observer = ChangeObserver({ [unowned self] in self.trigger($0) })
 
     // Uses traditional KVO provided by Apple
     object.addObserver(observer, forKeyPath: keyPath, options: options, context: nil)
@@ -81,6 +89,7 @@ class ChangeListener <T:Any> : Listener {
   }
   
   override func stopListening() {
+    println("ChangeListener.stopListening()")
     object.removeObserver(observer, forKeyPath: keyPath)
     observer = nil
 
@@ -101,13 +110,6 @@ class ChangeListener <T:Any> : Listener {
 
   deinit {
     println("ChangeListener deinit")
-  }
-
-  func trigger (data: NSDictionary) {
-    let oldValue = data[NSKeyValueChangeOldKey] as? T
-    let newValue = data[NSKeyValueChangeNewKey] as? T
-    let isPrior = data[NSKeyValueChangeNotificationIsPriorKey] != nil
-    trigger(Change<T>(keyPath: keyPath, oldValue: oldValue, newValue: newValue, isPrior: isPrior))
   }
 }
 

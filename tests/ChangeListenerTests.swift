@@ -44,9 +44,9 @@ class ChangeListenerTests: XCTestCase {
   }
   
   func testOnDeinit () {
-    view.on("backgroundColor") { (change: Change<UIColor>) in self.calls += 1 }
+    view.on("backgroundColor") { [unowned self] (change: Change<UIColor>) in self.calls += 1 }
     view.backgroundColor = UIColor.purpleColor()
     
-    XCTAssertTrue(calls == 0, "NotificationListener did not stop listening on deinit")
+    XCTAssertTrue(calls == 0, "ChangeListener did not stop listening on deinit")
   }
 }
