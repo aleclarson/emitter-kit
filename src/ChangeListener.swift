@@ -44,7 +44,7 @@ public class Change <T:Any> : Printable {
   public let isPrior: Bool
   
   public var description: String {
-    return "(Change = { address: \(getHash(self)), keyPath: \(keyPath), oldValue: \(oldValue), newValue: \(newValue) })"
+    return "(Change = { address: \(getHash(self)), keyPath: \(keyPath), oldValue: \(oldValue), newValue: \(newValue), isPrior: \(isPrior) })"
   }
   
   public init (_ keyPath: String, _ oldValue: T!, _ newValue: T!, _ isPrior: Bool) {
