@@ -137,29 +137,33 @@ mySignal.once {
 
 ---
 
-### **ChangeListener**
+### **Key-Value Observation**
 
-A `ChangeListener` observes a property of an `NSObject`. It's my version of KVO in Swift! :thumbsup:
-
-The property is determined by a `String` and allows dot-notation syntax (e.g. `"bounds.size.width"`)! 
-
-It executes when its observed property's value changes.
-
-Every `NSObject` has an `on()` and `once()` method that create a `ChangeListener`!
+EmitterKit adds `on()`, `once()`, and `removeListeners()` instance methods to every `NSObject`.
 
 ```Swift
 let myView = UIView()
+let myProperty = "layer.bounds" // supports dot-notation!
 
-listeners += myView.on("bounds") { (values: Change<NSValue>) in
+listeners += myView.on(myProperty) { 
+  (values: Change<NSValue>) in
   println(values)
 }
+```
 
+[Check out the `Change` class](https://github.com/aleclarson/emitter-kit/blob/master/src/ChangeListener.swift#L36-L56) to see what wonders it contains. It implements the `Printable` protocol for easy debugging!
+
+The `NSKeyValueObservingOptions` you know and love are also supported! Valid values are `.Old`, `.New`, `.Initial`, `.Prior`, and `nil`. If you don't pass a value at all, it defaults to `.Old | .New`.
+
+```Swift
 myView.once("backgroundColor") { (values: Change<UIColor>) in
   println(values)
 }
 ```
 
-`ChangeListener` is a subclass of `Listener`! Who would've guessed.
+It runs on top of traditional KVO techniques, so everything works as expected!
+
+**WARNING:** If you use these methods, you must call `removeListeners(myListenerArray)` before your `NSObject` deinits. Otherwise, your program will crash. I suggest making a subclass of `UIView`, overriding `willMoveToWindow()`, and putting `removeListeners()` in there. That's not always ideal if you're not working with a `UIView`, but that's all I use it for right now, so I can't help you in other cases.
 
 ---
 
