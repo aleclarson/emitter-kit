@@ -4,25 +4,16 @@ import Foundation
 extension NSObject {
   
   /// Creates a Listener for key-value observing.
-  public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
+  public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions = .Old | .New, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(false, self, keyPath, options, handler)
   }
   
   /// Creates a single-use Listener for key-value observing.
-  public func once <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
+  public func once <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions = .Old | .New, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(true, self, keyPath, options, handler)
   }
 
-  public func on (keyPath: String, _ handler: Void -> Void) -> Listener {
-    return ChangeListener(false, self, keyPath, nil, { (_: Change<Any>) in handler() })
-  }
-
-  public func once (keyPath: String, _ handler: Void -> Void) -> Listener {
-    return ChangeListener(true, self, keyPath, nil, { (_: Change<Any>) in handler() })
-  }
-
-  /// NB: MUST be called before the `deinit` phase IF the given 
-  /// Listener array contains at least one ChangeListener.
+  /// Call this before your NSObject's dealloc phase if the given Listener array has ChangeListeners.
   public func removeListeners (listeners: [Listener]) {
     for listener in listeners {
       if let listener = listener as? ChangeListener<Any> {
