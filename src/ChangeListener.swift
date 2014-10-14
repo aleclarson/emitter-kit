@@ -73,7 +73,7 @@ class ChangeListener <T:Any> : Listener {
   }
   
   override func startListening () {
-    println("ChangeListener.startListening()")
+
     // A middleman to prevent pollution of ChangeListener property list.
     observer = ChangeObserver({ [unowned self] in self.trigger($0) })
 
@@ -89,7 +89,7 @@ class ChangeListener <T:Any> : Listener {
   }
   
   override func stopListening() {
-    println("ChangeListener.stopListening()")
+
     object.removeObserver(observer, forKeyPath: keyPath)
     observer = nil
 
@@ -106,10 +106,6 @@ class ChangeListener <T:Any> : Listener {
     self.options = options
     
     super.init(nil, { handler($0 as Change<T>) }, once)
-  }
-
-  deinit {
-    println("ChangeListener deinit")
   }
 }
 
