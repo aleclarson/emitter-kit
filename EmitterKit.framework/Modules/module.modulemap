@@ -1,3 +1,0 @@
-framework module EmitterKit {
-    header "EmitterKit-Swift.h"
-}
