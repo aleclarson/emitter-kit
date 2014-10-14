@@ -33,7 +33,7 @@ class EmitterListenerTests: XCTestCase {
     event.emit()
     event.emit()
     
-    XCTAssertTrue(calls == 2, "EmitterListener listening after one execution")
+    XCTAssertTrue(calls == 2, "EmitterListener stops listening after one execution")
   }
   
   func testOnDeinit () {

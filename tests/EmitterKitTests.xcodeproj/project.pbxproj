@@ -12,6 +12,7 @@
 		1131980819CC3F1C0083AD9B /* ChangeListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1131980719CC3F1C0083AD9B /* ChangeListenerTests.swift */; };
 		114ACE0119CC326A0071A353 /* EmitterListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114ACE0019CC326A0071A353 /* EmitterListenerTests.swift */; };
 		117CC8A819CC382900A57695 /* EmitterKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 11F4764619CC251A00831EE5 /* EmitterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		11DBCC3719DC8DCC00EC1A33 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBCC3619DC8DCC00EC1A33 /* PerformanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1131980519CC3F120083AD9B /* NotificationListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListenerTests.swift; sourceTree = SOURCE_ROOT; };
 		1131980719CC3F1C0083AD9B /* ChangeListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListenerTests.swift; sourceTree = SOURCE_ROOT; };
 		114ACE0019CC326A0071A353 /* EmitterListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterListenerTests.swift; sourceTree = SOURCE_ROOT; };
+		11DBCC3619DC8DCC00EC1A33 /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = SOURCE_ROOT; };
 		11F4762E19CC229500831EE5 /* EmitterKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmitterKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F4763E19CC251A00831EE5 /* EmitterKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EmitterKit.xcodeproj; path = ../EmitterKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				114ACE0019CC326A0071A353 /* EmitterListenerTests.swift */,
+				11DBCC3619DC8DCC00EC1A33 /* PerformanceTests.swift */,
 				1131980519CC3F120083AD9B /* NotificationListenerTests.swift */,
 				1131980719CC3F1C0083AD9B /* ChangeListenerTests.swift */,
 				111DC53C19CC258800A6D18A /* EmitterKitTests-Info.plist */,
@@ -189,6 +192,7 @@
 			files = (
 				1131980619CC3F120083AD9B /* NotificationListenerTests.swift in Sources */,
 				1131980819CC3F1C0083AD9B /* ChangeListenerTests.swift in Sources */,
+				11DBCC3719DC8DCC00EC1A33 /* PerformanceTests.swift in Sources */,
 				114ACE0119CC326A0071A353 /* EmitterListenerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

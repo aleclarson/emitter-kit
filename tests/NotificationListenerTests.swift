@@ -30,7 +30,7 @@ class NotificationListenerTests: XCTestCase {
 
   func testOn () {
     listener = event.on { _ in self.calls += 1 }
-    
+
     event.emit([:])
     event.emit([:])
     

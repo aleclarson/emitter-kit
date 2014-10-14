@@ -6,14 +6,14 @@ class EmitterListener : Listener {
   override func startListening () {
     if emitter == nil { return }
     var listeners = emitter.listeners[targetID] ?? [:]
-    listeners[hashify(self)] = once ? StrongPointer(self) : WeakPointer(self)
+    listeners[getHash(self)] = once ? StrongPointer(self) : WeakPointer(self)
     emitter.listeners[targetID] = listeners
   }
   
   override func stopListening () {
     if emitter == nil { return }
     var listeners = emitter.listeners[targetID]!
-    listeners[hashify(self)] = nil
+    listeners[getHash(self)] = nil
     emitter.listeners[targetID] = listeners.nilIfEmpty
   }
   
