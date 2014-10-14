@@ -150,8 +150,9 @@ listeners += myView.on(myProperty) {
 The `NSKeyValueObservingOptions` you know and love are also supported! Valid values are `.Old`, `.New`, `.Initial`, `.Prior`, and `nil`. If you don't pass a value at all, it defaults to `.Old | .New`.
 
 ```Swift
-myView.once("backgroundColor") { (values: Change<UIColor>) in
-  println(values)
+myView.once("backgroundColor", .Prior | .Old | .New) { 
+  (change: Change<UIColor>) in
+  println(change)
 }
 ```
 
