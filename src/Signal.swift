@@ -2,19 +2,19 @@
 public class Signal : Emitter {
 
   public func on (handler: Void -> Void) -> Listener {
-    return EmitterListener(self, nil, castHandler(handler), false)
+    return EmitterListener(self, nil, { _ in handler() }, false)
   }
   
   public func on (target: AnyObject, _ handler: Void -> Void) -> Listener {
-    return EmitterListener(self, target, castHandler(handler), false)
+    return EmitterListener(self, target, { _ in handler() }, false)
   }
   
   public func once (handler: Void -> Void) -> Listener {
-    return EmitterListener(self, nil, castHandler(handler), true)
+    return EmitterListener(self, nil, { _ in handler() }, true)
   }
   
   public func once (target: AnyObject, _ handler: Void -> Void) -> Listener {
-    return EmitterListener(self, target, castHandler(handler), true)
+    return EmitterListener(self, target, { _ in handler() }, true)
   }
   
   public func emit () {
@@ -31,9 +31,5 @@ public class Signal : Emitter {
   
   public override init () {
     super.init()
-  }
-  
-  func castHandler (handler: Void -> Void) -> Any! -> Void {
-    return { _ in handler() }
   }
 }
