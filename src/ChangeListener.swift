@@ -2,14 +2,24 @@
 import Foundation
 
 extension NSObject {
+
+  /// Creates a Listener for key-value observing.
+  public func on <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
+    return on(keyPath, .Old | .New, handler)
+  }
+
+  /// Creates a single-use Listener for key-value observing.
+  public func once <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
+    return once(keyPath, .Old | .New, handler)
+  }
   
   /// Creates a Listener for key-value observing.
-  public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions = .Old | .New, _ handler: Change<T> -> Void) -> Listener {
+  public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(false, self, keyPath, options, handler)
   }
   
   /// Creates a single-use Listener for key-value observing.
-  public func once <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions = .Old | .New, _ handler: Change<T> -> Void) -> Listener {
+  public func once <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(true, self, keyPath, options, handler)
   }
 
