@@ -1,13 +1,13 @@
 <img src="http://i.imgur.com/PnCPxBz.jpg"/>
 
-EmitterKit is a cleaner alternative to [**NSNotificationCenter**](http://nshipster.com/nsnotification-and-nsnotificationcenter/).
+**EmitterKit** wants to replace your `NSNotification`, key-value observation, and general event handling habits!
 
-- No longer be forced to typecast event data in your closures.
-- No longer be forced to `removeObserver` in your classes' `deinit` methods.
-- Backwards-compatible with `NSNotificationCenter` (like `UIKeyboardWillShowNotification`)!
-- Simpler syntax
-- Key-value observation!
-- And more probably...
+- Simpler syntax!
+- Type safety with generic `Event` class!
+- Built-in one-time listeners!
+- Key-value observation for `NSObject`s!
+- Has a `Notification` class for backwards-compatibility with `NSNotificationCenter`!
+- Removes the need to call `removeObserver()` for `NSNotification`s!
 
 ---
 
@@ -111,15 +111,15 @@ Notification(UIKeyboardWillShowNotification).once { data in
 
 ### **Listener**
 
-A `Listener` represents a closure that will be executed for a certain reason. 
+A `Listener` represents a closure that will be executed when an `Emitter` emits. 
 
-It is an abstract class. You cannot call any of its initializers directly.
+When a `Listener` is constructed, it starts listening immediately.
 
-It starts listening immediately upon creation. You can toggle it on and off with its `isListening` boolean property.
+Toggle on and off by setting the `isListening: Bool` property.
 
-If its `once` boolean property equals `true`, it will stop listening after it executes once.
+If a `Listener`'s `once: Bool` property `== true`, it will stop listening after it executes once.
 
-**Important:** Remember to retain a `Listener` if its `once` equals `false`! Make a `[Listener]` property and put it there.
+**Important:** Remember to retain a `Listener` if `once == false`! Make a `[Listener]` property and put it there.
 
 ```Swift
 var listeners = [Listener]()
@@ -164,30 +164,6 @@ myView.once("backgroundColor") { (values: Change<UIColor>) in
 It runs on top of traditional KVO techniques, so everything works as expected!
 
 **WARNING:** If you use these methods, you must call `removeListeners(myListenerArray)` before your `NSObject` deinits. Otherwise, your program will crash. I suggest making a subclass of `UIView`, overriding `willMoveToWindow()`, and putting `removeListeners()` in there. That's not always ideal if you're not working with a `UIView`, but that's all I use it for right now, so I can't help you in other cases.
-
----
-
-### Other classes
-
-- **Change**: Holds an `oldValue` and a `newValue` for an observed property. And it's generic!
-- **Emitter**: An abstract class that supports `Event` and `Signal`. Not relevant to you really.
-- **EmitterListener**: The `Listener` subclass for `Event`s and `Signal`s.
-- **NotificationListener**: The `Listener` subclass for `Notification`s.
-
----
-
-### Major changes in v3.0
-
-- Added `NotificationListener`, `EmitterListener`, and `ChangeListener` (all subclasses of `Listener`).
-- Added `Change`, a generic class with an `oldValue`, a `newValue`, and a `keyPath`.
-- All `NSObject`s have an `on()` and `once()` method for KVO!
-- `Notification` does not subclass `Emitter` anymore.
-- `Notification` now has `emit` methods.
-- `Notification` no longer need to be retained.
-- Removed `removeAllListeners` from `Emitter`.
-- Removed `listenersForTarget` from `Emitter`.
-- `ListenerStorage` no longer exists. Use a `[Listener]` or whatever you want.
-- Removed many exposed internal functions.
 
 ---
 
