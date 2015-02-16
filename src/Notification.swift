@@ -45,6 +45,6 @@ public class Notification {
   }
 
   func _emit (target: AnyObject!, _ data: NSDictionary!) {
-    NSNotificationCenter.defaultCenter().postNotificationName(name, object: target, userInfo: data)
+    NSNotificationCenter.defaultCenter().postNotificationName(name, object: target, userInfo: data as [NSObject : AnyObject])
   }
 }

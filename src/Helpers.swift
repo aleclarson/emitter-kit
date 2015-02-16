@@ -33,7 +33,7 @@ func getHash (object: AnyObject) -> String {
 /// Generate a unique identifier for an object.
 /// Fastest. Every other function relies on this one.
 func identify (object: AnyObject) -> UInt {
-  return ObjectIdentifier(object).uintValue()
+  return ObjectIdentifier(object).uintValue
 }
 
 /// Generate a unique identifier for an object.
