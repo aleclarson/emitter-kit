@@ -34,7 +34,7 @@ class NotificationListener : Listener {
   
   init (_ name: String, _ target: AnyObject!, _ handler: NSDictionary -> Void, _ once: Bool) {
     self.name = name
-    super.init(target, { handler($0 as? NSDictionary ?? [:]) }, once)
+    super.init(target, { handler(($0 as? NSDictionary) ?? [:]) }, once)
   }
 }
 

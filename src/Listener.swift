@@ -36,7 +36,7 @@ public class Listener {
   
   init (_ target: AnyObject!, _ handler: Any! -> Void, _ once: Bool) {
 
-    targetID = target as? String ?? getHash(target)
+    targetID = (target as? String) ?? getHash(target)
 
     if !(target is String) { self.target = target }
 

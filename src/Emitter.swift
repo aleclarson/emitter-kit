@@ -9,7 +9,7 @@ public class Emitter {
   var listeners = [String:[String:DynamicPointer<Listener>]]()
   
   func emit (target: AnyObject!, _ data: Any!) {
-    emit(target as? String ?? getHash(target), data)
+    emit((target as? String) ?? getHash(target), data)
   }
   
   func emit (targets: [AnyObject], _ data: Any!) {
