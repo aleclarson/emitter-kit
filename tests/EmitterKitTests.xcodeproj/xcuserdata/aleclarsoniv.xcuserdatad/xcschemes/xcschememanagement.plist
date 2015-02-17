@@ -4,30 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>EmitterKit.xcscheme</key>
+		<key>EmitterKitTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1102850C19C9BCEB0069F253</key>
+		<key>11F4761819CC229500831EE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1102851619C9BCEB0069F253</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>115F4C9519BE9FCA00595510</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>115F4CA719BE9FCB00595510</key>
+		<key>11F4762D19CC229500831EE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

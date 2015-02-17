@@ -1,24 +1,20 @@
 
-public class EmitterListener : Listener {
+class EmitterListener : Listener {
     
-  public unowned let emitter: Emitter
+  weak var emitter: Emitter!
   
   override func startListening () {
-    let tid = hashify(target)
-    var listeners = emitter.listeners[tid] ?? [:]
-    listeners[hashify(self)] = self
-    emitter.listeners[tid] = listeners
+    if emitter == nil { return }
+    var listeners = emitter.listeners[targetID] ?? [:]
+    listeners[getHash(self)] = once ? StrongPointer(self) : WeakPointer(self)
+    emitter.listeners[targetID] = listeners
   }
   
   override func stopListening () {
-    let targetID = hashify(target)
-    if var listeners = emitter.listeners[targetID] {
-      let listenerID = hashify(self)
-      if listeners[listenerID] != nil {
-        listeners[listenerID] = nil
-        emitter.listeners[targetID] = listeners.count > 0 ? listeners : nil
-      }
-    }
+    if emitter == nil { return }
+    var listeners = emitter.listeners[targetID]!
+    listeners[getHash(self)] = nil
+    emitter.listeners[targetID] = listeners.nilIfEmpty
   }
   
   init (_ emitter: Emitter, _ target: AnyObject!, _ handler: Any! -> Void, _ once: Bool) {

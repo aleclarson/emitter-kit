@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0AF2BE74-4AED-4334-BD9E-C8C0A481169B</string>
+	<string>826B4928-930E-4727-B560-756003C6CEB5</string>
 	<key>IDESourceControlProjectName</key>
-	<string>EmitterKit</string>
+	<string>EmitterKitTests</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</key>
-		<string>https://github.com/aleclarson/swift-generic-events.git</string>
+		<string>https://github.com/aleclarson/emitter-kit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>EmitterKit/EmitterKit.xcodeproj</string>
+	<string>tests/EmitterKitTests.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/aleclarson/swift-generic-events.git</string>
+	<string>https://github.com/aleclarson/emitter-kit.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</string>
 			<key>IDESourceControlWCCName</key>
-			<string>swift-generic-events</string>
+			<string>emitterkit</string>
 		</dict>
 	</array>
 </dict>
