@@ -7,43 +7,36 @@
 //
 
 import UIKit
+import EmitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
-  var window: UIWindow!
 
-  let events = ListenerStorage()
+  var listeners = [Listener]()
   
   let myEvent = Event<Int>()
 
   let mySignal = Signal()
-  
-  let myNotif = Notification(UIApplicationWillResignActiveNotification)
+
+  let myView = UIView()
   
   func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-    
-    window = UIWindow()
-    window?.rootViewController = UIViewController()
-
-    ///////////////////////////////////////////////////////////////
-    
     
     myEvent.once {
       println("myEvent.once listener was called with: \($0)")
     }
 
-    events += myEvent.on {
+    listeners += myEvent.on {
       println("myEvent.on listener was called with: \($0)")
     }
 
-    events += myEvent.on(window) {
-      println("myEvent.on(window) listener was called with: \($0)")
+    listeners += myEvent.on(self) {
+      println("myEvent.on(self) listener was called with: \($0)")
     }
 
     myEvent.emit(0)
     myEvent.emit(1)
-    myEvent.emit(window, 2)
+    myEvent.emit(self, 2)
 
 
     ///////////////////////////////////////////////////////////////
@@ -53,50 +46,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       println("mySignal.once listener was called")
     }
 
-    events += mySignal.on {
+    listeners += mySignal.on {
       println("mySignal.on listener was called")
     }
 
-    events += mySignal.on(window) {
-      println("mySignal.on(window) listener was called")
+    listeners += mySignal.on(self) {
+      println("mySignal.on(self) listener was called")
     }
 
     mySignal.emit()
     mySignal.emit()
-    mySignal.emit(window)
+    mySignal.emit(self)
 
 
     ///////////////////////////////////////////////////////////////
     
     
-    // Use the simulator and press CMD+L to lock it. 
-    // This closure should be called then.
-    myNotif.once(application) { info in
-      println("myNotif.once listener was called with: \(info)")
+    let willResignActive = Notification(UIApplicationWillResignActiveNotification)
+    listeners += willResignActive.on(application) {
+      println("willResignActive \($0)")
     }
-
-
-    ///////////////////////////////////////////////////////////////
-
     
-    println("myEvent.listeners BEFORE `myEvent.removeAllListeners`: \(myEvent.listenerCount)")
-
-    myEvent.removeAllListeners()
-
-    println("myEvent.listeners AFTER `myEvent.removeAllListeners`: \(myEvent.listenerCount)")
-
 
     ///////////////////////////////////////////////////////////////
 
 
-    println("events.listeners BEFORE `events.removeAllListeners`: \(events.count)")
-
-    events.removeAllListeners()
-
-    println("events.listeners AFTER `events.removeAllListeners`: \(events.count)")
+    listeners += myView.on("bounds") { (values: Change<NSValue>) in
+      println("myView.bounds = (oldValue: \(values.oldValue), newValue: \(values.newValue))")
+    }
+    
+    myView.bounds = CGRectMake(100, 100, 100, 100)
+    myView.bounds.size = CGSizeMake(200, 200)
+    
+    myView.once("backgroundColor") { (values: Change<UIColor>) in
+      println("myView.backgroundColor = (oldValue: \(values.oldValue), newValue: \(values.newValue))")
+    }
+    
+    myView.backgroundColor = UIColor.blueColor()
 
 
     ///////////////////////////////////////////////////////////////
+    
+    
+    class MyScrollView : UIScrollView, UIScrollViewDelegate {
+      let didScroll = Event<CGPoint>()
+      
+      override init () {
+        super.init()
+        delegate = self
+      }
+
+      required init(coder aDecoder: NSCoder) {
+          fatalError("init(coder:) has not been implemented")
+      }
+      
+      func scrollViewDidScroll(scrollView: UIScrollView) {
+        didScroll.emit(scrollView.contentOffset)
+      }
+    }
     
     
     // TODO: More tests
@@ -104,28 +111,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     return true
   }
-
-  func applicationWillResignActive(application: UIApplication!) {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-  }
-
-  func applicationDidEnterBackground(application: UIApplication!) {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-  }
-
-  func applicationWillEnterForeground(application: UIApplication!) {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-  }
-
-  func applicationDidBecomeActive(application: UIApplication!) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  }
-
-  func applicationWillTerminate(application: UIApplication!) {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-  }
-
 }
 

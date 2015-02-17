@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "115F4C9519BE9FCA00595510"
-               BuildableName = "EmitterKit.app"
+               BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+               BuildableName = "EmitterKit.framework"
                BlueprintName = "EmitterKit"
-               ReferencedContainer = "container:EmitterKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "115F4CA719BE9FCB00595510"
-               BuildableName = "EmitterKitTests.xctest"
-               BlueprintName = "EmitterKitTests"
                ReferencedContainer = "container:EmitterKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "115F4CA719BE9FCB00595510"
-               BuildableName = "EmitterKitTests.xctest"
-               BlueprintName = "EmitterKitTests"
-               ReferencedContainer = "container:EmitterKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
-            BuildableName = "EmitterKit.app"
-            BlueprintName = "EmitterKit"
-            ReferencedContainer = "container:EmitterKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -72,15 +39,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
-            BuildableName = "EmitterKit.app"
+            BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+            BuildableName = "EmitterKit.framework"
             BlueprintName = "EmitterKit"
             ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,15 +57,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
-            BuildableName = "EmitterKit.app"
+            BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+            BuildableName = "EmitterKit.framework"
             BlueprintName = "EmitterKit"
             ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

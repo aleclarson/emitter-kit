@@ -7,31 +7,115 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		115F4CBF19BEA04E00595510 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBA19BEA04E00595510 /* Emitter.swift */; };
-		115F4CC019BEA04E00595510 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBB19BEA04E00595510 /* Listener.swift */; };
-		115F4CC119BEA04E00595510 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 115F4CBC19BEA04E00595510 /* Info.plist */; };
+		1102852119C9BCEB0069F253 /* EmitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */; };
+		1102852219C9BCEB0069F253 /* EmitterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1102852F19C9BD420069F253 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102852E19C9BD420069F253 /* Event.swift */; };
+		1102853119C9BD600069F253 /* EmitterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EmitterListener.swift */; };
+		1102853319C9BD6B0069F253 /* NotificationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853219C9BD6B0069F253 /* NotificationListener.swift */; };
+		1102853519C9BD720069F253 /* ChangeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; };
+		1102853619C9BED90069F253 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBA19BEA04E00595510 /* Emitter.swift */; };
+		1102853C19C9BEDD0069F253 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBB19BEA04E00595510 /* Listener.swift */; };
+		1102854019C9DC4F0069F253 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notification.swift */; };
+		110EB31319CA2A77003CA42D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 110EB31219CA2A77003CA42D /* README.md */; };
 		115F4CC219BEA04E00595510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBD19BEA04E00595510 /* AppDelegate.swift */; };
+		1172DFFB19C9EBCA005A84EA /* Emitter.swift in Headers */ = {isa = PBXBuildFile; fileRef = 115F4CBA19BEA04E00595510 /* Emitter.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172DFFD19C9EBCA005A84EA /* Event.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102852E19C9BD420069F253 /* Event.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172DFFE19C9EBCA005A84EA /* Notification.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notification.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172DFFF19C9EBCA005A84EA /* Listener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 115F4CBB19BEA04E00595510 /* Listener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172E00019C9EBCA005A84EA /* EmitterListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EmitterListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172E00119C9EBCA005A84EA /* NotificationListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853219C9BD6B0069F253 /* NotificationListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		11FCD69319CA175C006B6D44 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1102851F19C9BCEB0069F253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 115F4C8E19BE9FCA00595510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1102850C19C9BCEB0069F253;
+			remoteInfo = EmitterKit;
+		};
+		1102852319C9BCEB0069F253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 115F4C8E19BE9FCA00595510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1102850C19C9BCEB0069F253;
+			remoteInfo = EmitterKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1102852819C9BCEB0069F253 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1102852219C9BCEB0069F253 /* EmitterKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		115F4C9619BE9FCA00595510 /* EmitterKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmitterKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1102850D19C9BCEB0069F253 /* EmitterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmitterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1102852E19C9BD420069F253 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		1102853019C9BD600069F253 /* EmitterListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterListener.swift; sourceTree = "<group>"; };
+		1102853219C9BD6B0069F253 /* NotificationListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListener.swift; sourceTree = "<group>"; };
+		1102853419C9BD720069F253 /* ChangeListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListener.swift; sourceTree = "<group>"; };
+		1102853F19C9DC4F0069F253 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		110EB31219CA2A77003CA42D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		115F4C9619BE9FCA00595510 /* EmitterKitTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmitterKitTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		115F4CBA19BEA04E00595510 /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		115F4CBB19BEA04E00595510 /* Listener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		115F4CBC19BEA04E00595510 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		115F4CBD19BEA04E00595510 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		11FCD69219CA175C006B6D44 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		115F4C9319BE9FCA00595510 /* Frameworks */ = {
+		1102850919C9BCEB0069F253 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		115F4C9319BE9FCA00595510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1102852119C9BCEB0069F253 /* EmitterKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1102853D19C9D5F90069F253 /* Listener */ = {
+			isa = PBXGroup;
+			children = (
+				115F4CBB19BEA04E00595510 /* Listener.swift */,
+				1102853019C9BD600069F253 /* EmitterListener.swift */,
+				1102853219C9BD6B0069F253 /* NotificationListener.swift */,
+				1102853419C9BD720069F253 /* ChangeListener.swift */,
+			);
+			name = Listener;
+			sourceTree = "<group>";
+		};
+		1102853E19C9D5FE0069F253 /* Emitter */ = {
+			isa = PBXGroup;
+			children = (
+				115F4CBA19BEA04E00595510 /* Emitter.swift */,
+				11FCD69219CA175C006B6D44 /* Signal.swift */,
+				1102852E19C9BD420069F253 /* Event.swift */,
+				1102853F19C9DC4F0069F253 /* Notification.swift */,
+			);
+			name = Emitter;
+			sourceTree = "<group>";
+		};
 		115F4C8D19BE9FCA00595510 = {
 			isa = PBXGroup;
 			children = (
@@ -43,7 +127,8 @@
 		115F4C9719BE9FCA00595510 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				115F4C9619BE9FCA00595510 /* EmitterKit.app */,
+				115F4C9619BE9FCA00595510 /* EmitterKitTests.app */,
+				1102850D19C9BCEB0069F253 /* EmitterKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,6 +136,7 @@
 		115F4C9819BE9FCA00595510 /* EmitterKit */ = {
 			isa = PBXGroup;
 			children = (
+				110EB31219CA2A77003CA42D /* README.md */,
 				115F4CB819BEA04E00595510 /* src */,
 				115F4CBC19BEA04E00595510 /* Info.plist */,
 				115F4CBD19BEA04E00595510 /* AppDelegate.swift */,
@@ -61,22 +147,40 @@
 		115F4CB819BEA04E00595510 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				115F4CBA19BEA04E00595510 /* Emitter.swift */,
-				115F4CBB19BEA04E00595510 /* Listener.swift */,
+				1102853E19C9D5FE0069F253 /* Emitter */,
+				1102853D19C9D5F90069F253 /* Listener */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1102850A19C9BCEB0069F253 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1172DFFB19C9EBCA005A84EA /* Emitter.swift in Headers */,
+				1172DFFD19C9EBCA005A84EA /* Event.swift in Headers */,
+				1172DFFE19C9EBCA005A84EA /* Notification.swift in Headers */,
+				1172DFFF19C9EBCA005A84EA /* Listener.swift in Headers */,
+				1172E00019C9EBCA005A84EA /* EmitterListener.swift in Headers */,
+				1172E00119C9EBCA005A84EA /* NotificationListener.swift in Headers */,
+				1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		115F4C9519BE9FCA00595510 /* EmitterKit */ = {
+		1102850C19C9BCEB0069F253 /* EmitterKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 115F4CB219BE9FCB00595510 /* Build configuration list for PBXNativeTarget "EmitterKit" */;
+			buildConfigurationList = 1102852519C9BCEB0069F253 /* Build configuration list for PBXNativeTarget "EmitterKit" */;
 			buildPhases = (
-				115F4C9219BE9FCA00595510 /* Sources */,
-				115F4C9319BE9FCA00595510 /* Frameworks */,
-				115F4C9419BE9FCA00595510 /* Resources */,
+				1102850819C9BCEB0069F253 /* Sources */,
+				1102850919C9BCEB0069F253 /* Frameworks */,
+				1102850A19C9BCEB0069F253 /* Headers */,
+				1102850B19C9BCEB0069F253 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -84,7 +188,27 @@
 			);
 			name = EmitterKit;
 			productName = EmitterKit;
-			productReference = 115F4C9619BE9FCA00595510 /* EmitterKit.app */;
+			productReference = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		115F4C9519BE9FCA00595510 /* EmitterKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 115F4CB219BE9FCB00595510 /* Build configuration list for PBXNativeTarget "EmitterKitTests" */;
+			buildPhases = (
+				115F4C9219BE9FCA00595510 /* Sources */,
+				115F4C9319BE9FCA00595510 /* Frameworks */,
+				115F4C9419BE9FCA00595510 /* Resources */,
+				1102852819C9BCEB0069F253 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1102852019C9BCEB0069F253 /* PBXTargetDependency */,
+				1102852419C9BCEB0069F253 /* PBXTargetDependency */,
+			);
+			name = EmitterKitTests;
+			productName = EmitterKit;
+			productReference = 115F4C9619BE9FCA00595510 /* EmitterKitTests.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,6 +220,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Alec Larson";
 				TargetAttributes = {
+					1102850C19C9BCEB0069F253 = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					115F4C9519BE9FCA00595510 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -114,36 +241,115 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				115F4C9519BE9FCA00595510 /* EmitterKit */,
+				115F4C9519BE9FCA00595510 /* EmitterKitTests */,
+				1102850C19C9BCEB0069F253 /* EmitterKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1102850B19C9BCEB0069F253 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		115F4C9419BE9FCA00595510 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				115F4CC119BEA04E00595510 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1102850819C9BCEB0069F253 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1102852F19C9BD420069F253 /* Event.swift in Sources */,
+				1102853319C9BD6B0069F253 /* NotificationListener.swift in Sources */,
+				1102853619C9BED90069F253 /* Emitter.swift in Sources */,
+				1102853519C9BD720069F253 /* ChangeListener.swift in Sources */,
+				1102853C19C9BEDD0069F253 /* Listener.swift in Sources */,
+				11FCD69319CA175C006B6D44 /* Signal.swift in Sources */,
+				110EB31319CA2A77003CA42D /* README.md in Sources */,
+				1102853119C9BD600069F253 /* EmitterListener.swift in Sources */,
+				1102854019C9DC4F0069F253 /* Notification.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		115F4C9219BE9FCA00595510 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				115F4CC219BEA04E00595510 /* AppDelegate.swift in Sources */,
-				115F4CBF19BEA04E00595510 /* Emitter.swift in Sources */,
-				115F4CC019BEA04E00595510 /* Listener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1102852019C9BCEB0069F253 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1102850C19C9BCEB0069F253 /* EmitterKit */;
+			targetProxy = 1102851F19C9BCEB0069F253 /* PBXContainerItemProxy */;
+		};
+		1102852419C9BCEB0069F253 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1102850C19C9BCEB0069F253 /* EmitterKit */;
+			targetProxy = 1102852319C9BCEB0069F253 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		1102852619C9BCEB0069F253 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EmitterKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1102852719C9BCEB0069F253 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EmitterKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		115F4CB019BE9FCB00595510 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -246,6 +452,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1102852519C9BCEB0069F253 /* Build configuration list for PBXNativeTarget "EmitterKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1102852619C9BCEB0069F253 /* Debug */,
+				1102852719C9BCEB0069F253 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		115F4C9119BE9FCA00595510 /* Build configuration list for PBXProject "EmitterKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -255,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		115F4CB219BE9FCB00595510 /* Build configuration list for PBXNativeTarget "EmitterKit" */ = {
+		115F4CB219BE9FCB00595510 /* Build configuration list for PBXNativeTarget "EmitterKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				115F4CB319BE9FCB00595510 /* Debug */,
