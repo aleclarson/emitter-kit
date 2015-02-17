@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Generic Events for Swift.xcodeproj">
+      location = "self:EmitterKit.xcodeproj">
    </FileRef>
 </Workspace>

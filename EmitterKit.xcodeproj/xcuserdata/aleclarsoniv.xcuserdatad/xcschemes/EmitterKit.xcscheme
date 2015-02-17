@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-               BuildableName = "Generic Events for Swift.app"
-               BlueprintName = "Generic Events for Swift"
-               ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
+               BlueprintIdentifier = "115F4C9519BE9FCA00595510"
+               BuildableName = "EmitterKit.app"
+               BlueprintName = "EmitterKit"
+               ReferencedContainer = "container:EmitterKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "115F4CA719BE9FCB00595510"
+               BuildableName = "EmitterKitTests.xctest"
+               BlueprintName = "EmitterKitTests"
+               ReferencedContainer = "container:EmitterKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +42,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "115F4CA719BE9FCB00595510"
+               BuildableName = "EmitterKitTests.xctest"
+               BlueprintName = "EmitterKitTests"
+               ReferencedContainer = "container:EmitterKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Generic Events for Swift.app"
-            BlueprintName = "Generic Events for Swift"
-            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
+            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
+            BuildableName = "EmitterKit.app"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Generic Events for Swift.app"
-            BlueprintName = "Generic Events for Swift"
-            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
+            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
+            BuildableName = "EmitterKit.app"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "113A92A8198B5EAB004C5F1E"
-            BuildableName = "Generic Events for Swift.app"
-            BlueprintName = "Generic Events for Swift"
-            ReferencedContainer = "container:Generic Events for Swift.xcodeproj">
+            BlueprintIdentifier = "115F4C9519BE9FCA00595510"
+            BuildableName = "EmitterKit.app"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
