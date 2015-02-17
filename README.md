@@ -1,21 +1,12 @@
-<img src="http://i.imgur.com/PnCPxBz.jpg"/>
+# EmitterKit
 
-**EmitterKit** wants to replace your `NSNotification`, key-value observation, and general event handling habits!
+**What?** Type-safe event handling in a simple & concise framework. And more!
 
-- Simpler syntax!
-- Type safety with generic `Event` class!
-- Built-in one-time listeners!
-- Key-value observation for `NSObject`s!
-- Has a `Notification` class for backwards-compatibility with `NSNotificationCenter`!
-- Removes the need to call `removeObserver()` for `NSNotification`s!
+**Why?** The `NSNotification` framework isn't my cup of tea. Things could be easier.
 
----
+**Compatibility:** `v3.2` only works with Swift 1.2
 
-### **Installation**
-
-Not yet available on CocoaPods.
-
-For now, add `EmitterKit.xcodeproj` as a submodule in your Xcode project and add `EmitterKit.framework` as a target dependency in your Build Phases. Then, add a Copy Files phase in your Build Phases to the `Frameworks` directory, and add `EmitterKit.framework`.
+**Note:** This framework is currently unmaintained (I'm not using Swift anymore). If something stops working, please submit a pull request and I'll figure things out when I have the free time (of which I have none right now).
 
 ---
 

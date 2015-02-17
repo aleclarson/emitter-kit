@@ -34,6 +34,6 @@ public class Event <EventData: Any> : Emitter {
   }
   
   private func castData (handler: EventData -> Void) -> Any! -> Void {
-    return { handler($0 as EventData) }
+    return { handler($0 as! EventData) }
   }
 }

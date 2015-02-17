@@ -105,7 +105,7 @@ class ChangeListener <T:Any> : Listener {
     self.keyPath = keyPath
     self.options = options
     
-    super.init(nil, { handler($0 as Change<T>) }, once)
+    super.init(nil, { handler($0 as! Change<T>) }, once)
   }
 }
 
