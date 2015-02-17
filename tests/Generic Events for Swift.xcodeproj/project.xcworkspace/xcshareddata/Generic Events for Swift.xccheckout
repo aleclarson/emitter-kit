@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F6FF4FC-8FBC-4B05-80A8-AA195B73A880</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Generic Events for Swift</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</key>
+		<string>https://github.com/aleclarson/swift-generic-events.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Generic Events for Swift.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aleclarson/swift-generic-events.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>32F1E358086FF09C26FB0D4FB18D747E2755A1A8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>swift-generic-events</string>
+		</dict>
+	</array>
+</dict>
+</plist>
