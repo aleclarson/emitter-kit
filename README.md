@@ -8,6 +8,8 @@
 
 **Note:** This framework is currently unmaintained (I'm not using Swift anymore). If something stops working, please submit a pull request and I'll figure things out when I have the free time (of which I have none right now).
 
+[![Thank me!](http://img.shields.io/gratipay/aleclarson.svg "Thank me!")](https://gratipay.com/aleclarson/)
+
 ---
 
 ### **Event**
