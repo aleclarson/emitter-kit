@@ -1,4 +1,4 @@
-# emitter-kit v3.2.0 [[![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](http://github.com/badges/stability-badges "Frozen")](https://nodejs.org/api/documentation.html#documentation_stability_index) [![donate](http://img.shields.io/gratipay/aleclarson.svg "Donate")](https://gratipay.com/aleclarson/)
+# emitter-kit v3.2.0 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 
 **What?** Type-safe event handling in a simple & concise framework. And more!
 
@@ -9,6 +9,8 @@
 **Note:** This framework is currently unmaintained (I'm not using Swift anymore). If something stops working, please submit a pull request and I'll figure things out when I have the free time (of which I have none right now).
 
 **By:** [@aleclarsoniv](https://twitter.com/aleclarsoniv)
+
+**Donate:** [![donate](http://img.shields.io/gratipay/aleclarson.svg)](https://gratipay.com/aleclarson/)
 
 ---
 
