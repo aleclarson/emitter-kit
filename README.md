@@ -1,14 +1,14 @@
-# EmitterKit
+# emitter-kit v3.2.0 [[![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](http://github.com/badges/stability-badges "Frozen")](https://nodejs.org/api/documentation.html#documentation_stability_index) [![donate](http://img.shields.io/gratipay/aleclarson.svg "Donate")](https://gratipay.com/aleclarson/)
 
 **What?** Type-safe event handling in a simple & concise framework. And more!
 
 **Why?** The `NSNotification` framework isn't my cup of tea. Things could be easier.
 
-**Compatibility:** `v3.2` only works with Swift 1.2
+**Compatibility:** `v3.2.0` only works with Swift 1.2
 
 **Note:** This framework is currently unmaintained (I'm not using Swift anymore). If something stops working, please submit a pull request and I'll figure things out when I have the free time (of which I have none right now).
 
-[![Thank me!](http://img.shields.io/gratipay/aleclarson.svg "Thank me!")](https://gratipay.com/aleclarson/)
+**By:** [@aleclarsoniv](https://twitter.com/aleclarsoniv)
 
 ---
 
@@ -152,7 +152,3 @@ myView.once("backgroundColor", .Prior | .Old | .New) {
 It runs on top of traditional KVO techniques, so everything works as expected!
 
 **WARNING:** If you use these methods, you must call `removeListeners(myListenerArray)` before your `NSObject` deinits. Otherwise, your program will crash. I suggest making a subclass of `UIView`, overriding `willMoveToWindow()`, and putting `removeListeners()` in there. That's not always ideal if you're not working with a `UIView`, but that's all I use it for right now, so I can't help you in other cases.
-
----
-
-Crafted by Alec Larson [@aleclarsoniv](https://twitter.com/aleclarsoniv)
