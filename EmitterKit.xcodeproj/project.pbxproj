@@ -25,6 +25,7 @@
 		117CC8A619CC37ED00A57695 /* Signal.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		11FCD69319CA175C006B6D44 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; };
+		CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		116AB9EF19D1DC5D000AE06F /* EmitterKitTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EmitterKitTests.xcodeproj; path = tests/EmitterKitTests.xcodeproj; sourceTree = "<group>"; };
 		11F4760D19CC1DA500831EE5 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		11FCD69219CA175C006B6D44 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		115F4CB819BEA04E00595510 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */,
 				11F4760F19CC211600831EE5 /* Helpers */,
 				1102853E19C9D5FE0069F253 /* Emitter */,
 				1102853D19C9D5F90069F253 /* Listener */,
@@ -144,6 +147,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */,
 				11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */,
 				1172DFFB19C9EBCA005A84EA /* Emitter.swift in Headers */,
 				1172DFFD19C9EBCA005A84EA /* Event.swift in Headers */,
