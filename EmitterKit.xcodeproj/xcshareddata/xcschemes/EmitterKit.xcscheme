@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+               BuildableName = "EmitterKit.framework"
+               BlueprintName = "EmitterKit"
+               ReferencedContainer = "container:EmitterKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
@@ -17,7 +31,7 @@
                BlueprintIdentifier = "11F4762D19CC229500831EE5"
                BuildableName = "EmitterKitTests.xctest"
                BlueprintName = "EmitterKitTests"
-               ReferencedContainer = "container:EmitterKitTests.xcodeproj">
+               ReferencedContainer = "container:tests/EmitterKitTests.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,17 +49,17 @@
                BlueprintIdentifier = "11F4762D19CC229500831EE5"
                BuildableName = "EmitterKitTests.xctest"
                BlueprintName = "EmitterKitTests"
-               ReferencedContainer = "container:EmitterKitTests.xcodeproj">
+               ReferencedContainer = "container:tests/EmitterKitTests.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "11F4762D19CC229500831EE5"
-            BuildableName = "EmitterKitTests.xctest"
-            BlueprintName = "EmitterKitTests"
-            ReferencedContainer = "container:EmitterKitTests.xcodeproj">
+            BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+            BuildableName = "EmitterKit.framework"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -61,10 +75,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "11F4762D19CC229500831EE5"
-            BuildableName = "EmitterKitTests.xctest"
-            BlueprintName = "EmitterKitTests"
-            ReferencedContainer = "container:EmitterKitTests.xcodeproj">
+            BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+            BuildableName = "EmitterKit.framework"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,10 +93,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "11F4762D19CC229500831EE5"
-            BuildableName = "EmitterKitTests.xctest"
-            BlueprintName = "EmitterKitTests"
-            ReferencedContainer = "container:EmitterKitTests.xcodeproj">
+            BlueprintIdentifier = "1102850C19C9BCEB0069F253"
+            BuildableName = "EmitterKit.framework"
+            BlueprintName = "EmitterKit"
+            ReferencedContainer = "container:EmitterKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
