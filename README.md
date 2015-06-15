@@ -1,3 +1,8 @@
+
+**HELP WANTED:** Swift 2.0 is not currently supported. I would love to see a pull request; I have no spare time to make this update happen right now.
+
+---
+
 # emitter-kit v3.2.1 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 
 &nbsp;
