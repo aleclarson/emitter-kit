@@ -1,8 +1,3 @@
-
-**HELP WANTED:** Swift 2.0 is not currently supported. I would love to see a pull request; I have no spare time to make this update happen right now.
-
----
-
 # emitter-kit v3.2.1 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 
 &nbsp;
@@ -56,15 +51,15 @@ didLogin.emit(user)
 
 I tend to use `Event`s as properties of my Swift classes, when it makes sense.
 
-```Swift   
+```Swift
 class MyScrollView : UIScrollView, UIScrollViewDelegate {
   let didScroll = Event<CGPoint>()
-  
+
   override init () {
     super.init()
     delegate = self
   }
-  
+
   func scrollViewDidScroll (scrollView: UIScrollView) {
     didScroll.emit(scrollView.contentOffset)
   }
@@ -108,7 +103,7 @@ didLogout.emit()
 
 ### **Notification**
 
-`Notification` wraps around `NSNotification` to provide backwards-compatibility with Apple's frameworks (e.g. `UIKeyboardWillShowNotification`) and third party frameworks. 
+`Notification` wraps around `NSNotification` to provide backwards-compatibility with Apple's frameworks (e.g. `UIKeyboardWillShowNotification`) and third party frameworks.
 
 Use it to create `NotificationListener`s that will remove themselves when deallocated. Now, you no longer have to call `removeObserver()` in your deinit phase!
 
@@ -126,7 +121,7 @@ Notification(UIKeyboardWillShowNotification).once { data in
 
 ### **Listener**
 
-A `Listener` represents a closure that will be executed when an `Emitter` emits. 
+A `Listener` represents a closure that will be executed when an `Emitter` emits.
 
 When a `Listener` is constructed, it starts listening immediately.
 
@@ -164,7 +159,7 @@ This makes traditional Objective-C key-value observation much prettier on the ey
 let myView = UIView()
 let myProperty = "layer.bounds" // supports dot-notation!
 
-listeners += myView.on(myProperty) { 
+listeners += myView.on(myProperty) {
   (values: Change<NSValue>) in
   println(values)
 }
@@ -176,12 +171,12 @@ listeners += myView.on(myProperty) {
 
 ##### NSKeyValueObservingOptions
 
-The `NSKeyValueObservingOptions` you know and love are also supported! 
+The `NSKeyValueObservingOptions` you know and love are also supported!
 
 Valid values are `.Old`, `.New`, `.Initial`, `.Prior`, and `nil`.
 
 ```Swift
-myView.once("backgroundColor", .Prior | .Old | .New) { 
+myView.once("backgroundColor", .Prior | .Old | .New) {
   (change: Change<UIColor>) in
   println(change)
 }

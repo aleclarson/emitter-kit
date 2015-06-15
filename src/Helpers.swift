@@ -2,13 +2,13 @@
 import Foundation
 
 func WeakPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
-  var ptr = DynamicPointer<T>()
+  let ptr = DynamicPointer<T>()
   ptr.weakPointer = object
   return ptr
 }
 
 func StrongPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
-  var ptr = DynamicPointer<T>()
+  let ptr = DynamicPointer<T>()
   ptr.strongPointer = object
   return ptr
 }
