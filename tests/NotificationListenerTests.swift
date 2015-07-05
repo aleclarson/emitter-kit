@@ -34,16 +34,25 @@ class NotificationListenerTests: XCTestCase {
     event.emit([:])
     event.emit([:])
     
-    XCTAssertTrue(calls == 2, "NotificationListener listening after one execution")
+    XCTAssertTrue(calls == 2, "NotificationListener stopped listening after one execution")
   }
-  
+
   func testOnDeinit () {
     event.on { _ in self.calls += 1 }
     event.emit([:])
     
     XCTAssertTrue(calls == 0, "NotificationListener did not stop listening on deinit")
   }
+
+  func testOnWithTarget () {
+
+    let target = [:]
+
+    listener = event.on(target) { _ in self.calls += 1 }
+
+    event.emit(target, [:])
+    event.emit(target, [:])
+
+    XCTAssertTrue(calls == 2, "NotificationListener (with a target) stopped listening after one execution")
+  }
 }
-
-
-

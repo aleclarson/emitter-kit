@@ -5,12 +5,12 @@ extension NSObject {
 
   /// Creates a Listener for key-value observing.
   public func on <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
-    return on(keyPath, .Old | .New, handler)
+    return on(keyPath, [.Old, .New], handler)
   }
 
   /// Creates a single-use Listener for key-value observing.
   public func once <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
-    return once(keyPath, .Old | .New, handler)
+    return once(keyPath, [.Old, .New], handler)
   }
   
   /// Creates a Listener for key-value observing.
@@ -33,7 +33,7 @@ extension NSObject {
   }
 }
 
-public class Change <T:Any> : Printable {
+public class Change <T:Any> : CustomStringConvertible {
 
   public let keyPath: String
   
@@ -121,7 +121,7 @@ class ChangeObserver : NSObject {
   
   let handler: NSDictionary -> Void
   
-  override func observeValueForKeyPath (keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+  override func observeValueForKeyPath (keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     handler(change ?? [:])
   }
   

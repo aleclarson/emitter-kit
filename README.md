@@ -1,27 +1,32 @@
-# emitter-kit v3.2.1 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
+# emitter-kit v4.0.0 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 
 &nbsp;
 
 This library provides these 5 major classes:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-[**Event**](#event) -- A type-safe event emitter.
+[**Event**](https://github.com/aleclarson/emitter-kit/wiki/Events-&-Signals)
+: A type-safe event emitter.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-[**Signal**](#signal) -- An event emitter that doesn't pass any data.
+[**Signal**](https://github.com/aleclarson/emitter-kit/wiki/Events-&-Signals#signal)
+: An event emitter that doesn't pass any data.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-[**Listener**](#listener) -- An event listener!
+[**Listener**](https://github.com/aleclarson/emitter-kit/wiki/Event-Listeners)
+: An event listener!
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-[**Notification**](#notification) -- Backwards-compatibility with `NSNotification`.
+[**Notification**](https://github.com/aleclarson/emitter-kit/wiki/Notifications)
+: Backwards-compatibility with `NSNotification`.
 
 &nbsp;&nbsp;&nbsp;&nbsp;
-[**Change**](#change) -- Key-value observation made easy.
+[**Change**](https://github.com/aleclarson/emitter-kit/wiki/Observing-Changes)
+: Key-value observation made easy.
 
 &nbsp;
 
----
+-
 
 ### Motivation
 
@@ -29,175 +34,64 @@ This library provides these 5 major classes:
 
 &nbsp;
 
----
-
-### **Event**
-
-An `Event` emits data. Its generic parameter specifies what type of data it emits! This is awesome.
-
-All listeners are removed when an `Event` is deallocated.
-
-```Swift
-let didLogin = Event<User>()
-
-didLogin.once { user in
-  println("Successfully logged in as \(user.name)!")
-}
-
-didLogin.emit(user)
-```
-
-`Event` is a subclass of `Emitter`.
-
-I tend to use `Event`s as properties of my Swift classes, when it makes sense.
-
-```Swift   
-class MyScrollView : UIScrollView, UIScrollViewDelegate {
-  let didScroll = Event<CGPoint>()
-  
-  override init () {
-    super.init()
-    delegate = self
-  }
-  
-  func scrollViewDidScroll (scrollView: UIScrollView) {
-    didScroll.emit(scrollView.contentOffset)
-  }
-}
-```
-
-Otherwise, I can use a **target** to associate an `Event` with a specific `AnyObject`. This is useful for classes I cannot add properties to, like `UIView` for example.
-
-```Swift
-let myView = UIView()
-let didTouch = Event<UITouch>()
-
-didTouch.once(myView) {
-  println("We have a winner! \($0)")
-}
-
-didTouch.emit(myView, touch)
-```
-
-&nbsp;
-
----
-
-### **Signal**
-
-A `Signal` is a subclass of `Emitter` that cannot pass data.
-
-```Swift
-let didLogout = Signal()
-
-didLogout.once {
-  println("Logged out successfully... :(")
-}
-
-didLogout.emit()
-```
-
-&nbsp;
-
----
-
-### **Notification**
-
-`Notification` wraps around `NSNotification` to provide backwards-compatibility with Apple's frameworks (e.g. `UIKeyboardWillShowNotification`) and third party frameworks. 
-
-Use it to create `NotificationListener`s that will remove themselves when deallocated. Now, you no longer have to call `removeObserver()` in your deinit phase!
-
-You **do not** need to retain a `Notification` for your listener to work correctly. This is one reason why `Notification` does not subclass `Emitter`.
-
-```Swift
-Notification(UIKeyboardWillShowNotification).once { data in
-  println("keyboard showing. data: \(data)")
-}
-```
-
-&nbsp;
-
----
-
-### **Listener**
-
-A `Listener` represents a closure that will be executed when an `Emitter` emits. 
-
-When a `Listener` is constructed, it starts listening immediately.
-
-Toggle on and off by setting the `isListening: Bool` property.
-
-If a `Listener`'s `once: Bool` property `== true`, it will stop listening after it executes once.
-
-**Important:** Remember to retain a `Listener` if `once == false`! Make a `[Listener]` property and put it there.
-
-```Swift
-var listeners = [Listener]()
-
-// Retain that sucka
-listeners += mySignal.on {
-  println("beep")
-}
-
-// Single-use Listeners retain themselves ;)
-mySignal.once {
-  println("boop")
-}
-```
-
-&nbsp;
-
----
-
-### **Change**
-
-Every `NSObject` is bestowed an `on()`, `once()`, and `removeListeners()` instance method.
-
-This makes traditional Objective-C key-value observation much prettier on the eyes while programming with Swift.
-
-```Swift
-let myView = UIView()
-let myProperty = "layer.bounds" // supports dot-notation!
-
-listeners += myView.on(myProperty) { 
-  (values: Change<NSValue>) in
-  println(values)
-}
-```
-
-[Check out the `Change` class](https://github.com/aleclarson/emitter-kit/blob/master/src/ChangeListener.swift#L36-L56) to see what wonders it contains. It even implements the `Printable` protocol for easy debugging!
-
 -
 
-##### NSKeyValueObservingOptions
+### Changelog
 
-The `NSKeyValueObservingOptions` you know and love are also supported! 
+This is a list of notable changes in each version of **emitter-kit**. Many versions include unlisted bug fixes and refactoring. Some changes may not be listed (unintentionally).
 
-Valid values are `.Old`, `.New`, `.Initial`, `.Prior`, and `nil`.
+#### v4.0.0
 
-```Swift
-myView.once("backgroundColor", .Prior | .Old | .New) { 
-  (change: Change<UIColor>) in
-  println(change)
-}
-```
+- Swift 2.0 compatible
 
-If you don't pass a value at all, it defaults to `.Old | .New`.
+#### v3.2.1
 
--
+- Swift 1.3 compatible
 
-##### Clean-Up
+#### v3.2.0
 
-To prevent memory leaks, you must call `removeListeners(listeners)` before the `NSObject` is deallocated.
+- Swift 1.2 compatible
 
-If your object subclasses `UIView`, take advantage of `willMoveToWindow()` as the time to remove your change listeners.
+#### v3.1.0
 
-Otherwise, the `deinit` statement is also an ideal spot for clean-up.
+- Added `isPrior: Boolean` to the `Change` class.
 
----
+#### v3.0.0
 
-&nbsp;
+- Added `NotificationListener`, `EmitterListener`, and `ChangeListener` (all subclasses of `Listener`).
 
-[![donate](http://img.shields.io/gratipay/aleclarson.svg)](https://gratipay.com/aleclarson/)
+- Added `Change`, a generic class with an `oldValue`, a `newValue`, and a `keyPath`.
+
+- All `NSObject`s have an `on()` and `once()` method for KVO!
+
+- `Notification` does not subclass `Emitter` anymore.
+
+- `Notification` now has `emit` methods that create `NSNotification`s under the hood.
+
+- `Notification` no longer need to be retained.
+
+- Removed `emitter.removeAllListeners()`.
+
+- Removed `emitter.listenersForTarget(target: AnyObject)`.
+
+- Removed `ListenerStorage` completely. Try using an `[Listener]` or `[String:Listener]`.
+
+- Removed many exposed internal functions.
+
+#### v2.0.0
+
+- Renamed `VoidEvent` to `Signal`.
+
+- Renamed `AnyEvent` to `Emitter`.
+
+- Renamed `EventListener` to `Listener`.
+
+- Renamed `EventListenerStorage` to `ListenerStorage`.
+
+- Renamed `emitter.clearListeners()` to `emitter.removeAllListeners()`.
+
+#### v1.0.0
+
+- Xcode 6 Beta 5 compatible
 
 &nbsp;

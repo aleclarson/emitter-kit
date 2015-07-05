@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'EmitterKit'
-  s.version = '3.2.1'
+  s.version = '4.0.0'
   s.license = 'MIT'
   s.summary = 'Type-safe event handling for Swift'
   s.homepage = 'https://github.com/aleclarson/emitter-kit'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
 
-  s.source_files = 'src/*.swift'
+  s.source_files = 'src/*.{h,swift}'
 
   s.requires_arc = true
 end

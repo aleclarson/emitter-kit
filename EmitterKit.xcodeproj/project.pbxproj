@@ -23,18 +23,23 @@
 		1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		117CC8A519CC37DF00A57695 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; };
 		117CC8A619CC37ED00A57695 /* Signal.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		11E48E3A1B48CF690094741B /* EmitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */; };
+		11E48E441B48CF730094741B /* EmitterListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E401B48CF730094741B /* EmitterListenerTests.swift */; };
+		11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E411B48CF730094741B /* PerformanceTests.swift */; };
+		11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E421B48CF730094741B /* NotificationListenerTests.swift */; };
+		11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E431B48CF730094741B /* ChangeListenerTests.swift */; };
 		11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		11FCD69319CA175C006B6D44 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; };
 		CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		116AB9F319D1DC5D000AE06F /* PBXContainerItemProxy */ = {
+		11E48E3B1B48CF690094741B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 116AB9EF19D1DC5D000AE06F /* EmitterKitTests.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 11F4762E19CC229500831EE5;
-			remoteInfo = EmitterKitTests;
+			containerPortal = 115F4C8E19BE9FCA00595510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1102850C19C9BCEB0069F253;
+			remoteInfo = EmitterKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -48,7 +53,12 @@
 		115F4CBA19BEA04E00595510 /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		115F4CBB19BEA04E00595510 /* Listener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmitterKit-Info.plist"; sourceTree = SOURCE_ROOT; };
-		116AB9EF19D1DC5D000AE06F /* EmitterKitTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EmitterKitTests.xcodeproj; path = tests/EmitterKitTests.xcodeproj; sourceTree = "<group>"; };
+		11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmitterKitSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		11E48E391B48CF690094741B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11E48E401B48CF730094741B /* EmitterListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmitterListenerTests.swift; path = ../tests/EmitterListenerTests.swift; sourceTree = "<group>"; };
+		11E48E411B48CF730094741B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerformanceTests.swift; path = ../tests/PerformanceTests.swift; sourceTree = "<group>"; };
+		11E48E421B48CF730094741B /* NotificationListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListenerTests.swift; path = ../tests/NotificationListenerTests.swift; sourceTree = "<group>"; };
+		11E48E431B48CF730094741B /* ChangeListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeListenerTests.swift; path = ../tests/ChangeListenerTests.swift; sourceTree = "<group>"; };
 		11F4760D19CC1DA500831EE5 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		11FCD69219CA175C006B6D44 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterKit.h; sourceTree = "<group>"; };
@@ -59,6 +69,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E48E321B48CF690094741B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E48E3A1B48CF690094741B /* EmitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,8 +108,8 @@
 		115F4C8D19BE9FCA00595510 = {
 			isa = PBXGroup;
 			children = (
-				116AB9EF19D1DC5D000AE06F /* EmitterKitTests.xcodeproj */,
 				115F4C9819BE9FCA00595510 /* EmitterKit */,
+				11E48E361B48CF690094741B /* EmitterKitSpecs */,
 				115F4C9719BE9FCA00595510 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				1102850D19C9BCEB0069F253 /* EmitterKit.framework */,
+				11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,12 +143,16 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
-		116AB9F019D1DC5D000AE06F /* Products */ = {
+		11E48E361B48CF690094741B /* EmitterKitSpecs */ = {
 			isa = PBXGroup;
 			children = (
-				116AB9F419D1DC5D000AE06F /* EmitterKitTests.xctest */,
+				11E48E401B48CF730094741B /* EmitterListenerTests.swift */,
+				11E48E411B48CF730094741B /* PerformanceTests.swift */,
+				11E48E421B48CF730094741B /* NotificationListenerTests.swift */,
+				11E48E431B48CF730094741B /* ChangeListenerTests.swift */,
+				11E48E391B48CF690094741B /* Info.plist */,
 			);
-			name = Products;
+			path = EmitterKitSpecs;
 			sourceTree = "<group>";
 		};
 		11F4760F19CC211600831EE5 /* Helpers */ = {
@@ -181,17 +204,39 @@
 			productReference = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		11E48E341B48CF690094741B /* EmitterKitSpecs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11E48E3D1B48CF690094741B /* Build configuration list for PBXNativeTarget "EmitterKitSpecs" */;
+			buildPhases = (
+				11E48E311B48CF690094741B /* Sources */,
+				11E48E321B48CF690094741B /* Frameworks */,
+				11E48E331B48CF690094741B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11E48E3C1B48CF690094741B /* PBXTargetDependency */,
+			);
+			name = EmitterKitSpecs;
+			productName = EmitterKitSpecs;
+			productReference = 11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		115F4C8E19BE9FCA00595510 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alec Larson";
 				TargetAttributes = {
 					1102850C19C9BCEB0069F253 = {
 						CreatedOnToolsVersion = 6.0;
+					};
+					11E48E341B48CF690094741B = {
+						CreatedOnToolsVersion = 7.0;
 					};
 				};
 			};
@@ -206,31 +251,23 @@
 			mainGroup = 115F4C8D19BE9FCA00595510;
 			productRefGroup = 115F4C9719BE9FCA00595510 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 116AB9F019D1DC5D000AE06F /* Products */;
-					ProjectRef = 116AB9EF19D1DC5D000AE06F /* EmitterKitTests.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1102850C19C9BCEB0069F253 /* EmitterKit */,
+				11E48E341B48CF690094741B /* EmitterKitSpecs */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		116AB9F419D1DC5D000AE06F /* EmitterKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = EmitterKitTests.xctest;
-			remoteRef = 116AB9F319D1DC5D000AE06F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		1102850B19C9BCEB0069F253 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11E48E331B48CF690094741B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,7 +293,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		11E48E311B48CF690094741B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */,
+				11E48E441B48CF730094741B /* EmitterListenerTests.swift in Sources */,
+				11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */,
+				11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11E48E3C1B48CF690094741B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1102850C19C9BCEB0069F253 /* EmitterKit */;
+			targetProxy = 11E48E3B1B48CF690094741B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1102852619C9BCEB0069F253 /* Debug */ = {
@@ -275,6 +331,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/EmitterKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -296,6 +353,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/EmitterKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -324,6 +382,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -383,6 +442,33 @@
 			};
 			name = Release;
 		};
+		11E48E3E1B48CF690094741B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = EmitterKitSpecs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		11E48E3F1B48CF690094741B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = EmitterKitSpecs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,6 +489,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		11E48E3D1B48CF690094741B /* Build configuration list for PBXNativeTarget "EmitterKitSpecs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11E48E3E1B48CF690094741B /* Debug */,
+				11E48E3F1B48CF690094741B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
