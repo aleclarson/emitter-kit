@@ -110,7 +110,7 @@ class ChangeListener <T:Any> : Listener {
 }
 
 // 1 - Listener.keyPath
-// 2 - getHash(Listener.target
+// 2 - getHash(Listener.target)
 // 3 - getHash(Listener)
 // 4 - DynamicPointer<Listener>
 var ChangeListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()
