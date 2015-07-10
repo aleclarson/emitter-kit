@@ -120,11 +120,11 @@ var ChangeListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()
 class ChangeObserver : NSObject {
   
   let handler: NSDictionary -> Void
-  
-  override func observeValueForKeyPath (keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+
+  override func observeValueForKeyPath (keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     handler(change ?? [:])
   }
-  
+
   init (_ handler: NSDictionary -> Void) {
     self.handler = handler
   }
