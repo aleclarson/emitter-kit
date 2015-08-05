@@ -49,7 +49,7 @@ func identify (object: AnyObject!) -> UInt {
 }
 
 extension Array {
-  var nilIfEmpty: [T]! { return count > 0 ? self : nil }
+  var nilIfEmpty: [Element]! { return count > 0 ? self : nil }
 }
 
 extension Dictionary {

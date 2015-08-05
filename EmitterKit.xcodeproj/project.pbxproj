@@ -497,6 +497,7 @@
 				11E48E3F1B48CF690094741B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

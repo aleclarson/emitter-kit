@@ -1,4 +1,4 @@
-# emitter-kit v4.0.0 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
+# emitter-kit v4.0.1 [![frozen](http://badges.github.io/stability-badges/dist/frozen.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 
 &nbsp;
 
@@ -39,6 +39,10 @@ This library provides these 5 major classes:
 ### Changelog
 
 This is a list of notable changes in each version of **emitter-kit**. Many versions include unlisted bug fixes and refactoring. Some changes may not be listed (unintentionally).
+
+#### v4.0.1
+
+- Xcode 7.0 Beta 4 compatible
 
 #### v4.0.0
 
@@ -92,6 +96,6 @@ This is a list of notable changes in each version of **emitter-kit**. Many versi
 
 #### v1.0.0
 
-- Xcode 6 Beta 5 compatible
+- Xcode 6.0 Beta 5 compatible
 
 &nbsp;
