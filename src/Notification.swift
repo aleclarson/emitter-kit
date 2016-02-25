@@ -10,21 +10,25 @@ public class Notification {
   }
 
   /// Creates a Listener for an NSNotification.
+  @warn_unused_result
   public func on (handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, nil, handler, false)
   }
 
   /// Creates a Listener for an NSNotification with the given target.
+  @warn_unused_result
   public func on (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, target, handler, false)
   }
 
   /// Creates a single-use Listener for an NSNotification.
+  @warn_unused_result
   public func once (handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, nil, handler, true)
   }
 
   /// Creates a single-use Listener for an NSNotification with the given target.
+  @warn_unused_result
   public func once (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
     return NotificationListener(name, target, handler, true)
   }
