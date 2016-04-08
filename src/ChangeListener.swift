@@ -4,6 +4,7 @@ import Foundation
 extension NSObject {
 
   /// Creates a Listener for key-value observing.
+  @warn_unused_result
   public func on <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
     return on(keyPath, [.Old, .New], handler)
   }
@@ -14,6 +15,7 @@ extension NSObject {
   }
   
   /// Creates a Listener for key-value observing.
+  @warn_unused_result
   public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(false, self, keyPath, options, handler)
   }

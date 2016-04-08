@@ -1,10 +1,12 @@
 
 public class Event <EventData: Any> : Emitter {
 
+  @warn_unused_result
   public func on (handler: EventData -> Void) -> Listener {
     return EmitterListener(self, nil, castData(handler), false)
   }
   
+  @warn_unused_result
   public func on (target: AnyObject, _ handler: EventData -> Void) -> Listener {
     return EmitterListener(self, target, castData(handler), false)
   }
