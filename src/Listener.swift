@@ -4,7 +4,7 @@ public func += (inout storage: [Listener], listener: Listener) {
 }
 
 public class Listener {
-  
+
   public var isListening: Bool {
     get { return listening }
     set {
@@ -14,26 +14,26 @@ public class Listener {
       else { stopListening() }
     }
   }
-  
+
   weak var target: AnyObject!
-  
+
   let handler: Any! -> Void
-  
+
   let once: Bool
-  
+
   let targetID: String
-  
+
   var listening = false
-  
+
   func startListening () {}
-  
+
   func stopListening () {}
-  
+
   func trigger (data: Any!) {
     handler(data)
     if once { isListening = false }
   }
-  
+
   init (_ target: AnyObject!, _ handler: Any! -> Void, _ once: Bool) {
 
     targetID = (target as? String) ?? getHash(target)
@@ -46,7 +46,7 @@ public class Listener {
 
     isListening = true
   }
-  
+
   deinit {
     isListening = false
   }

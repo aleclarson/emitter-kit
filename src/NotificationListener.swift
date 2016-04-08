@@ -2,9 +2,9 @@
 import Foundation
 
 class NotificationListener : Listener {
-  
+
   let name: String
-  
+
   var observer: NSObjectProtocol!
 
   override func startListening() {
@@ -14,24 +14,24 @@ class NotificationListener : Listener {
         self.trigger($0.userInfo)
       }
     })
-    
+
     var targets = NotificationListenerCache[name] ?? [:]
     var listeners = targets[targetID] ?? [:]
     listeners[getHash(self)] = once ? StrongPointer(self) : WeakPointer(self)
     targets[targetID] = listeners
     NotificationListenerCache[name] = targets
   }
-  
+
   override func stopListening() {
     NSNotificationCenter.defaultCenter().removeObserver(observer)
-    
+
     var targets = NotificationListenerCache[name]!
     var listeners = targets[targetID]!
     listeners[getHash(self)] = nil
     targets[targetID] = listeners.nilIfEmpty
     NotificationListenerCache[name] = targets.nilIfEmpty
   }
-  
+
   init (_ name: String, _ target: AnyObject!, _ handler: NSDictionary -> Void, _ once: Bool) {
     self.name = name
     super.init(target, { handler(($0 as? NSDictionary) ?? [:]) }, once)

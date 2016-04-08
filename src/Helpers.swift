@@ -16,11 +16,11 @@ func StrongPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
 class DynamicPointer <T: AnyObject> {
 
   var object: T! { return strongPointer ?? weakPointer ?? nil }
-  
+
   init () {}
-  
+
   var strongPointer: T!
-  
+
   weak var weakPointer: T!
 }
 

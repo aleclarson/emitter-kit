@@ -13,13 +13,13 @@ extension NSObject {
   public func once <T:Any> (keyPath: String, _ handler: Change<T> -> Void) -> Listener {
     return once(keyPath, [.Old, .New], handler)
   }
-  
+
   /// Creates a Listener for key-value observing.
   @warn_unused_result
   public func on <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(false, self, keyPath, options, handler)
   }
-  
+
   /// Creates a single-use Listener for key-value observing.
   public func once <T:Any> (keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) -> Listener {
     return ChangeListener(true, self, keyPath, options, handler)
@@ -38,17 +38,17 @@ extension NSObject {
 public class Change <T:Any> : CustomStringConvertible {
 
   public let keyPath: String
-  
+
   public let oldValue: T!
-  
+
   public let newValue: T!
 
   public let isPrior: Bool
-  
+
   public var description: String {
     return "(Change = { address: \(getHash(self)), keyPath: \(keyPath), oldValue: \(oldValue), newValue: \(newValue), isPrior: \(isPrior) })"
   }
-  
+
   public init (_ keyPath: String, _ oldValue: T!, _ newValue: T!, _ isPrior: Bool) {
     self.keyPath = keyPath
     self.oldValue = oldValue
@@ -62,9 +62,9 @@ class ChangeListener <T:Any> : Listener {
   let keyPath: String
 
   let options: NSKeyValueObservingOptions
-  
+
   unowned let object: NSObject
-  
+
   var observer: ChangeObserver!
 
   func trigger (data: NSDictionary) {
@@ -73,7 +73,7 @@ class ChangeListener <T:Any> : Listener {
     let isPrior = data[NSKeyValueChangeNotificationIsPriorKey] != nil
     trigger(Change<T>(keyPath, oldValue, newValue, isPrior))
   }
-  
+
   override func startListening () {
 
     // A middleman to prevent pollution of ChangeListener property list.
@@ -89,7 +89,7 @@ class ChangeListener <T:Any> : Listener {
     targets[targetID] = listeners
     ChangeListenerCache[keyPath] = targets
   }
-  
+
   override func stopListening() {
 
     object.removeObserver(observer, forKeyPath: keyPath)
@@ -101,12 +101,12 @@ class ChangeListener <T:Any> : Listener {
     targets[targetID] = listeners.nilIfEmpty
     ChangeListenerCache[keyPath] = targets.nilIfEmpty
   }
-  
+
   init (_ once: Bool, _ object: NSObject, _ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: Change<T> -> Void) {
     self.object = object
     self.keyPath = keyPath
     self.options = options
-    
+
     super.init(nil, { handler($0 as! Change<T>) }, once)
   }
 }
@@ -120,13 +120,13 @@ var ChangeListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()
 // A sacrifice to the NSObject gods.
 // To keep away the shitload of properties from my precious ChangeListener class.
 class ChangeObserver : NSObject {
-  
+
   let handler: NSDictionary -> Void
-  
+
   override func observeValueForKeyPath (keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
     handler(change ?? [:])
   }
-  
+
   init (_ handler: NSDictionary -> Void) {
     self.handler = handler
   }
