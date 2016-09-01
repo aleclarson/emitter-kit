@@ -1,52 +1,50 @@
 
 import Foundation
 
-public class Notification {
+open class Notification {
 
-  public let name: String
+  open let name: String
 
   public init (_ name: String) {
     self.name = name
   }
 
   /// Creates a Listener for an NSNotification.
-  @warn_unused_result
-  public func on (handler: NSDictionary -> Void) -> Listener {
+  open func on (_ handler: (NSDictionary) -> Void) -> Listener {
     return NotificationListener(name, nil, handler, false)
   }
 
   /// Creates a Listener for an NSNotification with the given target.
-  @warn_unused_result
-  public func on (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
+  open func on (_ target: AnyObject!, _ handler: (NSDictionary) -> Void) -> Listener {
     return NotificationListener(name, target, handler, false)
   }
 
   /// Creates a single-use Listener for an NSNotification.
-  public func once (handler: NSDictionary -> Void) -> Listener {
+  open func once (_ handler: (NSDictionary) -> Void) -> Listener {
     return NotificationListener(name, nil, handler, true)
   }
 
   /// Creates a single-use Listener for an NSNotification with the given target.
-  public func once (target: AnyObject!, _ handler: NSDictionary -> Void) -> Listener {
+  open func once (_ target: AnyObject!, _ handler: (NSDictionary) -> Void) -> Listener {
     return NotificationListener(name, target, handler, true)
   }
 
   /// Posts an NSNotification with the given name.
-  public func emit (data: NSDictionary) {
+  open func emit (_ data: NSDictionary) {
     _emit(nil, data)
   }
 
   /// Posts an NSNotification with the given name, target, and data.
-  public func emit (target: AnyObject, _ data: NSDictionary) {
+  open func emit (_ target: AnyObject, _ data: NSDictionary) {
     _emit(target, data)
   }
 
   /// Posts an NSNotification with the given name, targets, and data.
-  public func emit (targets: [AnyObject], _ data: NSDictionary) {
+  open func emit (_ targets: [AnyObject], _ data: NSDictionary) {
     for target in targets { _emit(target, data) }
   }
 
-  func _emit (target: AnyObject!, _ data: NSDictionary!) {
-    NSNotificationCenter.defaultCenter().postNotificationName(name, object: target, userInfo: data as [NSObject : AnyObject])
+  func _emit (_ target: AnyObject!, _ data: NSDictionary!) {
+    NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name), object: target, userInfo: data as [NSObject : AnyObject])
   }
 }

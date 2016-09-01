@@ -1,13 +1,13 @@
 
 import Foundation
 
-func WeakPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
+func WeakPointer <T: AnyObject> (_ object: T) -> DynamicPointer<T> {
   let ptr = DynamicPointer<T>()
   ptr.weakPointer = object
   return ptr
 }
 
-func StrongPointer <T: AnyObject> (object: T) -> DynamicPointer<T> {
+func StrongPointer <T: AnyObject> (_ object: T) -> DynamicPointer<T> {
   let ptr = DynamicPointer<T>()
   ptr.strongPointer = object
   return ptr
@@ -26,25 +26,25 @@ class DynamicPointer <T: AnyObject> {
 
 /// Generate a unique identifier for an object.
 /// 2nd slowest. Converts to String.
-func getHash (object: AnyObject) -> String {
+func getHash (_ object: AnyObject) -> String {
   return "\(identify(object))"
 }
 
 /// Generate a unique identifier for an object.
 /// Fastest. Every other function relies on this one.
-func identify (object: AnyObject) -> UInt {
-  return ObjectIdentifier(object).uintValue
+func identify (_ object: AnyObject) -> UInt {
+  return UInt(ObjectIdentifier(object))
 }
 
 /// Generate a unique identifier for an object.
 /// Slowest. Checks for nil and converts to String.
-func getHash (object: AnyObject!) -> String {
+func getHash (_ object: AnyObject!) -> String {
   return "\(identify(object))"
 }
 
 /// Generate a unique identifier for an object.
 /// 2nd fastest. Checks for nil.
-func identify (object: AnyObject!) -> UInt {
+func identify (_ object: AnyObject!) -> UInt {
   return object != nil ? identify(object!) : 0
 }
 

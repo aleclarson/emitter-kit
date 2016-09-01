@@ -1,18 +1,18 @@
 
 import Foundation
 
-public class Emitter {
+open class Emitter {
 
   // 1 - getHash(Listener.target)
   // 2 - getHash(Listener)
   // 3 - DynamicPointer<Listener>
   var listeners = [String:[String:DynamicPointer<Listener>]]()
 
-  func emit (target: AnyObject!, _ data: Any!) {
+  func emit (_ target: AnyObject!, _ data: Any!) {
     emit((target as? String) ?? getHash(target), data)
   }
 
-  func emit (targets: [AnyObject], _ data: Any!) {
+  func emit (_ targets: [AnyObject], _ data: Any!) {
     for target in targets { emit(target, data) }
   }
 
@@ -26,7 +26,7 @@ public class Emitter {
     }
   }
 
-  private func emit (id: String, _ data: Any!) {
+  fileprivate func emit (_ id: String, _ data: Any!) {
     if let listeners = self.listeners[id] {
       for (_, listener) in listeners {
         listener.object.trigger(data)
