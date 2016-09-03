@@ -5,36 +5,36 @@ extension NSObject {
 
   /// Creates a Listener for key-value observing.
   @warn_unused_result
-  public func on <T:Any> (_ keyPath: String, _ handler: (Change<T>) -> Void) -> Listener {
+  public func on <T:NSObject> (_ keyPath: String, _ handler: @escaping (Change<T>) -> Void) -> Listener {
     return on(keyPath, [.old, .new], handler)
   }
 
   /// Creates a single-use Listener for key-value observing.
-  public func once <T:Any> (_ keyPath: String, _ handler: (Change<T>) -> Void) -> Listener {
+  public func once <T:NSObject> (_ keyPath: String, _ handler: @escaping (Change<T>) -> Void) -> Listener {
     return once(keyPath, [.old, .new], handler)
   }
 
   /// Creates a Listener for key-value observing.
-  public func on <T:Any> (_ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: (Change<T>) -> Void) -> Listener {
+  public func on <T:NSObject> (_ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: @escaping (Change<T>) -> Void) -> Listener {
     return ChangeListener(false, self, keyPath, options, handler)
   }
 
   /// Creates a single-use Listener for key-value observing.
-  public func once <T:Any> (_ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: (Change<T>) -> Void) -> Listener {
+  public func once <T:NSObject> (_ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: @escaping (Change<T>) -> Void) -> Listener {
     return ChangeListener(true, self, keyPath, options, handler)
   }
 
   /// Call this before your NSObject's dealloc phase if the given Listener array has ChangeListeners.
   public func removeListeners (_ listeners: [Listener]) {
     for listener in listeners {
-      if let listener = listener as? ChangeListener<Any> {
+      if let listener = listener as? ChangeListener<NSObject> {
         listener.isListening = false
       }
     }
   }
 }
 
-open class Change <T:Any> : CustomStringConvertible {
+open class Change <T:AnyObject> : CustomStringConvertible {
 
   open let keyPath: String
 
@@ -56,7 +56,7 @@ open class Change <T:Any> : CustomStringConvertible {
   }
 }
 
-class ChangeListener <T:Any> : Listener {
+class ChangeListener <T:AnyObject> : Listener {
 
   let keyPath: String
 
@@ -70,7 +70,7 @@ class ChangeListener <T:Any> : Listener {
     let oldValue = data[NSKeyValueChangeKey.oldKey] as? T
     let newValue = data[NSKeyValueChangeKey.newKey] as? T
     let isPrior = data[NSKeyValueChangeKey.notificationIsPriorKey] != nil
-    trigger(Change<T>(keyPath, oldValue as! _!, newValue, isPrior))
+    trigger(Change<T>(keyPath, oldValue, newValue, isPrior))
   }
 
   override func startListening () {
@@ -101,7 +101,7 @@ class ChangeListener <T:Any> : Listener {
     ChangeListenerCache[keyPath] = targets.nilIfEmpty
   }
 
-  init (_ once: Bool, _ object: NSObject, _ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: (Change<T>) -> Void) {
+  init (_ once: Bool, _ object: NSObject, _ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: @escaping (Change<T>) -> Void) {
     self.object = object
     self.keyPath = keyPath
     self.options = options
@@ -122,7 +122,7 @@ class ChangeObserver : NSObject {
 
   let handler: (NSDictionary) -> Void
 
-  override func observeValue (forKeyPath keyPath: String?, of object: Any?, change: [String : Any]?, context: UnsafeMutableRawPointer?) {
+  func observeValue (forKeyPath keyPath: String?, of object: NSObject?, change: [String : Any]?, context: UnsafeMutableRawPointer?) {
     handler(change as NSDictionary? ?? [:])
   }
 

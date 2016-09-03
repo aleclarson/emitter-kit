@@ -10,7 +10,8 @@ class NotificationListener : Listener {
   override func startListening() {
     observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: name), object: nil, queue: nil, using: {
       [unowned self] in
-      if self.targetID == getHash($0.object) {
+      
+      if self.targetID == getHash($0.object as AnyObject) {
         self.trigger(($0 as NSNotification).userInfo)
       }
     })
@@ -32,7 +33,7 @@ class NotificationListener : Listener {
     NotificationListenerCache[name] = targets.nilIfEmpty
   }
 
-  init (_ name: String, _ target: AnyObject!, _ handler: (NSDictionary) -> Void, _ once: Bool) {
+  init (_ name: String, _ target: AnyObject!, _ handler: @escaping (NSDictionary) -> Void, _ once: Bool) {
     self.name = name
     super.init(target, { handler(($0 as? NSDictionary) ?? [:]) }, once)
   }

@@ -8,12 +8,12 @@ open class Emitter {
   // 3 - DynamicPointer<Listener>
   var listeners = [String:[String:DynamicPointer<Listener>]]()
 
-  func emit (_ target: AnyObject!, _ data: Any!) {
-    emit((target as? String) ?? getHash(target), data)
+  func emit (_ data: Any!, on target: AnyObject!) {
+    emit(data, on: (target as? String) ?? getHash(target))
   }
 
-  func emit (_ targets: [AnyObject], _ data: Any!) {
-    for target in targets { emit(target, data) }
+  func emit (_ data: Any!, on targets: [AnyObject]) {
+    for target in targets { emit(data, on: target) }
   }
 
   init () {}
@@ -26,7 +26,7 @@ open class Emitter {
     }
   }
 
-  fileprivate func emit (_ id: String, _ data: Any!) {
+  fileprivate func emit (_ data: Any!, on id: String) {
     if let listeners = self.listeners[id] {
       for (_, listener) in listeners {
         listener.object.trigger(data)

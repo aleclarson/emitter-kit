@@ -17,7 +17,7 @@ class EmitterListener : Listener {
     emitter.listeners[targetID] = listeners.nilIfEmpty
   }
 
-  init (_ emitter: Emitter, _ target: AnyObject!, _ handler: (Any!) -> Void, _ once: Bool) {
+  init (_ emitter: Emitter, _ target: AnyObject!, _ handler: @escaping (Any!) -> Void, _ once: Bool) {
     self.emitter = emitter
     super.init(target, handler, once)
   }

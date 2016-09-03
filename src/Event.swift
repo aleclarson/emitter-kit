@@ -17,16 +17,16 @@ public class Event <EventData: Any> : Emitter {
     return EmitterListener(self, target, castData(handler), true)
   }
 
-  public func emit (data: EventData) {
-    super.emit(nil, data)
+  public func emit (_ data: EventData) {
+    super.emit(data, on: nil)
   }
 
-  public func emit (target: AnyObject, _ data: EventData) {
-    super.emit(target, data)
+  public func emit (_ data: EventData, on target: AnyObject) {
+    super.emit(data, on: target)
   }
 
-  public func emit (targets: [AnyObject], _ data: EventData) {
-    super.emit(targets, data)
+  public func emit (_ data: EventData, on targets: [AnyObject]) {
+    super.emit(data, on: targets)
   }
 
   public override init () {
