@@ -1,53 +1,65 @@
 
-public func += (inout storage: [Listener], listener: Listener) {
+public func += (storage: inout [Listener], listener: Listener) {
   storage.append(listener)
 }
 
 public class Listener {
 
   public var isListening: Bool {
-    get { return listening }
+    get {
+      return _listening
+    }
     set {
-      if listening == newValue { return }
-      listening = newValue
-      if listening { startListening() }
-      else { stopListening() }
+      if _listening == newValue {
+        return
+      }
+      _listening = newValue
+      if _listening {
+        _startListening()
+      } else {
+        _stopListening()
+      }
     }
   }
 
-  weak var target: AnyObject!
+  public weak var target: AnyObject!
 
-  let handler: Any! -> Void
+  public let once: Bool
 
-  let once: Bool
+  let _targetID: String
 
-  let targetID: String
+  let _handler: (Any!) -> Void
 
-  var listening = false
+  var _listening = false
 
-  func startListening () {}
+  func _startListening () {}
 
-  func stopListening () {}
+  func _stopListening () {}
 
-  func trigger (data: Any!) {
-    handler(data)
-    if once { isListening = false }
+  func _trigger (_ data: Any!) {
+    _handler(data)
+    if self.once {
+      self.isListening = false
+    }
   }
 
-  init (_ target: AnyObject!, _ handler: Any! -> Void, _ once: Bool) {
+  init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
 
-    targetID = (target as? String) ?? getHash(target)
+    _handler = handler
 
-    if !(target is String) { self.target = target }
+    if let targetID = target as? String {
+      _targetID = targetID
+    } else {
+      _targetID = getHash(target)
 
-    self.handler = handler
+      self.target = target
+    }
 
     self.once = once
-
-    isListening = true
+    self.isListening = true
   }
 
   deinit {
-    isListening = false
+    self.isListening = false
   }
 }

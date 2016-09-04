@@ -12,13 +12,13 @@ class PerformanceTests : XCTestCase {
   }
 
   func testNotificationPerformance () {
-    let n = Notification("test1")
+    let n = Notifier("test1")
 
     for _ in 0...99 {
       self.listeners += n.on { _ in }
     }
 
-    measureBlock {
+    measure {
       for _ in 0...99 {
         n.emit([:])
       }
@@ -32,7 +32,7 @@ class PerformanceTests : XCTestCase {
       self.listeners += e.on { _ in }
     }
 
-    measureBlock {
+    measure {
       for _ in 0...99 {
         e.emit([:])
       }

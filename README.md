@@ -1,38 +1,117 @@
 
-# emitter-kit
+# emitter-kit v5.0.0
 
-[![locked](https://img.shields.io/badge/stability-locked-4199FF.svg?style=flat)](https://nodejs.org/api/documentation.html#documentation_stability_index)
+![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/EmitterKit.svg?style=flat)](http://cocoadocs.org/docsets/EmitterKit)
 
-This library provides these 5 useful classes:
+A replacement for `NSNotificationCenter#addObserver` and `NSObject#addObserver` that is **type-safe** and **not verbose**.
 
-[**Event**](https://github.com/aleclarson/emitter-kit/wiki/Events-&-Signals)
-: A type-safe event emitter.
+```swift
+import EmitterKit
 
-[**Signal**](https://github.com/aleclarson/emitter-kit/wiki/Events-&-Signals#signal)
-: An event emitter that doesn't pass any data.
+// A generic event emitter (but type-safe)!
+var event = Event<T>()
 
-[**Listener**](https://github.com/aleclarson/emitter-kit/wiki/Event-Listeners)
-: An event listener!
+// Any emitted data must be the correct type.
+event.emit(data)
 
-[**Notification**](https://github.com/aleclarson/emitter-kit/wiki/Notifications)
-: Backwards-compatibility with `NSNotification`.
+// This listener will only be called once.
+// You are *not* required to retain it.
+event.once { data: T in
+  print(data)
+}
 
-[**Change**](https://github.com/aleclarson/emitter-kit/wiki/Observing-Changes)
-: Key-value observation made easy.
+// This listener won't stop listening;
+// unless you stop it manually,
+// or its Event<T> is deallocated.
+// You *are* required to retain it.
+var listener = event.on { data: T in
+  print(data)
+}
 
--
+// Stop the listener manually.
+listener.isListening = false
 
-## Motivation
+// Restart the listener (if it was stopped).
+listener.isListening = true
+```
 
-`NSNotification` & `NSNotificationCenter` are verbose and **not type-safe**.
+### Targeting
 
-This library aims to:
+A **target** allows you to associate a specific `AnyObject` with an `emit` call. This is useful when emitting events associated with classes you can't add properties to (like `UIView`).
 
-- streamline your work with event emitters & listeners
+When calling `emit` with a target, you must also call `on` or `once` with the same target in order to receive the emitted event.
 
-- be simple, but powerful
+```Swift
+let myView = UIView()
+let didTouch = Event<UITouch>()
 
-&nbsp;
+didTouch.once(myView) { touch in
+  print(touch)
+}
+
+didTouch.emit(myView, touch)
+```
+
+### NSNotification
+
+The `Notifier` class helps when you are forced to use `NSNotificationCenter` (for example, if you want to know when the keyboard has appeared).
+
+```swift
+// You are **not** required to retain this after creating your listener.
+var event = Notifier(UIKeyboardWillShowNotification)
+
+// Handle NSNotifications with style!
+listener = event.on { (userInfo: NSDictionary) in
+  print(userInfo)
+}
+```
+
+### Key-Value Observation (KVO)
+
+```swift
+// Any NSObject descendant will work.
+var view = UIView()
+
+// "Make KVO great again!" - Donald Trump
+listener = view.on("bounds") { (change: Change<CGRect>) in
+  print(change)
+}
+```
+
+### v5.0.0 changelog
+
+- Swift 3.0 + Xcode 8.0 beta 6 support
+
+- The `Signal` class was removed. (use `Event<Void>` instead)
+
+- The `Emitter` abstract class was removed.
+
+- The `EmitterListener` class was renamed `EventListener<T>`.
+
+- The `Event<T>` class no longer has a superclass.
+
+- The `Notification` class was renamed `Notifier` (to prevent collision with `Foundation.Notification`).
+
+- The `on` and `once` methods of `Event<T>` now return an `EventListener<T>` (instead of just a `Listener`)
+
+- The `on` and `once` methods of `Notifier` now return an `NotificationListener` (instead of just a `Listener`)
+
+- The `on` and `once` methods of `NSObject` now return an `ChangeListener<T>` (instead of just a `Listener`)
+
+- The `keyPath`, `options`, and `object` properties of `ChangeListener<T>` are now public.
+
+- A `listenerCount: Int` computed property was added to the `Event<T>` class.
+
+- An `event: Event<T>` property was added to the `EventListener<T>` class.
+
+The changelog for older versions can be [found here](https://github.com/aleclarson/emitter-kit/wiki/Changelog).
+
+### Known bugs
+
+- The `ChangeListener` class may throw an exception (looking for help):
+
+```
+An -observeValueForKeyPath:ofObject:change:context: message was received but not handled.```

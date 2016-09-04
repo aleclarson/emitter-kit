@@ -8,28 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		1102852F19C9BD420069F253 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102852E19C9BD420069F253 /* Event.swift */; };
-		1102853119C9BD600069F253 /* EmitterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EmitterListener.swift */; };
+		1102853119C9BD600069F253 /* EventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EventListener.swift */; };
 		1102853319C9BD6B0069F253 /* NotificationListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853219C9BD6B0069F253 /* NotificationListener.swift */; };
 		1102853519C9BD720069F253 /* ChangeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; };
-		1102853619C9BED90069F253 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBA19BEA04E00595510 /* Emitter.swift */; };
 		1102853C19C9BEDD0069F253 /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115F4CBB19BEA04E00595510 /* Listener.swift */; };
-		1102854019C9DC4F0069F253 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notification.swift */; };
-		1172DFFB19C9EBCA005A84EA /* Emitter.swift in Headers */ = {isa = PBXBuildFile; fileRef = 115F4CBA19BEA04E00595510 /* Emitter.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1102854019C9DC4F0069F253 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notifier.swift */; };
 		1172DFFD19C9EBCA005A84EA /* Event.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102852E19C9BD420069F253 /* Event.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		1172DFFE19C9EBCA005A84EA /* Notification.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notification.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172DFFE19C9EBCA005A84EA /* Notifier.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853F19C9DC4F0069F253 /* Notifier.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1172DFFF19C9EBCA005A84EA /* Listener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 115F4CBB19BEA04E00595510 /* Listener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		1172E00019C9EBCA005A84EA /* EmitterListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EmitterListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1172E00019C9EBCA005A84EA /* EventListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853019C9BD600069F253 /* EventListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1172E00119C9EBCA005A84EA /* NotificationListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853219C9BD6B0069F253 /* NotificationListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		117CC8A519CC37DF00A57695 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; };
-		117CC8A619CC37ED00A57695 /* Signal.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		11E48E3A1B48CF690094741B /* EmitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */; };
-		11E48E441B48CF730094741B /* EmitterListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E401B48CF730094741B /* EmitterListenerTests.swift */; };
+		11E48E441B48CF730094741B /* EventListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E401B48CF730094741B /* EventListenerTests.swift */; };
 		11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E411B48CF730094741B /* PerformanceTests.swift */; };
 		11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E421B48CF730094741B /* NotificationListenerTests.swift */; };
 		11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E431B48CF730094741B /* ChangeListenerTests.swift */; };
 		11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		11FCD69319CA175C006B6D44 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCD69219CA175C006B6D44 /* Signal.swift */; };
 		CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -46,21 +42,19 @@
 /* Begin PBXFileReference section */
 		1102850D19C9BCEB0069F253 /* EmitterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EmitterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1102852E19C9BD420069F253 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		1102853019C9BD600069F253 /* EmitterListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmitterListener.swift; sourceTree = "<group>"; };
+		1102853019C9BD600069F253 /* EventListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListener.swift; sourceTree = "<group>"; };
 		1102853219C9BD6B0069F253 /* NotificationListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListener.swift; sourceTree = "<group>"; };
 		1102853419C9BD720069F253 /* ChangeListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListener.swift; sourceTree = "<group>"; };
-		1102853F19C9DC4F0069F253 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		115F4CBA19BEA04E00595510 /* Emitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		1102853F19C9DC4F0069F253 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		115F4CBB19BEA04E00595510 /* Listener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmitterKit-Info.plist"; sourceTree = SOURCE_ROOT; };
 		11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmitterKitSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E48E391B48CF690094741B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11E48E401B48CF730094741B /* EmitterListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmitterListenerTests.swift; path = ../tests/EmitterListenerTests.swift; sourceTree = "<group>"; };
+		11E48E401B48CF730094741B /* EventListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListenerTests.swift; path = ../tests/EventListenerTests.swift; sourceTree = "<group>"; };
 		11E48E411B48CF730094741B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerformanceTests.swift; path = ../tests/PerformanceTests.swift; sourceTree = "<group>"; };
 		11E48E421B48CF730094741B /* NotificationListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListenerTests.swift; path = ../tests/NotificationListenerTests.swift; sourceTree = "<group>"; };
 		11E48E431B48CF730094741B /* ChangeListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeListenerTests.swift; path = ../tests/ChangeListenerTests.swift; sourceTree = "<group>"; };
 		11F4760D19CC1DA500831EE5 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		11FCD69219CA175C006B6D44 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				115F4CBB19BEA04E00595510 /* Listener.swift */,
-				1102853019C9BD600069F253 /* EmitterListener.swift */,
+				1102853019C9BD600069F253 /* EventListener.swift */,
 				1102853219C9BD6B0069F253 /* NotificationListener.swift */,
 				1102853419C9BD720069F253 /* ChangeListener.swift */,
 			);
@@ -97,10 +91,8 @@
 		1102853E19C9D5FE0069F253 /* Emitter */ = {
 			isa = PBXGroup;
 			children = (
-				115F4CBA19BEA04E00595510 /* Emitter.swift */,
-				11FCD69219CA175C006B6D44 /* Signal.swift */,
 				1102852E19C9BD420069F253 /* Event.swift */,
-				1102853F19C9DC4F0069F253 /* Notification.swift */,
+				1102853F19C9DC4F0069F253 /* Notifier.swift */,
 			);
 			name = Emitter;
 			sourceTree = "<group>";
@@ -146,7 +138,7 @@
 		11E48E361B48CF690094741B /* EmitterKitSpecs */ = {
 			isa = PBXGroup;
 			children = (
-				11E48E401B48CF730094741B /* EmitterListenerTests.swift */,
+				11E48E401B48CF730094741B /* EventListenerTests.swift */,
 				11E48E411B48CF730094741B /* PerformanceTests.swift */,
 				11E48E421B48CF730094741B /* NotificationListenerTests.swift */,
 				11E48E431B48CF730094741B /* ChangeListenerTests.swift */,
@@ -172,14 +164,12 @@
 			files = (
 				CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */,
 				11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */,
-				1172DFFB19C9EBCA005A84EA /* Emitter.swift in Headers */,
 				1172DFFD19C9EBCA005A84EA /* Event.swift in Headers */,
-				1172DFFE19C9EBCA005A84EA /* Notification.swift in Headers */,
+				1172DFFE19C9EBCA005A84EA /* Notifier.swift in Headers */,
 				1172DFFF19C9EBCA005A84EA /* Listener.swift in Headers */,
-				1172E00019C9EBCA005A84EA /* EmitterListener.swift in Headers */,
+				1172E00019C9EBCA005A84EA /* EventListener.swift in Headers */,
 				1172E00119C9EBCA005A84EA /* NotificationListener.swift in Headers */,
 				1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */,
-				117CC8A619CC37ED00A57695 /* Signal.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +224,7 @@
 				TargetAttributes = {
 					1102850C19C9BCEB0069F253 = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 					11E48E341B48CF690094741B = {
 						CreatedOnToolsVersion = 7.0;
@@ -284,12 +275,10 @@
 				117CC8A519CC37DF00A57695 /* Helpers.swift in Sources */,
 				1102852F19C9BD420069F253 /* Event.swift in Sources */,
 				1102853319C9BD6B0069F253 /* NotificationListener.swift in Sources */,
-				1102853619C9BED90069F253 /* Emitter.swift in Sources */,
 				1102853519C9BD720069F253 /* ChangeListener.swift in Sources */,
 				1102853C19C9BEDD0069F253 /* Listener.swift in Sources */,
-				11FCD69319CA175C006B6D44 /* Signal.swift in Sources */,
-				1102853119C9BD600069F253 /* EmitterListener.swift in Sources */,
-				1102854019C9DC4F0069F253 /* Notification.swift in Sources */,
+				1102853119C9BD600069F253 /* EventListener.swift in Sources */,
+				1102854019C9DC4F0069F253 /* Notifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */,
-				11E48E441B48CF730094741B /* EmitterListenerTests.swift in Sources */,
+				11E48E441B48CF730094741B /* EventListenerTests.swift in Sources */,
 				11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */,
 				11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */,
 			);
@@ -335,6 +324,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -356,6 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -452,6 +443,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -466,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

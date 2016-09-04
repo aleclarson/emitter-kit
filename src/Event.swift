@@ -1,41 +1,60 @@
 
-public class Event <EventData: Any> : Emitter {
+public class Event <T> {
 
-  @warn_unused_result
-  public func on (handler: EventData -> Void) -> Listener {
-    return EmitterListener(self, nil, castData(handler), false)
+  public var listenerCount: Int { return _listeners.count }
+
+  public init () {}
+
+  public func on (_ handler: @escaping (T) -> Void) -> EventListener<T> {
+    return EventListener(self, nil, false, handler)
   }
 
-  @warn_unused_result
-  public func on (target: AnyObject, _ handler: EventData -> Void) -> Listener {
-    return EmitterListener(self, target, castData(handler), false)
+  public func on (_ target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
+    return EventListener(self, target, false, handler)
   }
 
-  public func once (handler: EventData -> Void) -> Listener {
-    return EmitterListener(self, nil, castData(handler), true)
+  @discardableResult
+  public func once (handler: @escaping (T) -> Void) -> EventListener<T> {
+    return EventListener(self, nil, true, handler)
   }
 
-  public func once (target: AnyObject, _ handler: EventData -> Void) -> Listener {
-    return EmitterListener(self, target, castData(handler), true)
+  @discardableResult
+  public func once (target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
+    return EventListener(self, target, true, handler)
   }
 
-  public func emit (data: EventData) {
-    super.emit(nil, data)
+  public func emit (_ data: T) {
+    _emit(data, on: "0")
   }
 
-  public func emit (target: AnyObject, _ data: EventData) {
-    super.emit(target, data)
+  public func emit (_ data: T, on target: AnyObject) {
+    _emit(data, on: (target as? String) ?? getHash(target))
   }
 
-  public func emit (targets: [AnyObject], _ data: EventData) {
-    super.emit(targets, data)
+  public func emit (_ data: T, on targets: [AnyObject]) {
+    for target in targets {
+      _emit(data, on: (target as? String) ?? getHash(target))
+    }
   }
 
-  public override init () {
-    super.init()
+  // 1 - getHash(Listener.target)
+  // 2 - getHash(Listener)
+  // 3 - DynamicPointer<Listener>
+  var _listeners = [String:[String:DynamicPointer<Listener>]]()
+
+  private func _emit (_ data: Any!, on targetID: String) {
+    if let listeners = _listeners[targetID] {
+      for (_, listener) in listeners {
+        listener.object._trigger(data)
+      }
+    }
   }
 
-  private func castData (handler: EventData -> Void) -> Any! -> Void {
-    return { handler($0 as! EventData) }
+  deinit {
+    for (_, listeners) in _listeners {
+      for (_, listener) in listeners {
+        listener.object._listening = false
+      }
+    }
   }
 }

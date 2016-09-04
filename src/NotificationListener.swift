@@ -1,40 +1,55 @@
 
 import Foundation
 
-class NotificationListener : Listener {
+public class NotificationListener : Listener {
 
-  let name: String
+  public let name: String
 
-  var observer: NSObjectProtocol!
+  var _observer: NSObjectProtocol!
 
-  override func startListening() {
-    observer = NSNotificationCenter.defaultCenter().addObserverForName(name, object: nil, queue: nil, usingBlock: {
-      [unowned self] in
-      if self.targetID == getHash($0.object) {
-        self.trigger($0.userInfo)
+  override func _startListening() {
+
+    _observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: self.name), object: nil, queue: nil, using: {
+      [unowned self] (notif: Notification) in
+
+      // `getHash(notif.object as AnyObject)` returns an
+      // incorrect value when `notif.object` equals nil.
+      if let target: AnyObject = notif.object as AnyObject? {
+        if self._targetID != getHash(target) {
+          return
+        }
+      } else if self._targetID != "0" {
+        return
       }
+
+      self._trigger(notif.userInfo)
     })
 
+    // Add self to global cache.
     var targets = NotificationListenerCache[name] ?? [:]
-    var listeners = targets[targetID] ?? [:]
+    var listeners = targets[_targetID] ?? [:]
     listeners[getHash(self)] = once ? StrongPointer(self) : WeakPointer(self)
-    targets[targetID] = listeners
+    targets[_targetID] = listeners
     NotificationListenerCache[name] = targets
   }
 
-  override func stopListening() {
-    NSNotificationCenter.defaultCenter().removeObserver(observer)
+  override func _stopListening() {
 
-    var targets = NotificationListenerCache[name]!
-    var listeners = targets[targetID]!
+    NotificationCenter.default.removeObserver(_observer)
+
+    // Remove self from global cache.
+    var targets = NotificationListenerCache[self.name]!
+    var listeners = targets[_targetID]!
     listeners[getHash(self)] = nil
-    targets[targetID] = listeners.nilIfEmpty
-    NotificationListenerCache[name] = targets.nilIfEmpty
+    targets[_targetID] = listeners.nilIfEmpty
+    NotificationListenerCache[self.name] = targets.nilIfEmpty
   }
 
-  init (_ name: String, _ target: AnyObject!, _ handler: NSDictionary -> Void, _ once: Bool) {
+  init (_ name: String, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (NSDictionary) -> Void) {
     self.name = name
-    super.init(target, { handler(($0 as? NSDictionary) ?? [:]) }, once)
+    super.init(target, once) {
+      handler(($0 as? NSDictionary) ?? [:])
+    }
   }
 }
 
