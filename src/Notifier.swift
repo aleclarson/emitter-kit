@@ -3,9 +3,13 @@ import Foundation
 
 public class Notifier {
 
-  public let name: String
+  public let name: Notification.Name
 
   public init (_ name: String) {
+    self.name = Notification.Name(name)
+  }
+
+  public init (_ name: Notification.Name) {
     self.name = name
   }
 
@@ -42,6 +46,6 @@ public class Notifier {
   }
 
   private func _emit (_ data: NSDictionary!, on target: AnyObject!) {
-    NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name), object: target, userInfo: data as [NSObject : AnyObject])
+    NotificationCenter.default.post(name: name, object: target, userInfo: data as [NSObject : AnyObject])
   }
 }
