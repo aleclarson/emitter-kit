@@ -3,13 +3,13 @@ import Foundation
 
 public class NotificationListener : Listener {
 
-  public let name: String
+  public let name: Notification.Name
 
   var _observer: NSObjectProtocol!
 
   override func _startListening() {
 
-    _observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: self.name), object: nil, queue: nil, using: {
+    _observer = NotificationCenter.default.addObserver(forName: self.name, object: nil, queue: nil, using: {
       [unowned self] (notif: Notification) in
 
       // `getHash(notif.object as AnyObject)` returns an
@@ -45,7 +45,7 @@ public class NotificationListener : Listener {
     NotificationListenerCache[self.name] = targets.nilIfEmpty
   }
 
-  init (_ name: String, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (NSDictionary) -> Void) {
+  init (_ name: Notification.Name, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (NSDictionary) -> Void) {
     self.name = name
     super.init(target, once) {
       handler(($0 as? NSDictionary) ?? [:])
@@ -57,4 +57,4 @@ public class NotificationListener : Listener {
 // 2 - getHash(Listener.target)
 // 3 - getHash(Listener)
 // 4 - DynamicPointer<Listener>
-var NotificationListenerCache = [String:[String:[String:DynamicPointer<Listener>]]]()
+var NotificationListenerCache = [AnyHashable: [String: [String: DynamicPointer<Listener>]] ]()
