@@ -1,5 +1,5 @@
 
-# emitter-kit v5.0.0
+# emitter-kit v5.0.1
 
 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
@@ -109,9 +109,3 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
 
 The changelog for older versions can be [found here](https://github.com/aleclarson/emitter-kit/wiki/Changelog).
 
-### Known bugs
-
-- The `ChangeListener` class may throw an exception (looking for help):
-
-```
-An -observeValueForKeyPath:ofObject:change:context: message was received but not handled.```
