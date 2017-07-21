@@ -12,15 +12,19 @@ public class NotificationListener : Listener {
     _observer = NotificationCenter.default.addObserver(forName: self.name, object: nil, queue: nil, using: {
       [unowned self] (notif: Notification) in
 
-      // `getHash(notif.object as AnyObject)` returns an
-      // incorrect value when `notif.object` equals nil.
-      if let target: AnyObject = notif.object as AnyObject? {
-        if self._targetID != getHash(target) {
-          return
-        }
-      } else if self._targetID != "0" {
-        return
-      }
+      // `getHash(notif.object as AnyObject)` returns
+      // '0' when `notif.object` equals nil. Listen to all 
+      // objects emitting `name` when listening on nil, mirroring
+      // functionality in NSNotificationCenter.
+      if self._targetID != "0" {
+        if let target: AnyObject = notif.object as AnyObject? {
+          if self._targetID != getHash(target) {
+            return
+          }
+       } else {
+         return
+       }
+     }
 
       self._trigger(notif.userInfo)
     })
