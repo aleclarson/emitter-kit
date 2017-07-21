@@ -21,8 +21,10 @@ public class NotificationListener : Listener {
           if self._targetID != getHash(target) {
             return
           }
-        } 
-      }
+       } else {
+         return
+       }
+     }
 
       self._trigger(notif.userInfo)
     })
