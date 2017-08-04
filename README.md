@@ -1,5 +1,5 @@
 
-# emitter-kit v5.0.1
+# emitter-kit v5.1.0
 
 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
@@ -64,8 +64,8 @@ The `Notifier` class helps when you are forced to use `NSNotificationCenter` (fo
 var event = Notifier(UIKeyboardWillShowNotification)
 
 // Handle NSNotifications with style!
-listener = event.on { (userInfo: NSDictionary) in
-  print(userInfo)
+listener = event.on { (notif: Notification) in
+  print(notif.userInfo)
 }
 ```
 
@@ -80,6 +80,12 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
   print(change)
 }
 ```
+
+### v5.1.0 changelog
+
+- The `NotificationListener` class now takes a `Notification` instead of an `NSDictionary`.
+
+- A `NotificationListener` without a target will now receive every `Notification` with its name, regardless of the value of `notif.object`.
 
 ### v5.0.0 changelog
 
