@@ -21,12 +21,12 @@ public class NotificationListener : Listener {
           if self._targetID != getHash(target) {
             return
           }
-       } else {
-         return
-       }
-     }
+        } else {
+          return
+        }
+      }
 
-      self._trigger(notif.userInfo)
+      self._trigger(notif)
     })
 
     // Add self to global cache.
@@ -49,10 +49,10 @@ public class NotificationListener : Listener {
     NotificationListenerCache[self.name] = targets.nilIfEmpty
   }
 
-  init (_ name: Notification.Name, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (NSDictionary) -> Void) {
+  init (_ name: Notification.Name, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (Notification) -> Void) {
     self.name = name
     super.init(target, once) {
-      handler(($0 as? NSDictionary) ?? [:])
+      handler($0 as! Notification)
     }
   }
 }

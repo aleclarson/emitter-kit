@@ -13,21 +13,21 @@ public class Notifier {
     self.name = name
   }
 
-  public func on (_ handler: @escaping (NSDictionary) -> Void) -> NotificationListener {
+  public func on (_ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, nil, false, handler)
   }
 
-  public func on (_ target: AnyObject!, _ handler: @escaping (NSDictionary) -> Void) -> NotificationListener {
+  public func on (_ target: AnyObject!, _ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, target, false, handler)
   }
 
   @discardableResult
-  public func once (_ handler: @escaping (NSDictionary) -> Void) -> NotificationListener {
+  public func once (_ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, nil, true, handler)
   }
 
   @discardableResult
-  public func once (_ target: AnyObject!, _ handler: @escaping (NSDictionary) -> Void) -> NotificationListener {
+  public func once (_ target: AnyObject!, _ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, target, true, handler)
   }
 
