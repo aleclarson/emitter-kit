@@ -52,6 +52,16 @@ class EventListenerTests: XCTestCase {
     XCTAssertTrue(calls > 1, "EventListener stopped listening after one execution")
   }
   
+  func testOnStopBeforeEmit () {
+    listener = event.on {
+      self.calls += 1
+    }
+    listener.isListening = false
+
+    event.emit()
+    XCTAssertTrue(calls == 0, "'EventListener.isListening = false' has no effect")
+  }
+
   func testOnDeinit () {
     listener = event.on {
       self.calls += 1
