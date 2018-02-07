@@ -100,7 +100,8 @@
 		115F4C8D19BE9FCA00595510 = {
 			isa = PBXGroup;
 			children = (
-				115F4C9819BE9FCA00595510 /* EmitterKit */,
+				115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */,
+				115F4CB819BEA04E00595510 /* src */,
 				11E48E361B48CF690094741B /* EmitterKitSpecs */,
 				115F4C9719BE9FCA00595510 /* Products */,
 			);
@@ -113,15 +114,6 @@
 				11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		115F4C9819BE9FCA00595510 /* EmitterKit */ = {
-			isa = PBXGroup;
-			children = (
-				115F4CB819BEA04E00595510 /* src */,
-				115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */,
-			);
-			path = EmitterKit;
 			sourceTree = "<group>";
 		};
 		115F4CB819BEA04E00595510 /* src */ = {
