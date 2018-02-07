@@ -1,6 +1,7 @@
 
 public class Event <T> {
 
+  @available(*, deprecated, message: "This property is not accurate; please use 'getListeners().count' instead.")
   public var listenerCount: Int { return _listeners.count }
 
   public init () {}
@@ -35,6 +36,11 @@ public class Event <T> {
     for target in targets {
       _emit(data, on: (target as? String) ?? getHash(target))
     }
+  }
+
+  public func getListeners (_ target: AnyObject?) -> [Listener] {
+    let targetID = (target as? String) ?? getHash(target)
+    return _listeners[targetID]?.map({ $0.object }) ?? []
   }
 
   // key == getHash(listener.target)
