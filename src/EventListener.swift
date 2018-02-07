@@ -4,10 +4,14 @@ public class EventListener <T> : Listener {
   public weak var event: Event<T>!
 
   override func _startListening () {
-    if self.event == nil { return }
-    var listeners = self.event._listeners[_targetID] ?? [:]
-    listeners[getHash(self)] = once ? StrongPointer(self) : WeakPointer(self)
-    self.event._listeners[_targetID] = listeners
+    let ptr: DynamicPointer<Listener> =
+      once ? StrongPointer(self) : WeakPointer(self)
+
+    if event._listeners[_targetID] == nil {
+      event._listeners[_targetID] = [ptr]
+    } else {
+      event._listeners[_targetID]!.append(ptr)
+    }
   }
 
   init (_ event: Event<T>, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (T) -> Void) {
