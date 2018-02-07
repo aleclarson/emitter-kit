@@ -15,6 +15,7 @@ public class EventListener <T> : Listener {
   }
 
   override func _stopListening() {
+    if (event._emitting) { return }
     event._listeners[_targetID] =
       event._listeners[_targetID]!.filter({
         $0.object !== self

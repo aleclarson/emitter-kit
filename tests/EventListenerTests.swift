@@ -62,6 +62,32 @@ class EventListenerTests: XCTestCase {
     XCTAssertTrue(calls == 0, "'EventListener.isListening = false' has no effect")
   }
 
+  // The listener is stopped while being triggered.
+  func testOnStopDuringTrigger () {
+    listener = event.on {
+      self.calls += 1
+      self.listener.isListening = false
+    }
+
+    event.emit()
+    event.emit()
+    XCTAssertTrue(calls == 1, "EventListener failed to remove itself during an emit")
+  }
+
+  // The listener is stopped during an emit, but before it is triggered.
+  func testOnStopBeforeTrigger () {
+    let before = event.on {
+      self.calls += 1
+      self.listener.isListening = false
+    }
+    listener = event.on {
+      self.calls += 1
+    }
+
+    event.emit()
+    XCTAssertTrue(calls == 1, "EventListener was triggered even though it was stopped")
+  }
+
   func testOnDeinit () {
     listener = event.on {
       self.calls += 1
@@ -75,7 +101,7 @@ class EventListenerTests: XCTestCase {
   func testEmitterDeinit () {
     listener = event.on {}
     event = nil
-    
+
     XCTAssertFalse(listener.isListening, "EventListener did not stop listening after its Emitter turned nil")
   }
 }

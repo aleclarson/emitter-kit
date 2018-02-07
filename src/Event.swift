@@ -46,15 +46,22 @@ public class Event <T> {
   // key == getHash(listener.target)
   var _listeners = [String:[DynamicPointer<Listener>]]()
 
+  // Avoid unnecessary removal if a listener is stopped during emit.
+  var _emitting = false
+
   private func _emit (_ data: Any!, on targetID: String) {
     if _listeners[targetID] != nil {
+      _emitting = true
       _listeners[targetID] = _listeners[targetID]!.filter({
         if let listener = $0.object {
-          listener._trigger(data)
-          return listener._listening
+          if (listener._listening) {
+            listener._trigger(data)
+            return listener._listening
+          }
         }
         return false
       }).nilIfEmpty
+      _emitting = false
     }
   }
 
