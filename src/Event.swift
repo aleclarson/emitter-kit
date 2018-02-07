@@ -60,8 +60,8 @@ public class Event <T> {
 
   deinit {
     for (_, listeners) in _listeners {
-      for (_, listener) in listeners {
-        listener.object._listening = false
+      for listener in listeners {
+        listener.object?._listening = false
       }
     }
   }
