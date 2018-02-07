@@ -18,6 +18,16 @@ class EventListenerTests: XCTestCase {
     calls = 0
   }
 
+  func testCallOrder () {
+    var calls = [Int]()
+    let listeners = [Int](0..<5).map {
+      (i) in event.on { calls.append(i) }
+    }
+
+    event.emit()
+    XCTAssertEqual(calls, [0, 1, 2, 3, 4])
+  }
+
   func testOnce () {
     event.once {
       self.calls += 1

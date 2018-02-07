@@ -37,16 +37,18 @@ public class Event <T> {
     }
   }
 
-  // 1 - getHash(Listener.target)
-  // 2 - getHash(Listener)
-  // 3 - DynamicPointer<Listener>
-  var _listeners = [String:[String:DynamicPointer<Listener>]]()
+  // key == getHash(listener.target)
+  var _listeners = [String:[DynamicPointer<Listener>]]()
 
   private func _emit (_ data: Any!, on targetID: String) {
-    if let listeners = _listeners[targetID] {
-      for (_, listener) in listeners {
-        listener.object._trigger(data)
-      }
+    if _listeners[targetID] != nil {
+      _listeners[targetID] = _listeners[targetID]!.filter({
+        if let listener = $0.object {
+          listener._trigger(data)
+          return listener._listening
+        }
+        return false
+      }).nilIfEmpty
     }
   }
 

@@ -10,13 +10,6 @@ public class EventListener <T> : Listener {
     self.event._listeners[_targetID] = listeners
   }
 
-  override func _stopListening () {
-    if self.event == nil { return }
-    var listeners = self.event._listeners[_targetID]!
-    listeners[getHash(self)] = nil
-    self.event._listeners[_targetID] = listeners.nilIfEmpty
-  }
-
   init (_ event: Event<T>, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (T) -> Void) {
     self.event = event
     super.init(target, once, {
