@@ -66,3 +66,20 @@ public class Event <T> {
     }
   }
 }
+
+public extension Event where T == Void {
+
+  func emit () {
+    _emit((), on: "0")
+  }
+
+  func emit (on target: AnyObject) {
+    _emit((), on: (target as? String) ?? getHash(target))
+  }
+
+  func emit (on targets: [AnyObject]) {
+    for target in targets {
+      _emit((), on: (target as? String) ?? getHash(target))
+    }
+  }
+}
