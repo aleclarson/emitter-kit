@@ -40,6 +40,7 @@ public class NotificationListener : Listener {
   override func _stopListening() {
 
     NotificationCenter.default.removeObserver(_observer)
+    _observer = nil
 
     // Remove self from global cache.
     var targets = NotificationListenerCache[self.name]!
