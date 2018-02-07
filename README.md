@@ -1,5 +1,5 @@
 
-# emitter-kit v5.1.0
+# emitter-kit v5.2.0
 
 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
@@ -80,6 +80,13 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
   print(change)
 }
 ```
+
+### v5.2.0 changelog
+
+- Added the `Event.getListeners` method
+- Listeners are now always called in the order they were added
+- Event<Void>.emit() can be called without an argument
+- Carthage support has been improved
 
 ### v5.1.0 changelog
 
