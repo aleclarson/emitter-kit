@@ -18,7 +18,7 @@ class NotificationListenerTests: XCTestCase {
 
   func testOnce () {
     listener = event.once {
-      XCTAssertNotNil($0["test"], "NotificationListener failed to receive intact NSDictionary")
+      XCTAssertNotNil($0.userInfo!["test"], "NotificationListener failed to receive intact NSDictionary")
       self.calls += 1
     }
 
