@@ -20,7 +20,7 @@ public class EventListener <T> : Listener {
   override func _stopListening() {
     if (event._emitting) { return }
     
-    objc_setAssociatedObject(event, &key, nil, .OBJC_ASSOCIATION_RETAIN)
+    objc_setAssociatedObject(event, &objcAssociatedKey, nil, .OBJC_ASSOCIATION_RETAIN)
 
     event._listeners[_targetID] =
       event._listeners[_targetID]!.filter({
@@ -41,6 +41,6 @@ public class EventListener <T> : Listener {
       handler($0 as! T)
     })
     
-    objc_setAssociatedObject(event, &key, self, .OBJC_ASSOCIATION_RETAIN)
+    objc_setAssociatedObject(event, &objcAssociatedKey, self, .OBJC_ASSOCIATION_RETAIN)
   }
 }
