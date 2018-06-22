@@ -1,6 +1,9 @@
+import ObjectiveC
 
 public class EventListener <T> : Listener {
 
+  private var objcAssociatedKey: Void?
+    
   public weak var event: Event<T>!
 
   override func _startListening () {
@@ -16,6 +19,9 @@ public class EventListener <T> : Listener {
 
   override func _stopListening() {
     if (event._emitting) { return }
+    
+    objc_setAssociatedObject(event, &key, nil, .OBJC_ASSOCIATION_RETAIN)
+
     event._listeners[_targetID] =
       event._listeners[_targetID]!.filter({
         $0.object !== self
@@ -34,5 +40,7 @@ public class EventListener <T> : Listener {
     super.init(target, once, {
       handler($0 as! T)
     })
+    
+    objc_setAssociatedObject(event, &key, self, .OBJC_ASSOCIATION_RETAIN)
   }
 }

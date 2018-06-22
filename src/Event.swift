@@ -6,10 +6,12 @@ public class Event <T> {
 
   public init () {}
 
+  @discardableResult
   public func on (_ handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, nil, false, handler)
   }
 
+  @discardableResult
   public func on (_ target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, target, false, handler)
   }

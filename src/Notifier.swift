@@ -13,10 +13,12 @@ public class Notifier {
     self.name = name
   }
 
+  @discardableResult
   public func on (_ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, nil, false, handler)
   }
 
+  @discardableResult
   public func on (_ target: AnyObject!, _ handler: @escaping (Notification) -> Void) -> NotificationListener {
     return NotificationListener(name, target, false, handler)
   }

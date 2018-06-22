@@ -87,16 +87,6 @@ class EventListenerTests: XCTestCase {
     event.emit()
     XCTAssertTrue(calls == 1, "EventListener was triggered even though it was stopped")
   }
-
-  func testOnDeinit () {
-    listener = event.on {
-      self.calls += 1
-    }
-    listener = nil
-
-    event.emit()
-    XCTAssertTrue(calls == 0, "EventListener did not stop listening on deinit")
-  }
   
   func testEmitterDeinit () {
     listener = event.on {}
