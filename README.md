@@ -1,5 +1,5 @@
 
-# emitter-kit v5.2.0
+# emitter-kit v5.2.1
 
 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
@@ -80,6 +80,9 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
   print(change)
 }
 ```
+### v5.2.1 changelog
+
+- Fix Carthage compatibility for non iOS platforms
 
 ### v5.2.0 changelog
 
@@ -121,4 +124,3 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
 - An `event: Event<T>` property was added to the `EventListener<T>` class.
 
 The changelog for older versions can be [found here](https://github.com/aleclarson/emitter-kit/wiki/Changelog).
-
