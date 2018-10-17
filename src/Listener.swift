@@ -28,7 +28,7 @@ public class Listener {
 
   let _targetID: String
 
-  let _handler: (Any!) -> Void
+  let _handler: (Any) -> Void
 
   var _listening = false
 
@@ -43,7 +43,7 @@ public class Listener {
     }
   }
 
-  init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
+  init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any) -> Void) {
 
     _handler = handler
 
