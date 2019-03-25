@@ -38,6 +38,8 @@ listener.isListening = false
 listener.isListening = true
 ```
 
+&nbsp;
+
 ### Targeting
 
 A **target** allows you to associate a specific `AnyObject` with an `emit` call. This is useful when emitting events associated with classes you can't add properties to (like `UIView`).
@@ -55,6 +57,8 @@ didTouch.once(myView) { touch in
 didTouch.emit(myView, touch)
 ```
 
+&nbsp;
+
 ### NSNotification
 
 The `Notifier` class helps when you are forced to use `NSNotificationCenter` (for example, if you want to know when the keyboard has appeared).
@@ -69,6 +73,8 @@ listener = event.on { (notif: Notification) in
 }
 ```
 
+&nbsp;
+
 ### Key-Value Observation (KVO)
 
 ```swift
@@ -80,6 +86,20 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
   print(change)
 }
 ```
+
+&nbsp;
+
+### Thread Safety
+
+⚠️ None of the classes in EmitterKit are thread-safe!
+
+The following actions must be done on the same thread, or you need manual locking:
+- Emit an event
+- Add/remove a listener
+- Set the `isListening` property of a listener
+
+&nbsp;
+
 ### v5.2.1 changelog
 
 - Fix Carthage compatibility for non iOS platforms
