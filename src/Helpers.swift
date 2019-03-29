@@ -15,13 +15,13 @@ func StrongPointer <T: Any> (_ object: T) -> DynamicPointer<T> {
 
 class DynamicPointer <T: AnyObject> {
 
-  var object: T! { return strongPointer ?? weakPointer ?? nil }
+  var object: T? { return strongPointer ?? weakPointer }
 
   init () {}
 
-  var strongPointer: T!
+  var strongPointer: T?
 
-  weak var weakPointer: T!
+  weak var weakPointer: T?
 }
 
 /// Generate a unique identifier for an object.

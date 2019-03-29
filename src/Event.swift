@@ -40,7 +40,7 @@ public class Event <T> {
 
   public func getListeners (_ target: AnyObject?) -> [Listener] {
     let targetID = (target as? String) ?? getHash(target)
-    return _listeners[targetID]?.map({ $0.object }) ?? []
+    return _listeners[targetID]?.compactMap({ $0.object }) ?? []
   }
 
   // key == getHash(listener.target)
@@ -52,7 +52,7 @@ public class Event <T> {
   private func _emit (_ data: Any!, on targetID: String) {
     if _listeners[targetID] != nil {
       _emitting = true
-      _listeners[targetID] = _listeners[targetID]!.filter({
+      _listeners[targetID] = _listeners[targetID]?.filter({
         if let listener = $0.object {
           if (listener._listening) {
             listener._trigger(data)

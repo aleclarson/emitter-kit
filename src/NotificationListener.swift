@@ -43,11 +43,11 @@ public class NotificationListener : Listener {
     _observer = nil
 
     // Remove self from global cache.
-    var targets = NotificationListenerCache[self.name]!
-    var listeners = targets[_targetID]!
-    listeners[getHash(self)] = nil
-    targets[_targetID] = listeners.nilIfEmpty
-    NotificationListenerCache[self.name] = targets.nilIfEmpty
+    var targets = NotificationListenerCache[self.name]
+    var listeners = targets?[_targetID]
+    listeners?[getHash(self)] = nil
+    targets?[_targetID] = listeners?.nilIfEmpty
+    NotificationListenerCache[self.name] = targets?.nilIfEmpty
   }
 
   init (_ name: Notification.Name, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (Notification) -> Void) {

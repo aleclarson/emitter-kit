@@ -10,14 +10,14 @@ public class EventListener <T> : Listener {
     if event._listeners[_targetID] == nil {
       event._listeners[_targetID] = [ptr]
     } else {
-      event._listeners[_targetID]!.append(ptr)
+      event._listeners[_targetID]?.append(ptr)
     }
   }
 
   override func _stopListening() {
     if (event._emitting) { return }
     event._listeners[_targetID] =
-      event._listeners[_targetID]!.filter({
+      event._listeners[_targetID]?.filter({
         $0.object !== self
       }).nilIfEmpty
   }

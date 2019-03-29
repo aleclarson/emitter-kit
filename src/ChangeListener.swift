@@ -96,11 +96,11 @@ public class ChangeListener <T> : Listener {
     self.object.removeObserver(_observer, forKeyPath: self.keyPath)
 
     // Remove self from global cache.
-    var targets = ChangeListenerCache[self.keyPath]!
-    var listeners = targets[_targetID]!
-    listeners[getHash(self)] = nil
-    targets[_targetID] = listeners.nilIfEmpty
-    ChangeListenerCache[self.keyPath] = targets.nilIfEmpty
+    var targets = ChangeListenerCache[self.keyPath]
+    var listeners = targets?[_targetID]
+    listeners?[getHash(self)] = nil
+    targets?[_targetID] = listeners?.nilIfEmpty
+    ChangeListenerCache[self.keyPath] = targets?.nilIfEmpty
   }
 
   init (_ once: Bool, _ object: NSObject, _ keyPath: String, _ options: NSKeyValueObservingOptions, _ handler: @escaping (Change<T>) -> Void) {
