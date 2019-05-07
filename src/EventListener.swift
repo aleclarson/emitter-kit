@@ -32,7 +32,7 @@ public class EventListener <T> : Listener {
   init (_ event: Event<T>, _ target: AnyObject!, _ once: Bool, _ handler: @escaping (T) -> Void) {
     self.event = event
     super.init(target, once, {
-      handler($0 as! T)
+      handler($0 as AnyObject as! T)
     })
   }
 }
