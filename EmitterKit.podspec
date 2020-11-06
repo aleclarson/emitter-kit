@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'EmitterKit'
-  s.version = '5.2.2'
+  s.version = '5.2.3'
   s.license = 'MIT'
   s.summary = 'Type-safe event handling for Swift'
   s.homepage = 'https://github.com/aleclarson/emitter-kit'

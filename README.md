@@ -1,5 +1,5 @@
 
-# emitter-kit v5.2.2
+# emitter-kit v5.2.3
 
 ![stable](https://img.shields.io/badge/stability-stable-4EBA0F.svg?style=flat)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EmitterKit.svg?style=flat)](https://cocoapods.org/pods/EmitterKit)
