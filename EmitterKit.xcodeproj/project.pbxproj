@@ -21,11 +21,11 @@
 		1172E00219C9EBCA005A84EA /* ChangeListener.swift in Headers */ = {isa = PBXBuildFile; fileRef = 1102853419C9BD720069F253 /* ChangeListener.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		117CC8A519CC37DF00A57695 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; };
 		11E48E3A1B48CF690094741B /* EmitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1102850D19C9BCEB0069F253 /* EmitterKit.framework */; };
-		11E48E441B48CF730094741B /* EventListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E401B48CF730094741B /* EventListenerTests.swift */; };
-		11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E411B48CF730094741B /* PerformanceTests.swift */; };
-		11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E421B48CF730094741B /* NotificationListenerTests.swift */; };
-		11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E48E431B48CF730094741B /* ChangeListenerTests.swift */; };
 		11F4760E19CC1DA500831EE5 /* Helpers.swift in Headers */ = {isa = PBXBuildFile; fileRef = 11F4760D19CC1DA500831EE5 /* Helpers.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7081D812555F7B200A75E94 /* NotificationListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7081D7C2555F7B200A75E94 /* NotificationListenerTests.swift */; };
+		C7081D822555F7B200A75E94 /* ChangeListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7081D7D2555F7B200A75E94 /* ChangeListenerTests.swift */; };
+		C7081D832555F7B200A75E94 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7081D7E2555F7B200A75E94 /* PerformanceTests.swift */; };
+		C7081D852555F7B200A75E94 /* EventListenerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7081D802555F7B200A75E94 /* EventListenerTests.swift */; };
 		CEB7AFFD1B11F01D007888F7 /* EmitterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -50,11 +50,11 @@
 		115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EmitterKit-Info.plist"; sourceTree = SOURCE_ROOT; };
 		11E48E351B48CF690094741B /* EmitterKitSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmitterKitSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E48E391B48CF690094741B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11E48E401B48CF730094741B /* EventListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListenerTests.swift; path = ../tests/EventListenerTests.swift; sourceTree = "<group>"; };
-		11E48E411B48CF730094741B /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerformanceTests.swift; path = ../tests/PerformanceTests.swift; sourceTree = "<group>"; };
-		11E48E421B48CF730094741B /* NotificationListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListenerTests.swift; path = ../tests/NotificationListenerTests.swift; sourceTree = "<group>"; };
-		11E48E431B48CF730094741B /* ChangeListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeListenerTests.swift; path = ../tests/ChangeListenerTests.swift; sourceTree = "<group>"; };
 		11F4760D19CC1DA500831EE5 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		C7081D7C2555F7B200A75E94 /* NotificationListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListenerTests.swift; sourceTree = "<group>"; };
+		C7081D7D2555F7B200A75E94 /* ChangeListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListenerTests.swift; sourceTree = "<group>"; };
+		C7081D7E2555F7B200A75E94 /* PerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		C7081D802555F7B200A75E94 /* EventListenerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListenerTests.swift; sourceTree = "<group>"; };
 		CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmitterKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,9 +100,9 @@
 		115F4C8D19BE9FCA00595510 = {
 			isa = PBXGroup;
 			children = (
+				C7081D772555F5D200A75E94 /* Tests */,
+				C7081D742555F55100A75E94 /* Sources */,
 				115F4CBC19BEA04E00595510 /* EmitterKit-Info.plist */,
-				115F4CB819BEA04E00595510 /* src */,
-				11E48E361B48CF690094741B /* EmitterKitSpecs */,
 				115F4C9719BE9FCA00595510 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,7 +116,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		115F4CB819BEA04E00595510 /* src */ = {
+		115F4CB819BEA04E00595510 /* EmitterKit */ = {
 			isa = PBXGroup;
 			children = (
 				CEB7AFFC1B11F01D007888F7 /* EmitterKit.h */,
@@ -124,16 +124,17 @@
 				1102853E19C9D5FE0069F253 /* Emitter */,
 				1102853D19C9D5F90069F253 /* Listener */,
 			);
-			path = src;
+			name = EmitterKit;
+			path = Sources/EmitterKit;
 			sourceTree = SOURCE_ROOT;
 		};
 		11E48E361B48CF690094741B /* EmitterKitSpecs */ = {
 			isa = PBXGroup;
 			children = (
-				11E48E401B48CF730094741B /* EventListenerTests.swift */,
-				11E48E411B48CF730094741B /* PerformanceTests.swift */,
-				11E48E421B48CF730094741B /* NotificationListenerTests.swift */,
-				11E48E431B48CF730094741B /* ChangeListenerTests.swift */,
+				C7081D7D2555F7B200A75E94 /* ChangeListenerTests.swift */,
+				C7081D802555F7B200A75E94 /* EventListenerTests.swift */,
+				C7081D7C2555F7B200A75E94 /* NotificationListenerTests.swift */,
+				C7081D7E2555F7B200A75E94 /* PerformanceTests.swift */,
 				11E48E391B48CF690094741B /* Info.plist */,
 			);
 			path = EmitterKitSpecs;
@@ -145,6 +146,22 @@
 				11F4760D19CC1DA500831EE5 /* Helpers.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C7081D742555F55100A75E94 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				115F4CB819BEA04E00595510 /* EmitterKit */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C7081D772555F5D200A75E94 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				11E48E361B48CF690094741B /* EmitterKitSpecs */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +237,7 @@
 					};
 					11E48E341B48CF690094741B = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1210;
 					};
 				};
 			};
@@ -229,6 +246,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -279,10 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11E48E471B48CF730094741B /* ChangeListenerTests.swift in Sources */,
-				11E48E441B48CF730094741B /* EventListenerTests.swift in Sources */,
-				11E48E461B48CF730094741B /* NotificationListenerTests.swift in Sources */,
-				11E48E451B48CF730094741B /* PerformanceTests.swift in Sources */,
+				C7081D812555F7B200A75E94 /* NotificationListenerTests.swift in Sources */,
+				C7081D822555F7B200A75E94 /* ChangeListenerTests.swift in Sources */,
+				C7081D852555F7B200A75E94 /* EventListenerTests.swift in Sources */,
+				C7081D832555F7B200A75E94 /* PerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,13 +480,15 @@
 		11E48E3E1B48CF690094741B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = EmitterKitSpecs/Info.plist;
+				INFOPLIST_FILE = Tests/EmitterKitSpecs/EmitterKitSpecs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvos appletvsimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3";
@@ -478,10 +498,11 @@
 		11E48E3F1B48CF690094741B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = EmitterKitSpecs/Info.plist;
+				INFOPLIST_FILE = Tests/EmitterKitSpecs/EmitterKitSpecs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mysterycloud.EmitterKitSpecs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
