@@ -86,6 +86,9 @@ listener = view.on("bounds") { (change: Change<CGRect>) in
   print(change)
 }
 ```
+### v5.2.1 changelog
+
+- Fix Carthage compatibility for non iOS platforms
 
 &nbsp;
 
