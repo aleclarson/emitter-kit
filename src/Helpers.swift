@@ -39,19 +39,29 @@ func identify (_ object: AnyObject) -> UInt {
 /// Generate a unique identifier for an object.
 /// Slowest. Checks for nil and converts to String.
 func getHash (_ object: AnyObject?) -> String {
-  return object == nil ? "0" : String(identify(object))
+  return object == nil ? Identifier.Stringified.default : String(identify(object))
 }
 
 ///// Generate a unique identifier for an object.
 ///// 2nd fastest. Checks for nil.
 func identify (_ object: AnyObject?) -> UInt {
-  return object == nil ? 0 : identify(object!)
+  return object == nil ? Identifier.Integer.default : identify(object!)
 }
 
 extension Array {
-  var nilIfEmpty: [Element]! { return count > 0 ? self : nil }
+  var nilIfEmpty: [Element]! { return !isEmpty ? self : nil }
 }
 
 extension Dictionary {
-  var nilIfEmpty: [Key:Value]! { return count > 0 ? self : nil }
+  var nilIfEmpty: [Key:Value]! { return !isEmpty ? self : nil }
+}
+
+struct Identifier {
+  struct Integer {
+    static let `default`: UInt = 0
+  }
+
+  struct Stringified {
+    static let `default` = String(Identifier.Integer.default)
+  }
 }
