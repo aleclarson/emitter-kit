@@ -25,7 +25,7 @@ public class Event <T> {
   }
 
   public func emit (_ data: T) {
-    _emit(data, on: "0")
+    _emit(data, on: Identifier.Stringified.default)
   }
 
   public func emit (_ data: T, on target: AnyObject) {
@@ -77,7 +77,7 @@ public class Event <T> {
 public extension Event where T == Void {
 
   func emit () {
-    _emit((), on: "0")
+    _emit((), on: Identifier.Stringified.default)
   }
 
   func emit (on target: AnyObject) {

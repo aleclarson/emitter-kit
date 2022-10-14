@@ -16,7 +16,7 @@ public class NotificationListener : Listener {
       // '0' when `notif.object` equals nil. Listen to all 
       // objects emitting `name` when listening on nil, mirroring
       // functionality in NSNotificationCenter.
-      if self._targetID != "0" {
+      if self._targetID != Identifier.Stringified.default {
         if let target: AnyObject = notif.object as AnyObject? {
           if self._targetID != getHash(target) {
             return
